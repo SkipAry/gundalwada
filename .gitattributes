@@ -1,0 +1,17 @@
+# Normalise line endings in the repo, check out native on each machine.
+#
+# This project lives in a OneDrive folder and is edited from both Windows
+# and Linux. Without this, a file touched on one side comes back as a
+# whole-file diff on the other: an earlier session produced a commit
+# showing 702 insertions and 702 deletions where nothing had actually
+# changed but CRLF. That noise makes review worthless and hides real edits.
+* text=auto eol=lf
+
+# Binary assets: never touch, never diff.
+*.webp binary
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.mp4  binary
+*.woff binary
+*.woff2 binary

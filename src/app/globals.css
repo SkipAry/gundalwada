@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   GUNDAL WADA — global styling, Airbnb.org editorial system.
+
+   WHAT WAS REMOVED, AND WHY IT HAD TO GO:
+
+   · The Mahadwar door animation. A 3D reveal is decoration, and the
+     reference forbids decoration outright. Removing it also removes the
+     single largest source of bugs this build had — purged classes,
+     JS-gated copy, flash-on-load — so the page got more robust as well
+     as more correct.
+   · The lime-plaster dot texture. "Never decorate with gradients,
+     illustrations, or color washes." The canvas is paper now.
+   · The gold hairline under links, and every ornament stroke.
+   · Shadows. There were only two; the system has none at all.
+
+   WHAT REPLACES THEM: surface contrast and type scale. White → #F7F7F7
+   → #EBEBEB bands, one ink, one muted grey, 1px hairlines. Depth comes
+   from photography, never from elevation.
+
+   The remaining motion is 160ms colour transitions on interactive
+   elements and a 0.98 press state. That is not decoration — it is
+   feedback, and a tap with no acknowledgement reads as a broken button.
+   ───────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    /* Paper. No texture, no image, no wash. */
+    @apply bg-cream text-cocoa antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /**
+   * FOCUS RING — carbon ink, and now trivially compliant.
+   *
+   * The old two-tone gold ring existed because gold measured 1.72:1 on
+   * cream and failed WCAG 1.4.11. Carbon ink on paper white is 15.91:1,
+   * so a single solid ring is enough. On dark sections the ink ring would
+   * vanish, so those invert to paper white.
+   */
+  :focus-visible {
+    outline: 2px solid theme(colors.cocoa);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .on-dark :focus-visible,
+  [class*="bg-cocoa"] :focus-visible {
+    outline-color: theme(colors.cream);
+  }
+
+  ::selection {
+    @apply bg-cocoa text-cream;
+  }
+
+  html {
+    caret-color: theme(colors.cocoa);
+    scrollbar-color: theme(colors.ash) theme(colors.cream);
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: theme(colors.cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: theme(colors.ash);
+    border: 3px solid theme(colors.cream);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme(colors.russet);
+  }
+
+  address {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /**
+   * TRACKING BY SIZE, applied globally rather than per-heading.
+   *
+   * The reference specifies tracking as a function of type size, not of
+   * element. Doing it here means every headline in the build obeys it
+   * without seventeen files each having to remember, and a new heading
+   * added later is correct by default.
+   */
+  h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.13;
+  }
+
+  h2 {
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+  }
+
+  h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.29;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-weight: 500;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /**
+   * Media carries every emotional beat in this system, and it is always
+   * framed at 12px. Setting it once here beats adding a radius class to
+   * every image in the build and forgetting one.
+   *
+   * `.flush` opts out, for images that bleed to the viewport edge — a
+   * rounded corner on a full-bleed photograph shows the page background
+   * through the notch and looks like a mistake.
+   */
+  img:not(.flush),
+  video:not(.flush) {
+    border-radius: 12px;
+  }
+}
+
+@layer components {
+  /* ── Small caps label ──────────────────────────────────────
+     Muted grey, not an accent colour. The system has no accent. */
+  .eyebrow {
+    @apply text-[14px] font-medium tracking-caps text-russet;
+  }
+
+  /* ── Hairline separation ───────────────────────────────────
+     1px rules and surface contrast are the only separators. */
+  .hairline {
+    @apply border border-pebble;
+  }
+
+  /* ── The one button in the system ──────────────────────────
+     Filled carbon ink, paper white text, 8px radius, no border, no
+     shadow, no hover lift. The reference is explicit that the page's
+     power comes from one dark rectangle against white — so a second
+     button style would cost more than it bought.
+
+     Hover darkens rather than lifts. #222 has little room to go darker,
+     which is the point: the button barely reacts, and that restraint is
+     the brand. */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
+      bg-cocoa px-6 text-[16px] font-medium text-cream
+      transition-colors duration-200 hover:bg-black active:scale-[0.98];
+  }
+
+  /* Inverted, for dark sections where an ink button would disappear. */
+  .btn-invert {
+    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
+      bg-cream px-6 text-[16px] font-medium text-cocoa
+      transition-colors duration-200 hover:bg-pebble active:scale-[0.98];
+  }
+
+  /* ── Text link ─────────────────────────────────────────────
+     No underline animation, no colour shift to an accent. The reference
+     has no decorated links; it has text that is either ink or muted. */
+  .link-gold {
+    @apply text-cream/80 transition-colors duration-200 hover:text-cream;
+  }
+
+  a,
+  button {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: 160ms;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Reduced motion.
+
+   Very little left to disable. What remains lands on VISIBLE — the
+   failure mode that matters is content that never appears.
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mobile-quick-actions {
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
