@@ -27,11 +27,21 @@ import SectionHead from "./SectionHead";
  * does not break anything. `controls` is on, so the visitor keeps a mute
  * of their own.
  *
- * ⚠ THE SUPPLIED FILES CURRENTLY HAVE NO AUDIO STREAM. ffprobe reports a
- * single h264 video track in reel1/2/3.mp4 and in both venue loops — the
- * audio was stripped at export, most likely by whatever pulled them off
- * Instagram. No front-end change can add sound that is not in the file.
- * When re-exported with audio, this player will play it as-is.
+ * The files themselves were the reason this section was silent, not the
+ * markup. An earlier compression pass in this project re-encoded the
+ * client's originals for web weight and dropped the AAC track — and also
+ * cut 98-second reels down to 14 seconds. Both were unflagged decisions
+ * and both were wrong for footage a visitor chooses to watch: a silent
+ * 14-second fragment is not the reel, it is a thumbnail that moves.
+ *
+ * They are now re-encoded from the originals at full length with AAC
+ * stereo. Verified in-browser: webkitAudioDecodedByteCount goes from 0 to
+ * non-zero after a tap.
+ *
+ * WEIGHT: 10MB / 6.6MB / 1.4MB. That is a lot for this audience, and it
+ * is deliberate — `preload="none"` means not one byte is fetched until
+ * somebody taps, so the cost lands only on a visitor who asked for it.
+ * The posters carry the section at 39KB each.
  */
 export default function Reels() {
   const [playing, setPlaying] = useState<string | null>(null);
