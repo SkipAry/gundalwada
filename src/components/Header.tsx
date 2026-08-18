@@ -89,9 +89,13 @@ export default function Header() {
         <a
           href="#mahadwar"
           onClick={() => setOpen(false)}
-          className="flex shrink-0 items-baseline gap-2 rounded"
+          /* min-h-44 so the mark is a comfortable tap target on a phone;
+             the inner row keeps the baseline alignment between the two
+             halves of the wordmark. */
+          className="flex min-h-[44px] shrink-0 items-center rounded"
           aria-label={`${site.name}, back to top`}
         >
+          <span className="flex items-baseline gap-2">
           <span className="font-marathi text-[20px] font-semibold leading-none text-cocoa md:text-[22px]">
             {site.nameDevanagari}
           </span>
@@ -100,6 +104,7 @@ export default function Header() {
               sit side by side on this page. */}
           <span className="hidden text-[14px] text-russet sm:inline">
             {site.parentBrand}
+          </span>
           </span>
         </a>
 
@@ -110,7 +115,13 @@ export default function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded px-1 py-1 text-[16px] font-medium text-cocoa transition-colors duration-200 hover:text-russet"
+                /* 44px tall, not the 32px text height. The desktop nav
+                   appears from lg (1024px) up, and an iPad in landscape
+                   is 1024–1366px wide — so these links are shown on a
+                   device that taps them with a finger, not a cursor.
+                   Sizing them for the mouse was the one thing this build
+                   got wrong about tablets. */
+                className="flex min-h-[44px] items-center rounded px-1 text-[16px] font-medium text-cocoa transition-colors duration-200 hover:text-russet"
               >
                 {l.en}
               </a>

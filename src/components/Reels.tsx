@@ -20,6 +20,18 @@ import SectionHead from "./SectionHead";
  * Only one plays at a time: starting a second pauses the first. Three
  * videos running behind each other is noise, and on a mid-range phone it
  * is dropped frames.
+ *
+ * SOUND. The element is no longer hard-muted. Playback here is always
+ * started by a tap, and a user gesture is exactly what browsers require
+ * before they will allow audio — so unmuting on play is permitted and
+ * does not break anything. `controls` is on, so the visitor keeps a mute
+ * of their own.
+ *
+ * ⚠ THE SUPPLIED FILES CURRENTLY HAVE NO AUDIO STREAM. ffprobe reports a
+ * single h264 video track in reel1/2/3.mp4 and in both venue loops — the
+ * audio was stripped at export, most likely by whatever pulled them off
+ * Instagram. No front-end change can add sound that is not in the file.
+ * When re-exported with audio, this player will play it as-is.
  */
 export default function Reels() {
   const [playing, setPlaying] = useState<string | null>(null);
@@ -30,7 +42,18 @@ export default function Reels() {
     if (playing && playing !== id) refs.current[playing]?.pause();
     setPlaying(id);
     // The element mounts in the same commit, so wait a frame for the ref.
-    requestAnimationFrame(() => refs.current[id]?.play().catch(() => {}));
+    requestAnimationFrame(() => {
+      const v = refs.current[id];
+      if (!v) return;
+      /* Unmute first, then play. If the browser refuses audio for any
+         reason the catch below falls back to muted playback rather than
+         leaving the visitor with a tile that did nothing. */
+      v.muted = false;
+      v.play().catch(() => {
+        v.muted = true;
+        v.play().catch(() => {});
+      });
+    });
   };
 
   if (!reels.length) return null;
@@ -64,7 +87,6 @@ export default function Reels() {
                       }}
                       className="h-full w-full object-cover"
                       poster={r.poster}
-                      muted
                       loop
                       playsInline
                       controls

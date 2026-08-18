@@ -23,12 +23,17 @@ export default function Angan() {
   const shots = gallery;
 
   /**
-   * The mosaic only earns a third column, and the tall hero cell, once
-   * there are enough photographs to fill them. With four images a 3-col
-   * grid plus a row-span leaves a visible hole — which reads as a broken
-   * layout rather than a sparse one. Two columns and equal cells look
-   * deliberate at this count and the grid upgrades itself as the client
-   * sends more.
+   * The mosaic only earns a third column once there are enough
+   * photographs to fill it. With four images a 3-col grid leaves a
+   * visible hole, which reads as a broken layout rather than a sparse
+   * one, so the grid upgrades itself as the client sends more.
+   *
+   * The tall row-spanning hero cell is GONE. The supplied photographs run
+   * from 0.75 to 1.78 aspect ratio, and a mosaic that mixes those with a
+   * row-span produced tiles of four different heights whose edges lined
+   * up with nothing. Every tile is now the same 4:3 frame with the image
+   * cropped to fill it — so the grid reads as a set of framed prints
+   * rather than a pile of differently-sized photographs.
    */
   const dense = shots.length >= 5;
 
@@ -85,7 +90,7 @@ export default function Angan() {
           }`}
         >
           {shots.map((shot) => (
-            <li key={shot.src} className={dense && shot.tall ? "row-span-2" : ""}>
+            <li key={shot.src}>
               <button
                 type="button"
                 onClick={(e) => {
@@ -93,7 +98,10 @@ export default function Angan() {
                   setLightbox(shot);
                 }}
                 aria-label={`View larger: ${shot.alt.slice(0, 60)}…`}
-                className="group relative block h-full min-h-52 w-full overflow-hidden hairline"
+                /* One fixed frame for every tile. aspect-[4/3] on the
+                   button, object-cover on the image: the frame is the
+                   constant and the photograph adapts, never the reverse. */
+                className="hairline group relative block aspect-[4/3] w-full overflow-hidden rounded-xl"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -101,7 +109,7 @@ export default function Angan() {
                   alt={shot.alt}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover transition-[filter] duration-300 ease-settle group-hover:brightness-[1.06]"
+                  className="flush h-full w-full object-cover transition-[filter] duration-300 ease-settle group-hover:brightness-[1.06]"
                 />
               </button>
             </li>
@@ -127,11 +135,11 @@ export default function Angan() {
             role="dialog"
             aria-modal="true"
             aria-label="Photograph"
-            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto bg-ivory"
+            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-xl bg-cream"
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightbox.src} alt={lightbox.alt} className="w-full object-contain" />
+            <img src={lightbox.src} alt={lightbox.alt} className="flush max-h-[70dvh] w-full object-contain" />
             <p className="px-5 py-4 text-[13px] leading-relaxed text-cocoa/75">
               {lightbox.alt}
             </p>

@@ -103,7 +103,11 @@ export default function RootLayout({
       <body className="font-sans">
         <a
           href="#mahadwar"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-cocoa focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-gold"
+          /* Measured at 114x20 when focused — the padding utilities were
+             not winning against sr-only's `padding: 0`, so a keyboard
+             user's very first target was 20px tall. min-h + inline-flex
+             sizes it regardless of which padding rule wins. */
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:inline-flex focus:min-h-[44px] focus:items-center focus:rounded-lg focus:bg-cocoa focus:px-5 focus:text-[16px] focus:font-medium focus:text-cream"
         >
           Skip to content
         </a>

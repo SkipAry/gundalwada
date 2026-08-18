@@ -49,7 +49,7 @@ export default function Footer() {
             {site.phoneDisplay ? (
               <a
                 href={`tel:${site.whatsapp}`}
-                className="mt-3 inline-block py-1 text-[14px] font-semibold text-ivory hover:text-gold"
+                className="mt-2 flex min-h-[44px] items-center text-[14px] font-semibold text-cream transition-colors duration-200 hover:text-cream/70"
               >
                 {site.phoneDisplay}
               </a>
@@ -68,7 +68,7 @@ export default function Footer() {
                     href={p.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-gold inline-block py-1 text-[14px]"
+                    className="link-gold flex min-h-[44px] items-center text-[14px]"
                   >
                     {p.name} on Instagram
                   </a>
@@ -80,7 +80,7 @@ export default function Footer() {
                     href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-gold inline-block py-1 text-[14px]"
+                    className="link-gold flex min-h-[44px] items-center text-[14px]"
                   >
                     Book on WhatsApp
                   </a>
