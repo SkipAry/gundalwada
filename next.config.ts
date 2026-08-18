@@ -9,8 +9,17 @@ import type { NextConfig } from "next";
  * fine on the host, so this is a build-environment pin, not a bug in Next —
  * worth revisiting once the sandbox is upgraded.
  */
+/**
+ * GitHub Pages serves this at /gundalwada/, so the deploy workflow sets
+ * NEXT_PUBLIC_BASE_PATH. Unset it and everything builds for a root deploy
+ * instead — that is all a move to a custom domain takes.
+ */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
   output: "export",
+  basePath,
+  assetPrefix: basePath || undefined,
   images: {
     // next/image optimisation needs a server; static export requires this off.
     unoptimized: true,

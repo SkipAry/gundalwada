@@ -12,6 +12,7 @@ import Awwal from "@/components/Awwal";
 import Bolava from "@/components/Bolava";
 import Footer from "@/components/Footer";
 import BookBar from "@/components/BookBar";
+import { asset } from "@/lib/asset";
 
 /**
  * One page, no multi-page nav (brief §3): the audience is comparing three
@@ -39,7 +40,7 @@ export default function Home() {
         {/* The photograph the whole property rests on, at full width. Breaks
             the run of cream sections before the eye settles into a rhythm. */}
         <Statement
-          image="/img/chowk-courtyard.webp"
+          image={asset("/img/chowk-courtyard.webp")}
           alt="The open central courtyard at Gundal Wada, sunken and stone-paved, ringed by teak pillars with the sky above."
           headline="The Sky Is Part of the Room Here."
           body="A wada is built around its courtyard, so the light changes all day without anyone touching a lamp. That is the whole reason this house photographs the way it does."
@@ -58,7 +59,7 @@ export default function Home() {
             reason to fill it in, not another feature. */}
         <Statement
           id="invitation"
-          image="/img/mahadwar-poster.webp"
+          image={asset("/img/mahadwar-poster.webp")}
           alt="The verandah arcade at Gundal Wada, its cusped arches and tiled roofline in low light."
           headline="Bring the Couple. The House Is Already Dressed."
           /* No age claim and no drive time: the brief says Peshwa-era style,

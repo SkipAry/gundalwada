@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { site, whatsappLink, hasWhatsApp } from "@/data/site";
+import { asset } from "@/lib/asset";
 
 /**
  * MAHADWAR — the great door. Still the opening, but no longer a doorway.
@@ -116,19 +117,19 @@ export default function Mahadwar() {
             <video
               ref={videoRef}
               className="flush aspect-[16/9] w-full object-cover"
-              poster="/img/mahadwar-poster.webp"
+              poster={asset("/img/mahadwar-poster.webp")}
               muted
               loop
               playsInline
               preload="none"
               aria-hidden="true"
             >
-              <source src="/video/mahadwar-loop.mp4" type="video/mp4" />
+              <source src={asset("/video/mahadwar-loop.mp4")} type="video/mp4" />
             </video>
           ) : (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src="/img/mahadwar-poster.webp"
+              src={asset("/img/mahadwar-poster.webp")}
               alt="The verandah arcade at Gundal Wada, its cusped arches and tiled roofline in low light."
               className="flush aspect-[16/9] w-full object-cover"
               fetchPriority="high"

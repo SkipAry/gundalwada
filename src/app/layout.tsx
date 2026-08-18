@@ -3,6 +3,7 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/noto-sans-devanagari";
 import "./globals.css";
 import { site, fullAddress, primaryVenue, venues } from "@/data/site";
+import { asset } from "@/lib/asset";
 
 /**
  * Fonts are self-hosted through @fontsource rather than linked from Google.
@@ -73,7 +74,7 @@ function schema() {
       addressCountry: "IN",
       postalCode: primaryVenue.pincode,
     },
-    image: "/img/chowk-courtyard.webp",
+    image: asset("/img/chowk-courtyard.webp"),
   };
 
   if (site.url) org.url = site.url;
@@ -91,7 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en-IN">
       <head>
-        <link rel="icon" href="/brand/logo.webp" type="image/webp" />
+        <link rel="icon" href={asset("/brand/logo.webp")} type="image/webp" />
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Koregaon Bhima, Pune" />
         <script

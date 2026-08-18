@@ -15,6 +15,8 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+import { asset } from "@/lib/asset";
+
 export const site = {
   name: "Gundal Wada",
   nameDevanagari: "गुंडाळ वाडा",
@@ -117,8 +119,8 @@ export const venues: Venue[] = [
     address: "M398+MV, Vadhu Budruk, Shirur Taluka, Pune District, Maharashtra",
     pincode: "412216",
     instagram: "https://www.instagram.com/gundal_wada/",
-    video: "/video/mahadwar-loop.mp4",
-    poster: "/img/mahadwar-poster.webp",
+    video: asset("/video/mahadwar-loop.mp4"),
+    poster: asset("/img/mahadwar-poster.webp"),
     mapsQuery: "Gundal+Wada+Vadhu+Budruk+Pune",
   },
   {
@@ -130,8 +132,8 @@ export const venues: Venue[] = [
       "35, Anandrao Lande Rd, Maharashtra Colony, Sector No. 1, Bhosari, Pimpri-Chinchwad, Maharashtra",
     pincode: "411039",
     instagram: "https://www.instagram.com/gundal.wada2/",
-    video: "/video/bhosari-loop.mp4",
-    poster: "/img/bhosari-poster.webp",
+    video: asset("/video/bhosari-loop.mp4"),
+    poster: asset("/img/bhosari-poster.webp"),
     mapsQuery: "Gundal+Wada+2+Bhosari+Pimpri+Chinchwad",
   },
 ];
@@ -199,23 +201,23 @@ export type Shot = {
 
 export const gallery: Shot[] = [
   {
-    src: "/img/chowk-courtyard.webp",
+    src: asset("/img/chowk-courtyard.webp"),
     alt: "The open central courtyard, its sunken stone floor ringed by teak pillars on carved stone bases, with a tulsi vrindavan at the centre and the sky framed by the eaves above.",
     shoot: "pre-wedding",
     tall: true,
   },
   {
-    src: "/img/haldi-samai-rangoli.webp",
+    src: asset("/img/haldi-samai-rangoli.webp"),
     alt: "A woman in a purple Paithani saree seated on the stone floor beside a tall brass samai, with a marigold rangoli laid around it and a carved wooden jharokha on the wall behind.",
     shoot: "haldi",
   },
   {
-    src: "/img/haldi-jharokha.webp",
+    src: asset("/img/haldi-jharokha.webp"),
     alt: "The same setting from the side: lit brass samai in the foreground, dressed stone wall and the carved wooden balcony above.",
     shoot: "haldi",
   },
   {
-    src: "/img/haldi-offering.webp",
+    src: asset("/img/haldi-offering.webp"),
     alt: "Seated with cupped hands raised in offering, the marigold rangoli and brass lamp filling the foreground.",
     shoot: "festival",
   },
@@ -241,21 +243,21 @@ export type Reel = {
 export const reels: Reel[] = [
   {
     id: "reel1",
-    src: "/video/reel1.mp4",
-    poster: "/img/reel1-poster.webp",
+    src: asset("/video/reel1.mp4"),
+    poster: asset("/img/reel1-poster.webp"),
     caption:
       "A portrait turn in a blue-and-gold Paithani beside the carved jharokha, marigold garlands hanging alongside.",
   },
   {
     id: "reel2",
-    src: "/video/reel2.mp4",
-    poster: "/img/reel2-poster.webp",
+    src: asset("/video/reel2.mp4"),
+    poster: asset("/img/reel2-poster.webp"),
     caption: "Traditional dress and jewellery against the wada's stone and teak.",
   },
   {
     id: "reel3",
-    src: "/video/reel3.mp4",
-    poster: "/img/reel3-poster.webp",
+    src: asset("/video/reel3.mp4"),
+    poster: asset("/img/reel3-poster.webp"),
     caption: "A short turn through the property, shot vertically for reels.",
   },
 ];
@@ -286,7 +288,7 @@ export const spots: Spot[] = [
     mr: "चौक",
     name: "The chowk",
     note: "The sunken stone courtyard, open to the sky, with the tulsi vrindavan at its centre and teak pillars on carved bases around it.",
-    image: "/img/chowk-courtyard.webp",
+    image: asset("/img/chowk-courtyard.webp"),
     alt: "The open central courtyard, sunken and stone-paved, ringed by teak pillars.",
   },
   {
@@ -298,14 +300,14 @@ export const spots: Spot[] = [
     mr: "झरोखा",
     name: "The jharokha",
     note: "The carved wooden balcony above the stone wall. It sits high in frame and gives a portrait its ceiling.",
-    image: "/img/haldi-jharokha.webp",
+    image: asset("/img/haldi-jharokha.webp"),
     alt: "Carved wooden jharokha balcony above a dressed stone wall.",
   },
   {
     mr: "दगडी भिंत",
     name: "The stone wall",
     note: "Dressed basalt block, dark and even. It holds its colour in a photograph instead of blowing out behind a lit subject.",
-    image: "/img/haldi-samai-rangoli.webp",
+    image: asset("/img/haldi-samai-rangoli.webp"),
     alt: "Dressed basalt wall behind a lit brass samai and a marigold rangoli.",
   },
   {
