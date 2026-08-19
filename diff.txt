@@ -1,0 +1,229 @@
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 6247a34..a79dd8f 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -3,27 +3,22 @@
+ @tailwind utilities;
+ 
+ /* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+-   GUNDAL WADA ΓÇö global styling, Airbnb.org editorial system.
+-
+-   WHAT WAS REMOVED, AND WHY IT HAD TO GO:
+-
+-   ┬╖ The Mahadwar door animation. A 3D reveal is decoration, and the
+-     reference forbids decoration outright. Removing it also removes the
+-     single largest source of bugs this build had ΓÇö purged classes,
+-     JS-gated copy, flash-on-load ΓÇö so the page got more robust as well
+-     as more correct.
+-   ┬╖ The lime-plaster dot texture. "Never decorate with gradients,
+-     illustrations, or color washes." The canvas is paper now.
+-   ┬╖ The gold hairline under links, and every ornament stroke.
+-   ┬╖ Shadows. There were only two; the system has none at all.
+-
+-   WHAT REPLACES THEM: surface contrast and type scale. White ΓåÆ #F7F7F7
+-   ΓåÆ #EBEBEB bands, one ink, one muted grey, 1px hairlines. Depth comes
+-   from photography, never from elevation.
+-
+-   The remaining motion is 160ms colour transitions on interactive
+-   elements and a 0.98 press state. That is not decoration ΓÇö it is
+-   feedback, and a tap with no acknowledgement reads as a broken button.
++   GUNDAL WADA ΓÇö global styling, Cowboy editorial system.
++
++   WHAT CHANGED FROM THE PORTRAIT SYSTEM:
++
++   ┬╖ The scrapbook colors (navy ink / rainbow / pastels) are replaced by
++     Cowboy's near-monochrome system: porcelain white canvas, charcoal
++     #1d1d1d ink, hairline #e5e7eb borders, smoke #737373 secondary text.
++   ┬╖ Cards are now 8px radius, buttons are 9999px pills, images are 8px.
++   ┬╖ The rainbow-outlined CTA is replaced by a filled #1d1d1d pill with
++     white text ΓÇö there is no chromatic action color.
++   ┬╖ Pastel section bands are now subtle #f3f4f6 mist.
++   ┬╖ Shadows are removed; separation comes from 1px hairlines only.
++   ┬╖ Headlines now run at 72ΓÇô100px with -0.025em tracking ΓÇö the display
++     scale is the system's signature.
++   ┬╖ Motion: 160ms colour transitions on interactive elements and a 0.98
++     press state. That is feedback, not decoration.
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+ 
+ @layer base {
+@@ -33,18 +28,13 @@
+   }
+ 
+   body {
+-    /* Paper. No texture, no image, no wash. */
++    /* Porcelain. No texture, no image, no wash. */
+     @apply bg-cream text-cocoa antialiased;
+     font-feature-settings: "cv11", "ss01";
+   }
+ 
+   /**
+-   * FOCUS RING ΓÇö carbon ink, and now trivially compliant.
+-   *
+-   * The old two-tone gold ring existed because gold measured 1.72:1 on
+-   * cream and failed WCAG 1.4.11. Carbon ink on paper white is 15.91:1,
+-   * so a single solid ring is enough. On dark sections the ink ring would
+-   * vanish, so those invert to paper white.
++   * FOCUS RING ΓÇö charcoal ink.
+    */
+   :focus-visible {
+     outline: 2px solid theme(colors.cocoa);
+@@ -90,26 +80,25 @@
+   }
+ 
+   /**
+-   * TRACKING BY SIZE, applied globally rather than per-heading.
++   * TRACKING BY SIZE ΓÇö the Cowboy signature.
+    *
+-   * The reference specifies tracking as a function of type size, not of
+-   * element. Doing it here means every headline in the build obeys it
+-   * without seventeen files each having to remember, and a new heading
+-   * added later is correct by default.
++   * Display headlines pull tight at -0.025em, headings at -0.02em.
++   * Body stays neutral. Doing it here means every headline in the build
++   * obeys it without seventeen files each having to remember.
+    */
+   h1 {
+-    letter-spacing: -0.03em;
+-    line-height: 1.13;
++    letter-spacing: -0.025em;
++    line-height: 0.95;
+   }
+ 
+   h2 {
+     letter-spacing: -0.02em;
+-    line-height: 1.18;
++    line-height: 1.05;
+   }
+ 
+   h3 {
+-    letter-spacing: -0.01em;
+-    line-height: 1.29;
++    letter-spacing: -0.015em;
++    line-height: 1.25;
+   }
+ 
+   h1,
+@@ -124,60 +113,49 @@
+   }
+ 
+   /**
+-   * Media carries every emotional beat in this system, and it is always
+-   * framed at 12px. Setting it once here beats adding a radius class to
+-   * every image in the build and forgetting one.
+-   *
+-   * `.flush` opts out, for images that bleed to the viewport edge ΓÇö a
+-   * rounded corner on a full-bleed photograph shows the page background
+-   * through the notch and looks like a mistake.
++   * Media framed at 8px ΓÇö the Cowboy radius. `.flush` opts out for
++   * images that bleed to the viewport edge.
+    */
+   img:not(.flush),
+   video:not(.flush) {
+-    border-radius: 12px;
++    border-radius: 8px;
+   }
+ }
+ 
+ @layer components {
+-  /* ΓöÇΓöÇ Small caps label ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+-     Muted grey, not an accent colour. The system has no accent. */
++  /* ΓöÇΓöÇ Small caps label ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+   .eyebrow {
+     @apply text-[14px] font-medium tracking-caps text-russet;
+   }
+ 
+   /* ΓöÇΓöÇ Hairline separation ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+-     1px rules and surface contrast are the only separators. */
++     1px #e5e7eb borders are the ONLY structural separator. */
+   .hairline {
+     @apply border border-pebble;
+   }
+ 
+-  /* ΓöÇΓöÇ The one button in the system ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+-     Filled carbon ink, paper white text, 8px radius, no border, no
+-     shadow, no hover lift. The reference is explicit that the page's
+-     power comes from one dark rectangle against white ΓÇö so a second
+-     button style would cost more than it bought.
+-
+-     Hover darkens rather than lifts. #222 has little room to go darker,
+-     which is the point: the button barely reacts, and that restraint is
+-     the brand. */
++  /* ΓöÇΓöÇ Primary Action Button ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
++     Filled #1d1d1d pill, white text, 9999px radius. No border, no
++     shadow. On hover the background lightens slightly toward #5e5e5e. */
+   .btn {
+-    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
++    @apply inline-flex min-h-[48px] items-center justify-center rounded-pill
+       bg-cocoa px-6 text-[16px] font-medium text-cream
+-      transition-colors duration-200 hover:bg-black active:scale-[0.98];
++      transition-colors duration-200 hover:bg-[#5E5E5E] active:scale-[0.98];
+   }
+ 
+   /* Inverted, for dark sections where an ink button would disappear. */
+   .btn-invert {
+-    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
++    @apply inline-flex min-h-[48px] items-center justify-center rounded-pill
+       bg-cream px-6 text-[16px] font-medium text-cocoa
+       transition-colors duration-200 hover:bg-pebble active:scale-[0.98];
+   }
+ 
+-  /* ΓöÇΓöÇ Text link ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+-     No underline animation, no colour shift to an accent. The reference
+-     has no decorated links; it has text that is either ink or muted. */
+-  .link-gold {
+-    @apply text-cream/80 transition-colors duration-200 hover:text-cream;
++  /* ΓöÇΓöÇ Secondary Outlined Button ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
++     Pill with 1px #1d1d1d border, transparent fill, #1d1d1d text. */
++  .btn-outline {
++    @apply inline-flex min-h-[48px] items-center justify-center rounded-pill
++      border border-cocoa px-6 text-[16px] font-medium text-cocoa
++      transition-colors duration-200 hover:bg-pebble active:scale-[0.98];
+   }
+ 
+   a,
+@@ -185,6 +163,13 @@
+     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+     transition-duration: 160ms;
+   }
++
++  /* ΓöÇΓöÇ Navigation Pill ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
++     Transparent fill, #1d1d1d text, 9999px radius. Active state uses
++     a subtle #f3f4f6 background. */
++  .nav-pill {
++    @apply flex min-h-[44px] items-center rounded-pill px-4 text-[16px] font-medium text-cocoa transition-colors duration-200 hover:bg-[#F3F4F6];
++  }
+ }
+ 
+ @layer utilities {
+@@ -195,6 +180,24 @@
+   .no-scrollbar::-webkit-scrollbar {
+     display: none;
+   }
++
++  /* ΓöÇΓöÇ Fade-up on scroll into view ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
++     A quiet entrance for sections: content rises 12px and fades in over
++     500ms. Applied via IntersectionObserver in components. */
++  @keyframes fade-up {
++    from {
++      opacity: 0;
++      transform: translateY(12px);
++    }
++    to {
++      opacity: 1;
++      transform: translateY(0);
++    }
++  }
++
++  .animate-fade-up {
++    animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
++  }
+ }
+ 
+ /* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@@ -219,4 +222,4 @@
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+   }
+-}
++}
+\ No newline at end of file

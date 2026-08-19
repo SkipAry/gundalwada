@@ -1,4 +1,5 @@
 import { hasWhatsApp, whatsappLink, site } from "@/data/site";
+import Accent from "./Accent";
 
 /**
  * STATEMENT — the full-bleed moment.
@@ -8,21 +9,13 @@ import { hasWhatsApp, whatsappLink, site } from "@/data/site";
  * declarative sentence over it, breaking a long run of cream sections
  * before the eye gets bored.
  *
+ * Cowboy treatment: the dark surface is Charcoal (#1d1d1d) — the
+ * system's single soft-black. The headline runs at display scale with
+ * -0.025em tracking.
+ *
  * The headline is a complete sentence with a full stop. That register is
  * most of what separates a heritage property's site from a venue listing:
  * it states something true about the place instead of selling an adjective.
- *
- * NO PARALLAX. The image was briefly `position: fixed` on desktop for a
- * parallax pass. An ancestor with `overflow: hidden` does not clip a fixed
- * descendant, so it was viewport-locked and painting behind the whole page,
- * hidden only by the accident that every other section carries a solid
- * background. `clip-path` was the next attempt; it clips the paint but not
- * the layout box, so it could not be verified by geometry either.
- *
- * Three fixes deep on a decorative effect is the signal to delete it. The
- * drama here comes from a photograph at full width and one sentence over
- * it, and neither of those needed the parallax. A plain absolutely
- * positioned cover image has no failure mode at all.
  */
 export default function Statement({
   image,
@@ -31,6 +24,7 @@ export default function Statement({
   body,
   cta,
   id,
+  highlight,
 }: {
   image: string;
   alt: string;
@@ -38,9 +32,11 @@ export default function Statement({
   body?: string;
   cta?: { label: string; href: string };
   id?: string;
+  /** One word to render in Orchid Accent — the WRITER signature move. */
+  highlight?: string;
 }) {
   return (
-    <section id={id} className="relative isolate overflow-hidden bg-cocoa">
+    <section id={id} className="relative isolate overflow-hidden bg-obsidian">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={image}
@@ -53,21 +49,19 @@ export default function Statement({
           photograph keeps its detail. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-cocoa via-cocoa/70 to-cocoa/25"
+        className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-obsidian/10 to-transparent"
       />
 
-      {/* Centred, like every other heading on the page. Left-aligning this
-          one was a holdover from a different reference, and it read as the
-          single place the masthead metaphor broke. */}
+      {/* Centred, like every other heading on the page. */}
       <div className="relative mx-auto flex min-h-[78svh] max-w-site flex-col items-center justify-end px-5 pb-16 pt-32 text-center sm:px-8 md:min-h-[86svh] md:pb-24">
-        <h2 className="max-w-[19ch] text-[clamp(2.2rem,5.2vw,3rem)] text-cream">
-          {headline}
-        </h2>
+           <h2 className="max-w-[19ch] font-display font-medium text-[clamp(2.4rem,5.5vw,3.4rem)] leading-[1.07] tracking-heading text-cream">
+           <Accent text={headline} highlight={highlight} />
+         </h2>
 
-        {body ? (
-          <p className="mt-6 max-w-copy text-[18px] leading-[1.56] text-cream/85">
-            {body}
-          </p>
+         {body ? (
+           <p className="mt-6 max-w-copy text-[17px] leading-[1.47] text-cream/85">
+             {body}
+           </p>
         ) : null}
 
         {cta ? (

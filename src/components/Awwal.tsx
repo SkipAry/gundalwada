@@ -22,7 +22,7 @@ export default function Awwal() {
   const has = testimonials.length > 0;
 
   return (
-    <section id="awwal" className="bg-cream py-16">
+        <section id="awwal" className="bg-canvas py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अभिप्राय"
@@ -38,7 +38,7 @@ export default function Awwal() {
         {has ? (
           <ul className="mt-14 grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
-              <li key={t.quote} className="hairline rounded-xl bg-ivory p-7">
+              <li key={t.quote} className="rounded-lg border border-pebble bg-ivory p-7">
                 <blockquote className="font-display text-[19px] leading-snug text-oxblood">
                   “{t.quote}”
                 </blockquote>

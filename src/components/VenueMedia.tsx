@@ -9,6 +9,8 @@ import { useRef, useState } from "react";
  * ~1.5MB unasked-for on a mid-tier connection, and mobile browsers refuse
  * muted autoplay often enough that the honest default is a still.
  *
+ * Cowboy treatment: 8px-radius media frame with a 1px hairline border.
+ *
  * The poster is real footage of THAT venue, so even if nobody presses play
  * the card shows the place rather than a placeholder.
  */
@@ -64,7 +66,7 @@ export default function VenueMedia({
               />
               <span
                 aria-hidden="true"
-                className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
+                className="relative flex h-14 w-14 items-center justify-center rounded-pill border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
               >
                 <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-gold">
                   <path d="M8 5v14l11-7z" />

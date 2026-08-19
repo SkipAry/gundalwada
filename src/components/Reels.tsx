@@ -11,6 +11,9 @@ import SectionHead from "./SectionHead";
  * this audience already watches. Brief §3 asks for at least one embedded
  * short-form video.
  *
+ * Cowboy treatment: 8px radius cards with 1px hairline borders — the
+ * porcelain showroom language. No shadows.
+ *
  * TAP TO PLAY, NOT AUTOPLAY. Three autoplaying loops would pull roughly
  * 2MB before anyone asked, on a page whose visitors are on mid-tier mobile
  * data (brief §4). Each tile shows its poster — 39KB — and fetches its
@@ -26,22 +29,6 @@ import SectionHead from "./SectionHead";
  * before they will allow audio — so unmuting on play is permitted and
  * does not break anything. `controls` is on, so the visitor keeps a mute
  * of their own.
- *
- * The files themselves were the reason this section was silent, not the
- * markup. An earlier compression pass in this project re-encoded the
- * client's originals for web weight and dropped the AAC track — and also
- * cut 98-second reels down to 14 seconds. Both were unflagged decisions
- * and both were wrong for footage a visitor chooses to watch: a silent
- * 14-second fragment is not the reel, it is a thumbnail that moves.
- *
- * They are now re-encoded from the originals at full length with AAC
- * stereo. Verified in-browser: webkitAudioDecodedByteCount goes from 0 to
- * non-zero after a tap.
- *
- * WEIGHT: 10MB / 6.6MB / 1.4MB. That is a lot for this audience, and it
- * is deliberate — `preload="none"` means not one byte is fetched until
- * somebody taps, so the cost lands only on a visitor who asked for it.
- * The posters carry the section at 39KB each.
  */
 export default function Reels() {
   const [playing, setPlaying] = useState<string | null>(null);
@@ -69,7 +56,7 @@ export default function Reels() {
   if (!reels.length) return null;
 
   return (
-    <section id="reels" className="bg-cream py-16">
+        <section id="reels" className="bg-canvas py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="चित्रफिती"
@@ -78,9 +65,7 @@ export default function Reels() {
           intro="Shot at the property, vertical, the way you would see it on a phone."
         />
 
-        {/* Horizontal rail on phones, three-up from md. The rail is the
-            honest mobile pattern for 9:16 media — stacking them makes the
-            visitor scroll three full screens to see three clips. */}
+        {/* Horizontal rail on phones, three-up from md. */}
         <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
           {reels.map((r) => {
             const isPlaying = playing === r.id;
@@ -89,7 +74,7 @@ export default function Reels() {
                 key={r.id}
                 className="w-[72vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none"
               >
-                <div className="relative aspect-[9/16] overflow-hidden rounded-xl border border-cocoa bg-ivory">
+                <div className="relative aspect-[9/16] overflow-hidden rounded-lg border border-pebble bg-ivory">
                   {isPlaying ? (
                     <video
                       ref={(el) => {
@@ -124,12 +109,12 @@ export default function Reels() {
                         aria-hidden="true"
                         className="absolute inset-0 bg-gradient-to-t from-cocoa/70 via-transparent to-transparent"
                       />
-                      {/* Play affordance. Gold on the dark scrim reads at
-                          8.48:1; gold on an unpredictable video frame would
-                          not, hence the disc behind it. */}
+                      {/* Play affordance. White on the dark scrim reads
+                          clearly; the disc behind it keeps it visible on
+                          any frame. */}
                       <span
                         aria-hidden="true"
-                        className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
+                        className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-pill border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
                       >
                         <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-gold">
                           <path d="M8 5v14l11-7z" />

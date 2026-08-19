@@ -23,13 +23,14 @@ export default function Vyavastha() {
   );
 
   return (
-    <section id="vyavastha" className="bg-cream py-16">
+        <section id="vyavastha" className="bg-obsidian py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="व्यवस्था"
           gloss="Arrangements"
           title="Before you book"
           intro="The things a crew needs to know before the van is loaded."
+          onDark
         />
 
         <div className="mx-auto mt-14 max-w-3xl">
@@ -37,10 +38,10 @@ export default function Vyavastha() {
             <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
               {answered.map((f) => (
                 <div key={f.q} className="border-t border-russet/20 pt-4">
-                  <dt className="text-[13px] font-semibold uppercase tracking-caps text-terracotta">
+                  <dt className="text-[13px] font-semibold uppercase tracking-caps text-cream/60">
                     {f.q}
                   </dt>
-                  <dd className="mt-1.5 text-[15px] leading-relaxed text-cocoa/85">
+                  <dd className="mt-1.5 text-[15px] leading-relaxed text-cream/90">
                     {f.a}
                   </dd>
                 </div>
@@ -49,7 +50,7 @@ export default function Vyavastha() {
           ) : null}
 
           {pending.length ? (
-            <div className="hairline mt-8 rounded-xl bg-ivory p-7 sm:p-9">
+            <div className="mt-8 rounded-lg border border-pebble bg-cream p-7 sm:p-9">
               {/* ⚠ CLIENT INPUT: answer these in `facilities` in
                   src/data/site.ts and each moves into the list above. */}
               <p className="text-[15px] leading-relaxed text-cocoa/85">
@@ -60,7 +61,7 @@ export default function Vyavastha() {
                 {pending.map((f) => (
                   <li
                     key={f.q}
-                    className="rounded border border-pebble px-4 py-2 text-[14px] text-russet"
+                    className="rounded-pill border border-pebble bg-cream px-4 py-2 text-[14px] text-russet"
                   >
                     {f.q}
                   </li>
@@ -72,7 +73,7 @@ export default function Vyavastha() {
                   href={ask}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn mt-7"
+                  className="btn-invert mt-7"
                 >
                   Ask about arrangements
                 </a>
@@ -86,16 +87,16 @@ export default function Vyavastha() {
               golden-hour shoot. */}
           {lightNotes.length ? (
             <div className="mt-12">
-              <h3 className="text-center font-display text-2xl font-semibold text-oxblood">
+              <h3 className="text-center font-display text-2xl font-semibold text-cream">
                 Light through the day
               </h3>
               <ul className="mt-6 space-y-4">
                 {lightNotes.map((l) => (
-                  <li key={l.time} className="flex gap-5 border-t border-russet/20 pt-4">
-                    <span className="w-28 shrink-0 text-[13px] font-semibold uppercase tracking-caps text-terracotta">
+                  <li key={l.time} className="flex gap-5 border-t border-cream/20 pt-4">
+                    <span className="w-28 shrink-0 text-[13px] font-semibold uppercase tracking-caps text-cream/60">
                       {l.time}
                     </span>
-                    <span className="text-[15px] leading-relaxed text-cocoa/85">
+                    <span className="text-[15px] leading-relaxed text-cream/90">
                       {l.note}
                     </span>
                   </li>

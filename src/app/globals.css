@@ -3,27 +3,21 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   GUNDAL WADA — global styling, Airbnb.org editorial system.
+   GUNDAL WADA — Heritage editorial system.
 
-   WHAT WAS REMOVED, AND WHY IT HAD TO GO:
+   WHAT THIS IS: a near-white editorial atelier in the WRITER
+   tradition. The page is a Pure White (#ffffff) paper canvas; the
+   only elevation a 12px-radius card with a 1px Mist hairline; the
+   signature move one Orchid Accent (#a95ef8) word inside an
+   otherwise ink-black Poppins headline. Pill-shaped controls
+   (60px buttons, 72px inputs), a single Iris (#5551ff) booking
+   CTA, and obsidian (#27272b) dark bands that give the stone and
+   teak story its weight. No shadows, ever — hierarchy comes from
+   background contrast, radius, and hairlines.
 
-   · The Mahadwar door animation. A 3D reveal is decoration, and the
-     reference forbids decoration outright. Removing it also removes the
-     single largest source of bugs this build had — purged classes,
-     JS-gated copy, flash-on-load — so the page got more robust as well
-     as more correct.
-   · The lime-plaster dot texture. "Never decorate with gradients,
-     illustrations, or color washes." The canvas is paper now.
-   · The gold hairline under links, and every ornament stroke.
-   · Shadows. There were only two; the system has none at all.
-
-   WHAT REPLACES THEM: surface contrast and type scale. White → #F7F7F7
-   → #EBEBEB bands, one ink, one muted grey, 1px hairlines. Depth comes
-   from photography, never from elevation.
-
-   The remaining motion is 160ms colour transitions on interactive
-   elements and a 0.98 press state. That is not decoration — it is
-   feedback, and a tap with no acknowledgement reads as a broken button.
+   TYPOGRAPHY: Poppins carries all UI and display roles. The serif
+   (Cormorant Garamond, CanelaDeck substitute) surfaces sparingly
+   for pull-quotes and poetic room descriptions.
    ───────────────────────────────────────────────────────────── */
 
 @layer base {
@@ -33,37 +27,38 @@
   }
 
   body {
-    /* Paper. No texture, no image, no wash. */
-    @apply bg-cream text-cocoa antialiased;
-    font-feature-settings: "cv11", "ss01";
+    /* Cream editorial paper. No texture, no image, no wash. */
+    @apply bg-canvas text-ink antialiased;
+    font-family: "Poppins", "Inter Variable", system-ui, sans-serif;
+    font-size: 16px; /* WRITER body reading size */
+    line-height: 1.4; /* Tighter editorial rhythm */
+    letter-spacing: -0.019em;
+    font-weight: 400;
+    font-feature-settings: "cv11", "ss01", "numr";
   }
 
   /**
-   * FOCUS RING — carbon ink, and now trivially compliant.
-   *
-   * The old two-tone gold ring existed because gold measured 1.72:1 on
-   * cream and failed WCAG 1.4.11. Carbon ink on paper white is 15.91:1,
-   * so a single solid ring is enough. On dark sections the ink ring would
-   * vanish, so those invert to paper white.
+   * FOCUS RING — ink, on the editorial paper.
    */
   :focus-visible {
-    outline: 2px solid theme(colors.cocoa);
+    outline: 2px solid theme(colors.ink);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   .on-dark :focus-visible,
-  [class*="bg-cocoa"] :focus-visible {
+  [class*="bg-cocoa"] :focus-visible,
+  [class*="bg-obsidian"] :focus-visible {
     outline-color: theme(colors.cream);
   }
 
   ::selection {
-    @apply bg-cocoa text-cream;
+    @apply bg-ink text-cream;
   }
 
   html {
-    caret-color: theme(colors.cocoa);
-    scrollbar-color: theme(colors.ash) theme(colors.cream);
+    caret-color: theme(colors.ink);
+    scrollbar-color: theme(colors.slate) theme(colors.canvas);
   }
 
   ::-webkit-scrollbar {
@@ -72,17 +67,17 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: theme(colors.cream);
+    background: theme(colors.canvas);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: theme(colors.ash);
-    border: 3px solid theme(colors.cream);
+    background: theme(colors.slate);
+    border: 3px solid theme(colors.canvas);
     border-radius: 999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: theme(colors.russet);
+    background: theme(colors.slate);
   }
 
   address {
@@ -90,33 +85,34 @@
   }
 
   /**
-   * TRACKING BY SIZE, applied globally rather than per-heading.
+   * TRACKING BY SIZE — the WRITER signature.
    *
-   * The reference specifies tracking as a function of type size, not of
-   * element. Doing it here means every headline in the build obeys it
-   * without seventeen files each having to remember, and a new heading
-   * added later is correct by default.
+   * Display headlines carry TIGHT NEGATIVE tracking at 64px
+   * (-1.98px, i.e. -0.031em); small labels open up to wide
+   * positive tracking at 11-12px (0.077-0.30em).
    */
   h1 {
-    letter-spacing: -0.03em;
-    line-height: 1.13;
+    font-weight: 500;
+    line-height: 1.07;
+    letter-spacing: theme(letterSpacing.display);
   }
 
   h2 {
-    letter-spacing: -0.02em;
-    line-height: 1.18;
+    font-weight: 500;
+    line-height: 1.19;
+    letter-spacing: theme(letterSpacing.heading);
   }
 
   h3 {
-    letter-spacing: -0.01em;
-    line-height: 1.29;
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: theme(letterSpacing.sub);
   }
 
   h1,
   h2,
   h3 {
     text-wrap: balance;
-    font-weight: 500;
   }
 
   p {
@@ -124,13 +120,9 @@
   }
 
   /**
-   * Media carries every emotional beat in this system, and it is always
-   * framed at 12px. Setting it once here beats adding a radius class to
-   * every image in the build and forgetting one.
-   *
-   * `.flush` opts out, for images that bleed to the viewport edge — a
-   * rounded corner on a full-bleed photograph shows the page background
-   * through the notch and looks like a mistake.
+   * Media framed at 12px — the ONLY non-pill radius in the system.
+   * `.flush` opts out for images that bleed to the viewport edge
+   * (hero, full-bleed).
    */
   img:not(.flush),
   video:not(.flush) {
@@ -139,51 +131,123 @@
 }
 
 @layer components {
-  /* ── Small caps label ──────────────────────────────────────
-     Muted grey, not an accent colour. The system has no accent. */
+  /* ── Wide-tracked eyebrow label ──────────────────────────── */
   .eyebrow {
-    @apply text-[14px] font-medium tracking-caps text-russet;
+    @apply text-[11px] font-medium uppercase tracking-eyebrow text-slate;
   }
 
-  /* ── Hairline separation ───────────────────────────────────
-     1px rules and surface contrast are the only separators. */
-  .hairline {
-    @apply border border-pebble;
-  }
-
-  /* ── The one button in the system ──────────────────────────
-     Filled carbon ink, paper white text, 8px radius, no border, no
-     shadow, no hover lift. The reference is explicit that the page's
-     power comes from one dark rectangle against white — so a second
-     button style would cost more than it bought.
-
-     Hover darkens rather than lifts. #222 has little room to go darker,
-     which is the point: the button barely reacts, and that restraint is
-     the brand. */
+  /* ── Primary Action Button ─────────────────────────────────
+     Obsidian #27272b fill pill (60px radius), white text. No
+     border, no shadow. The default conversion control. */
   .btn {
-    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
-      bg-cocoa px-6 text-[16px] font-medium text-cream
-      transition-colors duration-200 hover:bg-black active:scale-[0.98];
+    @apply inline-flex min-h-[48px] items-center justify-center
+      rounded-btn-pill bg-obsidian px-6 py-3 text-[15px] font-medium
+      text-cream transition-colors duration-150 hover:bg-obsidian/90
+      active:scale-[0.98];
   }
 
-  /* Inverted, for dark sections where an ink button would disappear. */
+  /* Primary action, used on the dark hero bars. Same obsidian —
+     the editorial system has one neutral action colour. */
   .btn-invert {
-    @apply inline-flex min-h-[48px] items-center justify-center rounded-lg
-      bg-cream px-6 text-[16px] font-medium text-cocoa
-      transition-colors duration-200 hover:bg-pebble active:scale-[0.98];
+    @apply inline-flex min-h-[48px] items-center justify-center
+      rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-medium
+      text-maroon transition-colors duration-150 hover:bg-cream/90
+      active:scale-[0.98];
   }
 
-  /* ── Text link ─────────────────────────────────────────────
-     No underline animation, no colour shift to an accent. The reference
-     has no decorated links; it has text that is either ink or muted. */
-  .link-gold {
-    @apply text-cream/80 transition-colors duration-200 hover:text-cream;
+  /* ── The SINGLE booking accent ─────────────────────────────
+     Iris Brand #5551ff — used at most 1-2 times per viewport for
+     the most important conversion (Book a visit / Send). */
+  .btn-iris {
+    @apply inline-flex min-h-[48px] items-center justify-center
+      rounded-btn-pill bg-iris px-6 py-3 text-[15px] font-medium
+      text-cream transition-colors duration-150 hover:bg-iris/90
+      active:scale-[0.98];
+  }
+
+  /* ── Ghost Button ──────────────────────────────────────────
+     Secondary action on light ground: transparent fill, ink border,
+     ink text, 60px pill. */
+  .btn-ghost,
+  .btn-outline {
+    @apply inline-flex min-h-[48px] items-center justify-center
+      rounded-btn-pill border border-ink bg-transparent px-6 py-3
+      text-[15px] font-medium text-ink transition-colors duration-150
+      hover:bg-ink hover:text-cream active:scale-[0.98];
+  }
+
+  /* ── Badge Chip ────────────────────────────────────────────
+     Inline status / label: Mist fill, 999px pill, 12px ink. */
+  .badge {
+    @apply inline-flex items-center rounded-pill bg-mist px-3 py-1
+      text-[12px] font-medium text-ink;
+  }
+
+  /* ── Pill Email / Date Input ───────────────────────────────
+     72px radius, white bg, 1px Ash border, Slate placeholder. */
+  .input-pill {
+    @apply w-full rounded-input-pill border border-ash bg-cream
+      px-5 py-3 text-[15px] text-ink placeholder:text-slate
+      focus:border-ink focus:outline-none;
+  }
+
+  /* ── Inline Text Link ──────────────────────────────────────
+     Plain text, Iris #5551ff, no underline. */
+  .link,
+  a.text-link {
+    color: theme(colors.iris);
+    text-decoration: none;
+  }
+
+  .link:hover,
+  a.text-link:hover {
+    color: theme(colors.iris);
+    opacity: 0.8;
   }
 
   a,
   button {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     transition-duration: 160ms;
+  }
+
+  /* ── Navigation Pill ───────────────────────────────────────
+     Editorial top nav links: ink text, mist fill on hover. */
+  .nav-pill {
+    @apply flex min-h-[44px] items-center rounded-btn-pill px-4
+      text-[15px] font-medium text-ink transition-colors duration-200
+      hover:bg-mist/60;
+  }
+
+  /* Links on the dark obsidian footer. */
+  .link-gold {
+    color: theme(colors.cream);
+    text-decoration: none;
+  }
+
+  .link-gold:hover {
+    color: theme(colors.cream);
+    opacity: 0.8;
+  }
+
+  /* ── Serif editorial voice ─────────────────────────────────
+     Cormorant Garamond pull-quotes and poetic room descriptions. */
+  .serif-accent {
+    font-family: "Cormorant Garamond Variable", "Cormorant Garamond",
+      Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Announcement banner gradient ──────────────────────────
+     The privacy-banner treatment: soft pink fading to lavender. */
+  .banner-gradient {
+    background: linear-gradient(
+      50deg,
+      rgb(231, 214, 197) 50px,
+      rgb(241, 232, 216) 130px,
+      rgb(241, 232, 216) 100%
+    );
   }
 }
 
@@ -194,6 +258,40 @@
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* ── Fade-up on scroll into view ───────────────────────────
+     A quiet entrance for sections: content rises 12px and fades in
+     over 500ms. Applied via IntersectionObserver in components. */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* ── Marquee / ticker strip ────────────────────────────────
+     The Neyam reference's scrolling text band. A continuous
+     horizontal loop of key phrases, separated by a dot. */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
   }
 }
 

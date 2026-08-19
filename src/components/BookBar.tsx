@@ -11,6 +11,9 @@ import { useHeroPassed } from "@/lib/useHeroPassed";
  * still means a visitor deep in the gallery has to hunt. This keeps one tap
  * available the whole way down.
  *
+ * Cowboy treatment: the bar is Charcoal (#1d1d1d) with a filled white
+ * pill action.
+ *
  * Hidden until the hero has passed, so it never competes with the primary
  * CTA already on screen — two identical buttons at once is noise, not
  * emphasis. Desktop has room for the header action, so this is mobile only.
@@ -24,7 +27,7 @@ export default function BookBar() {
 
   return (
     <div
-      className={`mobile-quick-actions fixed inset-x-0 bottom-0 z-40 border-t border-gold/30 bg-cocoa/95 p-3 backdrop-blur transition-transform duration-300 ease-settle lg:hidden ${
+      className={`mobile-quick-actions fixed inset-x-0 bottom-0 z-40 border-t border-cream/30 bg-obsidian/95 p-3 backdrop-blur transition-transform duration-300 ease-settle lg:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
       /* aria-hidden while off-screen so a screen reader is not offered a
@@ -36,7 +39,7 @@ export default function BookBar() {
         target="_blank"
         rel="noopener noreferrer"
         tabIndex={show ? 0 : -1}
-        className="btn-invert w-full"
+        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-medium text-maroon transition-colors duration-150 hover:bg-cream/90 active:scale-[0.98]"
       >
         Book on WhatsApp
       </a>

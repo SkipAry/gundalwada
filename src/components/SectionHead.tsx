@@ -12,14 +12,13 @@
  * because that is what they are called, and printing the name first says
  * the place names itself and translates for you.
  *
- * What went: the italic serif English line, and the little hairline rule
- * under the heading. The system is single-family, so there is no serif to
- * be italic in, and a decorative rule under a centred heading is exactly
- * the ornament the reference bans. Separation comes from the 64px section
- * gap and the grey band, nothing else.
+ * Portrait treatment: the Marathi name uses the display face (Plus Jakarta
+ * Sans / Basier Circle substitute) at 31px+, with tight negative tracking.
+ * The English caption sits in Slate Helper below.
  */
 export default function SectionHead({
   marathi,
+  gloss,
   title,
   intro,
   onDark = false,
@@ -27,7 +26,7 @@ export default function SectionHead({
   className = "",
 }: {
   marathi: string;
-  /** Kept in the API for callers; unused. */
+  /** Rendered as the wide-tracked eyebrow label above the Marathi name. */
   gloss?: string;
   title: string;
   intro?: string;
@@ -43,6 +42,9 @@ export default function SectionHead({
         centered ? "" : "max-w-3xl"
       } ${className}`}
     >
+      {gloss ? (
+        <p className={`eyebrow ${onDark ? "text-cream/60" : ""}`}>{gloss}</p>
+      ) : null}
       <h2
         className={`font-marathi text-[clamp(2rem,4.5vw,3rem)] ${
           onDark ? "text-cream" : "text-cocoa"
@@ -52,8 +54,8 @@ export default function SectionHead({
       </h2>
 
       <p
-        className={`mt-2 text-[18px] leading-[1.56] ${
-          onDark ? "text-cream/70" : "text-russet"
+        className={`font-display font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.4] tracking-heading ${
+          onDark ? "text-cream/90" : "text-cocoa"
         }`}
       >
         {title}

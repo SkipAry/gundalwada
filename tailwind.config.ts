@@ -1,37 +1,45 @@
 import type { Config } from "tailwindcss";
 
 /**
- * GUNDAL WADA — design tokens, Airbnb.org editorial system.
+ * GUNDAL WADA — Heritage editorial system.
  *
- * The heritage palette (cream / cocoa / oxblood / russet / gold) was replaced
- * wholesale with the achromatic system from the supplied style reference.
+ * Adapted from the WRITER editorial-atelier reference (DESIGN 7): a
+ * near-white canvas where confident display headlines in Poppins sit above
+ * pill-shaped controls, and a single orchid accent punctuates an otherwise
+ * monochrome system. The visual language alternates between bright editorial
+ * sections and near-black obsidian resource blocks, creating a
+ * magazine-meets-control-centre rhythm where typography carries authority.
  *
- * TOKEN NAMES ARE KEPT ON PURPOSE. `cream` no longer means cream — it means
- * the page canvas. Remapping seven values here rather than renaming every
- * class across seventeen components is a two-line change instead of a
- * thousand-line one, and a rename carries no design benefit. The mapping:
+ * Custom serif Cormorant Garamond surfaces for Marathi descriptions and
+ * pull-quotes — the CanelaDeck substitute — giving the otherwise sans-serif
+ * system its editorial undertone.
  *
- *   cream      → Paper White      canvas
- *   ivory      → Newsprint Gray   alternate band
- *   cocoa      → Carbon Ink       text, filled CTA, dark surfaces
- *   oxblood    → Carbon Ink       headings (the system has ONE ink)
- *   russet     → Fog              muted text, hairline borders
- *   terracotta → Fog              small caps labels
- *   gold       → Paper White      type and fills ON dark ground
+ * LEGACY COLOUR NAMES ARE KEPT ON PURPOSE, exactly as before. `cream` no
+ * longer means Apple Pure White etc — remapping values here rather than
+ * renaming every class across seventeen components is a two-line change
+ * instead of a thousand-line one. The mapping:
  *
- * `oxblood` and `cocoa` are now the same value, as are `russet` and
- * `terracotta`. That is correct rather than lazy: the reference system has
- * exactly one ink and one muted grey, and collapsing them is what makes the
- * page read as one voice instead of four.
+ *   canvas    -> Pure White       page background (editorial paper)
+ *   cream     -> Pure White       card / surface elevation
+ *   cocoa     -> Ink Black        primary text & dark surfaces
+ *   oxblood   -> Ink Black        (alias) heading text
+ *   russet    -> Slate            secondary text
+ *   terracotta-> Slate            (alias) muted text
+ *   ash       -> Ash              placeholder / grayscale trust logos
+ *   pebble    -> Mist             hairline borders / dividers
+ *   hairline  -> Mist             (alias)
+ *   ivory     -> Lavender Wash    section wash surfaces
+ *   gold      -> Pure White       type & fills ON dark ground (unchanged)
+ *   blue      -> Iris             the single booking accent
  *
- * MEASURED CONTRAST (Airbnb values, WCAG AA):
- *   carbon ink on paper white   15.91:1
- *   carbon ink on newsprint     14.68:1
- *   fog on paper white           5.13:1   passes AA for body
- *   paper white on carbon ink   15.91:1
- *
- * Note what this fixes: the old `gold on cream` was 1.72:1 and had to be
- * fenced off with a rule. Nothing in this palette fails, so no fences.
+ * NEW editorial tokens:
+ *   orchid    -> Orchid Accent    the one highlighted word per headline
+ *   iris      -> Iris Brand       the single booking CTA
+ *   lavender  -> Lavender Wash    subtle accent surfaces
+ *   obsidian  -> Obsidian         dark bands & filled pill buttons
+ *   mist      -> Mist             hairline borders
+ *   fog       -> Fog              muted text
+ *   slate     -> Slate            helper text
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
@@ -41,62 +49,111 @@ const config: Config = {
         short: { raw: "(max-height: 820px)" },
       },
       colors: {
-        cream: "#FFFFFF",
-        ivory: "#F7F7F7",
-        cocoa: "#222222",
-        oxblood: "#222222",
-        russet: "#6A6A6A",
-        terracotta: "#6A6A6A",
-        gold: "#FFFFFF",
-        /* Named for what they are, for anything written from here on. */
-        pebble: "#EBEBEB",
-        ash: "#A6A6A6",
+        /* ── Legacy names — remapped to the maroon/cream palette. ── */
+        cream: "#F7F1E6", // Cream — warm paper canvas
+        cocoa: "#3E2A23", // Dark Oak — text & dark surfaces
+        oxblood: "#3E2A23", // Dark Oak (alias)
+        russet: "#6B5D52", // Muted brown — secondary text
+        terracotta: "#6B5D52", // Muted brown (alias)
+        ash: "#A89A8A", // Warm gray — placeholders / trust logos
+        pebble: "#E8DFCF", // Sand — hairline borders
+        hairline: "#E8DFCF", // Sand (alias)
+        ivory: "#F1E8D8", // Warm Sand — section wash surfaces
+        gold: "#C9A227", // Gold — accent on dark
+        canvas: "#F7F1E6", // Cream — editorial paper
+
+        /* ── Maroon/cream heritage palette, named for what they are. ─── */
+        ink: "#3E2A23", // Dark Oak — primary text
+        maroon: "#7A2E1F", // Maroon — primary brand / dark bands
+        "maroon-dark": "#5C2116", // Darker maroon — hover
+        "maroon-light": "#9C4A35", // Lighter maroon — accents
+        sand: "#E8DFCF", // Sand — hairlines / dividers
+        "warm-gray": "#A89A8A", // Warm gray — muted text
+        "dark-oak": "#3E2A23", // Dark Oak — text
+        "cream-light": "#FBF7EF", // Lighter cream — card surfaces
+        orchid: "#7A2E1F", // Maroon — the one highlighted word per headline
+        iris: "#7A2E1F", // Maroon — the single booking CTA
+        lavender: "#F1E8D8", // Warm Sand — subtle surfaces
+        obsidian: "#7A2E1F", // Maroon — dark bands + primary buttons
+        mist: "#E8DFCF", // Sand — hairlines / dividers
+        fog: "#D2C9B8", // Warm fog — muted text
+        slate: "#6B5D52", // Muted brown — helper text
+
+        /* ── Kept for existing usages / future use. ─────── */
+        porcelain: "#F7F1E6",
+        charcoal: "#3E2A23",
+        graphite: "#6B5D52",
+        smoke: "#474747",
+        bone: "#CACACA",
+        onyx: "#3E2A23",
+        moss: "#569D5F",
+        "signal-blue": "#2563EB",
+        "cobalt-spark": "#007AFF",
       },
+
       fontFamily: {
         /**
-         * ONE FAMILY FOR EVERYTHING. The reference is a single-family system
-         * — display, body and UI are all the same face, separated by weight
-         * and size alone. So `display` and `sans` deliberately resolve to
-         * the same stack; the distinction survives only so the components
-         * need no edits.
-         *
-         * Airbnb Cereal VF is proprietary to Airbnb and cannot be licensed,
-         * which the reference document itself acknowledges. Inter is the
-         * substitute it names: same rounded geometric proportions, and it
-         * takes the negative tracking at display sizes without breaking up.
+         * ONE FAMILY FOR EVERYTHING — Poppins, the WRITER reference's
+         * geometric sans. 64px display headlines (weight 500, tight
+         * tracking) down to 11px wide-tracked eyebrows.
          */
-        display: ['"Inter Variable"', "Inter", "system-ui", "sans-serif"],
-        sans: ['"Inter Variable"', "Inter", "system-ui", "sans-serif"],
+        display: [
+          '"Poppins"',
+          '"Inter Tight Variable"',
+          '"Inter Tight"',
+          "Inter",
+          "system-ui",
+          "sans-serif",
+        ],
+        sans: ['"Poppins"', '"Inter Variable"', "Inter", "system-ui", "sans-serif"],
         /**
-         * Inter has no Devanagari coverage, and the Marathi section names are
-         * the one thing on this page that cannot be substituted away. Noto
-         * Sans Devanagari is the closest match in the same register:
-         * humanist, low contrast, built alongside Inter-era grotesques.
+         * EDITORIAL SERIF — the CanelaDeck substitute. Used sparingly at
+         * body size for pull-quotes and poetic room descriptions.
+         */
+        serif: [
+          '"Cormorant Garamond Variable"',
+          '"Cormorant Garamond"',
+          "Georgia",
+          "serif",
+        ],
+        /**
+         * Poppins has no Devanagari coverage, and the Marathi section names
+         * are the one thing on this page that cannot be substituted away.
          */
         marathi: ['"Noto Sans Devanagari Variable"', "Nirmala UI", "sans-serif"],
       },
+
       maxWidth: {
-        /* Reference: 1200px page container, 640px for body copy. */
-        site: "75rem",
+        site: "90rem", // 1440px
         copy: "40rem",
+        nav: "64rem", // 1024px
       },
+
       letterSpacing: {
-        /**
-         * Negative tracking that tightens as type grows — the signature of
-         * the system. Letters huddle closer at display sizes, which is what
-         * gives the headlines their compressed editorial authority.
-         */
-        display: "-0.03em",
-        heading: "-0.02em",
-        sub: "-0.01em",
         caps: "0.06em",
+        /* WRITER tracking: tight negative on large display type
+           (-1.98px at 64px), wide positive tracking on tiny labels
+           (0.077-0.30em at 11-12px). */
+        eyebrow: "0.15em", // 11-12px labels
+        caption: "-0.019em", // 12px
+        body: "-0.019em", // 17px
+        sub: "-0.015em", // 20px
+        heading: "-0.02em", // 32px
+        display: "-0.031em", // 64px
       },
+
       borderRadius: {
-        /* Angular and editorial, never soft. Nothing exceeds 12px. */
-        DEFAULT: "8px",
-        lg: "8px",
+        /* 12px cards & images — the ONLY non-pill radius (WRITER rule).
+           Pills at 60/72/82px for buttons & inputs. No sharpness. */
+        DEFAULT: "12px",
+        lg: "12px",
         xl: "12px",
+        "2xl": "12px",
+        pill: "9999px",
+        "btn-pill": "60px",
+        "input-pill": "72px",
       },
+
       transitionTimingFunction: {
         settle: "cubic-bezier(0.16, 1, 0.3, 1)",
       },

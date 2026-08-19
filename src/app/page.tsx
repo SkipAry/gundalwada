@@ -1,8 +1,9 @@
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Mahadwar from "@/components/Mahadwar";
+import Marquee from "@/components/Marquee";
 import Angan from "@/components/Angan";
 import Reels from "@/components/Reels";
-import Jaaga from "@/components/Jaaga";
 import Statement from "@/components/Statement";
 import Diwankhana from "@/components/Diwankhana";
 import Naksha from "@/components/Naksha";
@@ -12,6 +13,7 @@ import Awwal from "@/components/Awwal";
 import Bolava from "@/components/Bolava";
 import Footer from "@/components/Footer";
 import BookBar from "@/components/BookBar";
+import Reveal from "@/components/Reveal";
 import { asset } from "@/lib/asset";
 
 /**
@@ -32,10 +34,14 @@ import { asset } from "@/lib/asset";
 export default function Home() {
   return (
     <>
+      <AnnouncementBar />
       <Header />
       <main>
         <Mahadwar />
-        <Angan />
+        <Marquee />
+        <Reveal>
+          <Angan />
+        </Reveal>
 
         {/* The photograph the whole property rests on, at full width. Breaks
             the run of cream sections before the eye settles into a rhythm. */}
@@ -43,17 +49,29 @@ export default function Home() {
           image={asset("/img/chowk-courtyard.webp")}
           alt="The open central courtyard at Gundal Wada, sunken and stone-paved, ringed by teak pillars with the sky above."
           headline="The Sky Is Part of the Room Here."
+          highlight="Sky"
           body="A wada is built around its courtyard, so the light changes all day without anyone touching a lamp. That is the whole reason this house photographs the way it does."
-          cta={{ label: "See the backdrops", href: "#jaaga" }}
+          cta={{ label: "See the reels", href: "#reels" }}
         />
 
-        <Reels />
-        <Diwankhana />
-        <Jaaga />
-        <Naksha />
-        <Vyavastha />
-        <Sopa />
-        <Awwal />
+        <Reveal>
+          <Reels />
+        </Reveal>
+        <Reveal>
+          <Diwankhana />
+        </Reveal>
+        <Reveal>
+          <Naksha />
+        </Reveal>
+        <Reveal>
+          <Vyavastha />
+        </Reveal>
+        <Reveal>
+          <Sopa />
+        </Reveal>
+        <Reveal>
+          <Awwal />
+        </Reveal>
 
         {/* Closing statement. The last thing before the form should be the
             reason to fill it in, not another feature. */}
@@ -62,6 +80,7 @@ export default function Home() {
           image={asset("/img/mahadwar-poster.webp")}
           alt="The verandah arcade at Gundal Wada, its cusped arches and tiled roofline in low light."
           headline="Bring the Couple. The House Is Already Dressed."
+          highlight="Dressed"
           /* No age claim and no drive time: the brief says Peshwa-era style,
              not a verified date, and 28 km is a distance we have, not a
              journey time we have measured. A heritage site inventing its own
@@ -69,7 +88,9 @@ export default function Home() {
           body="Stone, teak and lime plaster, about 28 km out on the Nagar Road corridor. Send a date and the shoot type, and you will get the rate straight back."
         />
 
-        <Bolava />
+        <Reveal>
+          <Bolava />
+        </Reveal>
       </main>
       <Footer />
       <BookBar />

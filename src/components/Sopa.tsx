@@ -59,7 +59,7 @@ export default function Sopa() {
             /* ⚠ CLIENT INPUT: half-day and full-day rates, what's included,
                whether weekend/festival pricing differs. Fill `pricing` in
                src/data/site.ts and this block is replaced automatically. */
-            <div className="hairline rounded-xl bg-cream p-8 text-center sm:p-12">
+            <div className="rounded-lg border border-pebble bg-cream p-8 text-center sm:p-12">
               <p className="font-display text-[clamp(1.4rem,3vw,1.9rem)] font-semibold leading-snug text-oxblood">
                 Rates depend on the date and how long you need the wada
               </p>
@@ -73,7 +73,7 @@ export default function Sopa() {
                   href={ask}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn mt-8"
+                  className="btn-iris mt-8"
                 >
                   Ask for rates on WhatsApp
                 </a>
@@ -94,7 +94,7 @@ export default function Sopa() {
 function RateCard({ label, rate }: { label: string; rate: string }) {
   if (!rate) return null;
   return (
-    <div className="hairline rounded-xl bg-cream p-7 text-center">
+    <div className="rounded-lg border border-pebble bg-cream p-7 text-center">
       <p className="eyebrow">{label}</p>
       <p className="mt-3 font-display text-3xl font-semibold text-oxblood">{rate}</p>
     </div>

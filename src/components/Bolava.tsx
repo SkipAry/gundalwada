@@ -51,7 +51,7 @@ export default function Bolava() {
      in 44 that a keyboard user would simply lose. Utilities outrank the
      base layer, so stating it on the element cannot be overridden. */
   const field =
-    "w-full rounded-lg border border-ash bg-cream px-4 py-3 text-[16px] text-cocoa placeholder:text-russet focus:border-cocoa";
+    "w-full rounded-input-pill border border-ash bg-cream px-5 py-3 text-[15px] text-ink placeholder:text-slate focus:border-ink";
 
   return (
     <section id="bolava" className="bg-ivory py-16">
@@ -64,7 +64,7 @@ export default function Bolava() {
           intro="Fill this in and it opens WhatsApp with your details already written. Nothing is sent anywhere else."
         />
 
-        <div className="hairline mx-auto mt-12 max-w-2xl rounded-xl bg-cream p-6 sm:p-9">
+        <div className="mx-auto mt-12 max-w-2xl rounded-lg border border-pebble bg-cream p-6 sm:p-9">
           {/* Not a <form>: there is no action and no submit. Making it a real
               form would invite Enter-to-submit with nowhere to go. */}
           <div className="grid gap-4 sm:grid-cols-2">
@@ -133,12 +133,12 @@ export default function Bolava() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn mt-6 w-full"
+              className="btn-iris mt-6 w-full"
             >
               Send on WhatsApp
             </a>
           ) : (
-            <p className="hairline mt-6 rounded-lg px-6 py-4 text-center text-[14px] text-russet">
+            <p className="mt-6 rounded-2xl border border-pebble px-6 py-4 text-center text-[14px] text-russet">
               ⚠ WhatsApp number needed before this can send
             </p>
           )}

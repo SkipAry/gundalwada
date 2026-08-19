@@ -8,6 +8,9 @@ import SectionHead from "./SectionHead";
  * a short list of what the property actually has, plus the location block —
  * no atmospheric filler about timeless traditions.
  *
+ * Cowboy treatment: the location card is an 8px-radius white card with a
+ * 1px hairline border — structure comes from the hairline alone.
+ *
  * Every line in `spaceNotes` describes something visible in the client's own
  * footage. Nothing claims a facility (changing room, parking, power) that
  * has not been confirmed — those live in Sopa, gated.
@@ -40,8 +43,7 @@ export default function Diwankhana() {
           </ul>
 
           {/* Where it is */}
-          <div className="hairline rounded-xl bg-cream p-7 sm:p-9">
-
+          <div className="rounded-lg border border-pebble bg-cream p-7 sm:p-9">
             <h3 className="font-display text-2xl font-semibold text-oxblood">
               Getting here
             </h3>

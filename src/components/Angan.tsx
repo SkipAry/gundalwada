@@ -8,6 +8,10 @@ import SectionHead from "./SectionHead";
  * ANGAN — the courtyard. The gallery, and the section that actually does
  * the persuading (brief §3).
  *
+ * Cowboy treatment: photo cards at 8px radius with a 1px hairline
+ * border — the porcelain showroom language. No shadows; structure comes
+ * from the hairline alone.
+ *
  * The brief's four category tabs are deliberately NOT built yet. With four
  * photographs, tabs would mostly open onto nothing — which reads as a
  * broken site rather than a young one. A plain mosaic looks deliberate at
@@ -27,13 +31,6 @@ export default function Angan() {
    * photographs to fill it. With four images a 3-col grid leaves a
    * visible hole, which reads as a broken layout rather than a sparse
    * one, so the grid upgrades itself as the client sends more.
-   *
-   * The tall row-spanning hero cell is GONE. The supplied photographs run
-   * from 0.75 to 1.78 aspect ratio, and a mosaic that mixes those with a
-   * row-span produced tiles of four different heights whose edges lined
-   * up with nothing. Every tile is now the same 4:3 frame with the image
-   * cropped to fill it — so the grid reads as a set of framed prints
-   * rather than a pile of differently-sized photographs.
    */
   const dense = shots.length >= 5;
 
@@ -83,8 +80,9 @@ export default function Angan() {
           intro="One property, several distinct corners: the open chowk, the carved arcade, the stone walls and the jharokha above them."
         />
 
-        {/* Mosaic */}
- <ul
+        {/* Mosaic — 8px radius cards with 1px hairline border, the Cowboy
+            showroom treatment */}
+        <ul
           className={`mt-10 grid grid-cols-2 gap-3 lg:gap-4 ${
             dense ? "md:grid-cols-3" : ""
           }`}
@@ -98,10 +96,7 @@ export default function Angan() {
                   setLightbox(shot);
                 }}
                 aria-label={`View larger: ${shot.alt.slice(0, 60)}…`}
-                /* One fixed frame for every tile. aspect-[4/3] on the
-                   button, object-cover on the image: the frame is the
-                   constant and the photograph adapts, never the reverse. */
-                className="hairline group relative block aspect-[4/3] w-full overflow-hidden rounded-xl"
+                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle group-hover:brightness-[1.03]"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -135,7 +130,7 @@ export default function Angan() {
             role="dialog"
             aria-modal="true"
             aria-label="Photograph"
-            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-xl bg-cream"
+            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-lg bg-cream"
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -147,7 +142,7 @@ export default function Angan() {
               type="button"
               onClick={close}
               aria-label="Close"
-              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center bg-cocoa/85 text-xl leading-none text-gold hover:bg-cocoa"
+              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-pill bg-cocoa/85 text-xl leading-none text-gold hover:bg-cocoa"
             >
               ×
             </button>
