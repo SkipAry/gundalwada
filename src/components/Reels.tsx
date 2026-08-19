@@ -107,14 +107,12 @@ export default function Reels() {
                       />
                       <span
                         aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-cocoa/70 via-transparent to-transparent"
+                        className="absolute inset-0 bg-gradient-to-t from-maroon/70 via-transparent to-transparent"
                       />
-                      {/* Play affordance. White on the dark scrim reads
-                          clearly; the disc behind it keeps it visible on
-                          any frame. */}
+                      {/* Play affordance */}
                       <span
                         aria-hidden="true"
-                        className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-pill border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
+                        className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-pill border border-gold/70 bg-maroon/80 transition-all duration-200 ease-settle group-hover:scale-105 group-hover:bg-maroon"
                       >
                         <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-gold">
                           <path d="M8 5v14l11-7z" />

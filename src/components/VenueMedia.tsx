@@ -62,11 +62,11 @@ export default function VenueMedia({
             >
               <span
                 aria-hidden="true"
-                className="absolute inset-0 bg-cocoa/25 transition-colors duration-200 ease-settle group-hover:bg-cocoa/10"
+                className="absolute inset-0 bg-maroon/25 transition-colors duration-200 ease-settle group-hover:bg-maroon/10"
               />
               <span
                 aria-hidden="true"
-                className="relative flex h-14 w-14 items-center justify-center rounded-pill border border-gold/60 bg-cocoa/70 transition-colors duration-200 ease-settle group-hover:bg-cocoa/90"
+                className="relative flex h-14 w-14 items-center justify-center rounded-pill border border-gold/70 bg-maroon/80 transition-all duration-200 ease-settle group-hover:scale-105 group-hover:bg-maroon"
               >
                 <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-gold">
                   <path d="M8 5v14l11-7z" />

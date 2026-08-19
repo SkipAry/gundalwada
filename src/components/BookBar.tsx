@@ -39,7 +39,7 @@ export default function BookBar() {
         target="_blank"
         rel="noopener noreferrer"
         tabIndex={show ? 0 : -1}
-        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-medium text-maroon transition-colors duration-150 hover:bg-cream/90 active:scale-[0.98]"
+        className="inline-flex min-h-[48px] w-full items-center justify-center rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold text-maroon-dark transition-colors duration-150 hover:bg-gold-dark active:scale-[0.98]"
       >
         Book on WhatsApp
       </a>

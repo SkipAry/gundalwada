@@ -1,9 +1,8 @@
 /**
  * MARQUEE — the scrolling text band.
  *
- * The Neyam reference's signature ticker: a continuous horizontal loop
- * of key phrases separated by a dot, on a maroon band. The content is
- * duplicated once so the -50% translate loops seamlessly.
+ * A continuous horizontal loop of key phrases separated by a saffron dot,
+ * on a deep terracotta maroon band (#7C2C0F).
  */
 const phrases = [
   "Peshwa-era wada",
@@ -18,20 +17,24 @@ const phrases = [
 ];
 
 export default function Marquee() {
-  const row = phrases.join("  ·  ");
+  const content = (
+    <span className="flex items-center whitespace-nowrap pr-8 text-[13px] font-medium uppercase tracking-eyebrow text-cream/90">
+      {phrases.map((phrase, i) => (
+        <span key={phrase} className="inline-flex items-center">
+          {phrase}
+          <span className="mx-3 text-[16px] leading-none text-gold">·</span>
+        </span>
+      ))}
+    </span>
+  );
 
   return (
-    <div className="overflow-hidden bg-maroon py-3">
-      <div className="animate-marquee flex w-max whitespace-nowrap">
-        <span className="pr-8 text-[13px] font-medium uppercase tracking-eyebrow text-cream/90">
-          {row}
-        </span>
-        <span
-          aria-hidden="true"
-          className="pr-8 text-[13px] font-medium uppercase tracking-eyebrow text-cream/90"
-        >
-          {row}
-        </span>
+    <div className="overflow-hidden border-y border-maroon-dark bg-maroon py-3 text-cream">
+      <div className="animate-marquee flex w-max">
+        {content}
+        <div aria-hidden="true" className="flex">
+          {content}
+        </div>
       </div>
     </div>
   );

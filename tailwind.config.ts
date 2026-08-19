@@ -1,45 +1,19 @@
 import type { Config } from "tailwindcss";
 
 /**
- * GUNDAL WADA — Heritage editorial system.
+ * GUNDAL WADA — 3-Color Heritage System
  *
- * Adapted from the WRITER editorial-atelier reference (DESIGN 7): a
- * near-white canvas where confident display headlines in Poppins sit above
- * pill-shaped controls, and a single orchid accent punctuates an otherwise
- * monochrome system. The visual language alternates between bright editorial
- * sections and near-black obsidian resource blocks, creating a
- * magazine-meets-control-centre rhythm where typography carries authority.
+ * Primary Palette:
+ *   #FBF6EC -> Warm Cream / Alabaster Paper Canvas
+ *   #7C2C0F -> Deep Terracotta / Heritage Maroon
+ *   #DEB13A -> Saffron Ochre / Mustard Gold
  *
- * Custom serif Cormorant Garamond surfaces for Marathi descriptions and
- * pull-quotes — the CanelaDeck substitute — giving the otherwise sans-serif
- * system its editorial undertone.
- *
- * LEGACY COLOUR NAMES ARE KEPT ON PURPOSE, exactly as before. `cream` no
- * longer means Apple Pure White etc — remapping values here rather than
- * renaming every class across seventeen components is a two-line change
- * instead of a thousand-line one. The mapping:
- *
- *   canvas    -> Pure White       page background (editorial paper)
- *   cream     -> Pure White       card / surface elevation
- *   cocoa     -> Ink Black        primary text & dark surfaces
- *   oxblood   -> Ink Black        (alias) heading text
- *   russet    -> Slate            secondary text
- *   terracotta-> Slate            (alias) muted text
- *   ash       -> Ash              placeholder / grayscale trust logos
- *   pebble    -> Mist             hairline borders / dividers
- *   hairline  -> Mist             (alias)
- *   ivory     -> Lavender Wash    section wash surfaces
- *   gold      -> Pure White       type & fills ON dark ground (unchanged)
- *   blue      -> Iris             the single booking accent
- *
- * NEW editorial tokens:
- *   orchid    -> Orchid Accent    the one highlighted word per headline
- *   iris      -> Iris Brand       the single booking CTA
- *   lavender  -> Lavender Wash    subtle accent surfaces
- *   obsidian  -> Obsidian         dark bands & filled pill buttons
- *   mist      -> Mist             hairline borders
- *   fog       -> Fog              muted text
- *   slate     -> Slate            helper text
+ * System token mapping:
+ *   canvas, cream     -> #FBF6EC (warm paper background & cards)
+ *   maroon, obsidian  -> #7C2C0F (primary brand, headings & dark bands)
+ *   gold, orchid      -> #DEB13A (saffron highlights & booking CTA)
+ *   pebble, mist      -> #E3D5C0 (warm sand hairline borders)
+ *   russet, slate     -> #8C4022 (secondary helper text)
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
@@ -49,46 +23,55 @@ const config: Config = {
         short: { raw: "(max-height: 820px)" },
       },
       colors: {
-        /* ── Legacy names — remapped to the maroon/cream palette. ── */
-        cream: "#F7F1E6", // Cream — warm paper canvas
-        cocoa: "#3E2A23", // Dark Oak — text & dark surfaces
-        oxblood: "#3E2A23", // Dark Oak (alias)
-        russet: "#6B5D52", // Muted brown — secondary text
-        terracotta: "#6B5D52", // Muted brown (alias)
-        ash: "#A89A8A", // Warm gray — placeholders / trust logos
-        pebble: "#E8DFCF", // Sand — hairline borders
-        hairline: "#E8DFCF", // Sand (alias)
-        ivory: "#F1E8D8", // Warm Sand — section wash surfaces
-        gold: "#C9A227", // Gold — accent on dark
-        canvas: "#F7F1E6", // Cream — editorial paper
+        /* ── The 3-Color Heritage Palette ────────────────────────
+           #FBF6EC -> Warm Cream / Alabaster Paper
+           #7C2C0F -> Deep Terracotta / Heritage Maroon / Mahogany
+           #DEB13A -> Saffron Ochre / Mustard Gold
+           ─────────────────────────────────────────────────────── */
 
-        /* ── Maroon/cream heritage palette, named for what they are. ─── */
-        ink: "#3E2A23", // Dark Oak — primary text
-        maroon: "#7A2E1F", // Maroon — primary brand / dark bands
-        "maroon-dark": "#5C2116", // Darker maroon — hover
-        "maroon-light": "#9C4A35", // Lighter maroon — accents
-        sand: "#E8DFCF", // Sand — hairlines / dividers
-        "warm-gray": "#A89A8A", // Warm gray — muted text
-        "dark-oak": "#3E2A23", // Dark Oak — text
-        "cream-light": "#FBF7EF", // Lighter cream — card surfaces
-        orchid: "#7A2E1F", // Maroon — the one highlighted word per headline
-        iris: "#7A2E1F", // Maroon — the single booking CTA
-        lavender: "#F1E8D8", // Warm Sand — subtle surfaces
-        obsidian: "#7A2E1F", // Maroon — dark bands + primary buttons
-        mist: "#E8DFCF", // Sand — hairlines / dividers
-        fog: "#D2C9B8", // Warm fog — muted text
-        slate: "#6B5D52", // Muted brown — helper text
+        /* Light surfaces / canvas */
+        cream: "#FBF6EC", // Warm Alabaster Paper Canvas
+        "cream-light": "#FFFDF9", // Elevated card surface
+        canvas: "#FBF6EC", // Primary editorial paper ground
+        ivory: "#F5EEDB", // Warm Sand — section wash surfaces
+        lavender: "#F5EEDB", // Section wash alias
+        porcelain: "#FBF6EC",
 
-        /* ── Kept for existing usages / future use. ─────── */
-        porcelain: "#F7F1E6",
-        charcoal: "#3E2A23",
-        graphite: "#6B5D52",
-        smoke: "#474747",
-        bone: "#CACACA",
-        onyx: "#3E2A23",
-        moss: "#569D5F",
-        "signal-blue": "#2563EB",
-        "cobalt-spark": "#007AFF",
+        /* Deep Terracotta / Heritage Maroon */
+        maroon: "#7C2C0F", // Deep Terracotta — primary brand
+        "maroon-dark": "#5C1F0A", // Rich Roasted Earth — hover & deep bands
+        "maroon-light": "#9E3C1A", // Warm Terracotta — accents & highlights
+        obsidian: "#7C2C0F", // Heritage dark bands & filled buttons
+        cocoa: "#7C2C0F", // Deep Terracotta — headings & text
+        "dark-oak": "#5C1F0A", // Dark mahogany text
+        oxblood: "#7C2C0F", // Deep Terracotta (alias)
+        ink: "#3D1507", // Deep Roasted Ink — primary body text for max contrast
+        charcoal: "#3D1507",
+        onyx: "#3D1507",
+
+        /* Saffron / Mustard Gold Accent */
+        gold: "#DEB13A", // Saffron Gold — primary accent / highlights
+        "gold-dark": "#C69A28", // Deep gold for hover
+        "gold-light": "#F7D97B", // Soft warm gold wash
+        orchid: "#DEB13A", // Saffron highlight word per headline
+        iris: "#DEB13A", // Saffron conversion CTA / booking button
+
+        /* Muted tones & hairlines */
+        russet: "#8C4022", // Muted terracotta — secondary helper text
+        terracotta: "#8C4022", // Muted terracotta (alias)
+        slate: "#8C4022", // Helper text
+        "warm-gray": "#A67C52", // Warm gray / earthy tone
+        ash: "#BFA47E", // Warm stone placeholder / border
+        pebble: "#E3D5C0", // Warm sand hairline borders
+        hairline: "#E3D5C0", // Hairline border (alias)
+        sand: "#E3D5C0", // Sand hairline border (alias)
+        mist: "#E3D5C0", // Mist border (alias)
+        fog: "#D9C7AC", // Warm fog
+        smoke: "#8C4022",
+        bone: "#E3D5C0",
+        moss: "#7C2C0F",
+        "signal-blue": "#DEB13A",
+        "cobalt-spark": "#DEB13A",
       },
 
       fontFamily: {

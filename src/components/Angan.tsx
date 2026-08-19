@@ -122,7 +122,7 @@ export default function Angan() {
       {/* Lightbox */}
       {lightbox ? (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-cocoa/95 p-4"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-maroon-dark/95 p-4 backdrop-blur-sm"
           onClick={close}
         >
           <div
@@ -130,19 +130,19 @@ export default function Angan() {
             role="dialog"
             aria-modal="true"
             aria-label="Photograph"
-            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-lg bg-cream"
+            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-lg border border-pebble bg-cream shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={lightbox.src} alt={lightbox.alt} className="flush max-h-[70dvh] w-full object-contain" />
-            <p className="px-5 py-4 text-[13px] leading-relaxed text-cocoa/75">
+            <p className="px-5 py-4 text-[13px] leading-relaxed text-cocoa/85">
               {lightbox.alt}
             </p>
             <button
               type="button"
               onClick={close}
               aria-label="Close"
-              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-pill bg-cocoa/85 text-xl leading-none text-gold hover:bg-cocoa"
+              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-pill bg-maroon text-xl leading-none text-gold hover:bg-maroon-dark transition-colors"
             >
               ×
             </button>

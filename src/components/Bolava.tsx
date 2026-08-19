@@ -51,7 +51,7 @@ export default function Bolava() {
      in 44 that a keyboard user would simply lose. Utilities outrank the
      base layer, so stating it on the element cannot be overridden. */
   const field =
-    "w-full rounded-input-pill border border-ash bg-cream px-5 py-3 text-[15px] text-ink placeholder:text-slate focus:border-ink";
+    "w-full rounded-input-pill border border-pebble bg-cream px-5 py-3 text-[15px] text-ink placeholder:text-russet/60 focus:border-maroon focus:outline-none transition-colors";
 
   return (
     <section id="bolava" className="bg-ivory py-16">

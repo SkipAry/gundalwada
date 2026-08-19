@@ -27,38 +27,39 @@
   }
 
   body {
-    /* Cream editorial paper. No texture, no image, no wash. */
+    /* Warm Alabaster Cream editorial paper (#FBF6EC). */
     @apply bg-canvas text-ink antialiased;
     font-family: "Poppins", "Inter Variable", system-ui, sans-serif;
-    font-size: 16px; /* WRITER body reading size */
-    line-height: 1.4; /* Tighter editorial rhythm */
+    font-size: 16px;
+    line-height: 1.4;
     letter-spacing: -0.019em;
     font-weight: 400;
     font-feature-settings: "cv11", "ss01", "numr";
   }
 
   /**
-   * FOCUS RING — ink, on the editorial paper.
+   * FOCUS RING — Deep Terracotta on cream canvas, Saffron Gold on dark ground.
    */
   :focus-visible {
-    outline: 2px solid theme(colors.ink);
+    outline: 2px solid theme(colors.maroon);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   .on-dark :focus-visible,
   [class*="bg-cocoa"] :focus-visible,
+  [class*="bg-maroon"] :focus-visible,
   [class*="bg-obsidian"] :focus-visible {
-    outline-color: theme(colors.cream);
+    outline-color: theme(colors.gold);
   }
 
   ::selection {
-    @apply bg-ink text-cream;
+    @apply bg-maroon text-cream;
   }
 
   html {
-    caret-color: theme(colors.ink);
-    scrollbar-color: theme(colors.slate) theme(colors.canvas);
+    caret-color: theme(colors.maroon);
+    scrollbar-color: theme(colors.russet) theme(colors.canvas);
   }
 
   ::-webkit-scrollbar {
@@ -71,13 +72,13 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: theme(colors.slate);
+    background: theme(colors.pebble);
     border: 3px solid theme(colors.canvas);
     border-radius: 999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: theme(colors.slate);
+    background: theme(colors.russet);
   }
 
   address {
@@ -85,11 +86,7 @@
   }
 
   /**
-   * TRACKING BY SIZE — the WRITER signature.
-   *
-   * Display headlines carry TIGHT NEGATIVE tracking at 64px
-   * (-1.98px, i.e. -0.031em); small labels open up to wide
-   * positive tracking at 11-12px (0.077-0.30em).
+   * TRACKING BY SIZE
    */
   h1 {
     font-weight: 500;
@@ -120,9 +117,7 @@
   }
 
   /**
-   * Media framed at 12px — the ONLY non-pill radius in the system.
-   * `.flush` opts out for images that bleed to the viewport edge
-   * (hero, full-bleed).
+   * Media framed at 12px
    */
   img:not(.flush),
   video:not(.flush) {
@@ -133,76 +128,74 @@
 @layer components {
   /* ── Wide-tracked eyebrow label ──────────────────────────── */
   .eyebrow {
-    @apply text-[11px] font-medium uppercase tracking-eyebrow text-slate;
+    @apply text-[11px] font-medium uppercase tracking-eyebrow text-russet;
   }
 
   /* ── Primary Action Button ─────────────────────────────────
-     Obsidian #27272b fill pill (60px radius), white text. No
-     border, no shadow. The default conversion control. */
+     Deep Terracotta #7C2C0F fill pill (60px radius), Cream text. */
   .btn {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-obsidian px-6 py-3 text-[15px] font-medium
-      text-cream transition-colors duration-150 hover:bg-obsidian/90
+      rounded-btn-pill bg-maroon px-6 py-3 text-[15px] font-medium
+      text-cream transition-colors duration-150 hover:bg-maroon-dark
       active:scale-[0.98];
   }
 
-  /* Primary action, used on the dark hero bars. Same obsidian —
-     the editorial system has one neutral action colour. */
+  /* Primary inverted action on dark hero/statement bars.
+     Warm Cream #FBF6EC fill pill, Deep Terracotta text. */
   .btn-invert {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-medium
+      rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-semibold
       text-maroon transition-colors duration-150 hover:bg-cream/90
       active:scale-[0.98];
   }
 
-  /* ── The SINGLE booking accent ─────────────────────────────
-     Iris Brand #5551ff — used at most 1-2 times per viewport for
-     the most important conversion (Book a visit / Send). */
-  .btn-iris {
+  /* ── The Saffron Gold Booking Accent ─────────────────────────
+     Saffron Gold #DEB13A — high-visibility conversion control. */
+  .btn-iris,
+  .btn-gold {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-iris px-6 py-3 text-[15px] font-medium
-      text-cream transition-colors duration-150 hover:bg-iris/90
+      rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold
+      text-maroon-dark transition-colors duration-150 hover:bg-gold-dark
       active:scale-[0.98];
   }
 
   /* ── Ghost Button ──────────────────────────────────────────
-     Secondary action on light ground: transparent fill, ink border,
-     ink text, 60px pill. */
+     Secondary action: transparent fill, Terracotta border & text. */
   .btn-ghost,
   .btn-outline {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill border border-ink bg-transparent px-6 py-3
-      text-[15px] font-medium text-ink transition-colors duration-150
-      hover:bg-ink hover:text-cream active:scale-[0.98];
+      rounded-btn-pill border border-maroon bg-transparent px-6 py-3
+      text-[15px] font-medium text-maroon transition-colors duration-150
+      hover:bg-maroon hover:text-cream active:scale-[0.98];
   }
 
   /* ── Badge Chip ────────────────────────────────────────────
-     Inline status / label: Mist fill, 999px pill, 12px ink. */
+     Inline status / label: Sand fill, 999px pill, Terracotta text. */
   .badge {
-    @apply inline-flex items-center rounded-pill bg-mist px-3 py-1
-      text-[12px] font-medium text-ink;
+    @apply inline-flex items-center rounded-pill bg-pebble px-3 py-1
+      text-[12px] font-medium text-maroon;
   }
 
   /* ── Pill Email / Date Input ───────────────────────────────
-     72px radius, white bg, 1px Ash border, Slate placeholder. */
+     72px radius, cream bg, 1px sand border, russet placeholder. */
   .input-pill {
-    @apply w-full rounded-input-pill border border-ash bg-cream
-      px-5 py-3 text-[15px] text-ink placeholder:text-slate
-      focus:border-ink focus:outline-none;
+    @apply w-full rounded-input-pill border border-pebble bg-cream
+      px-5 py-3 text-[15px] text-ink placeholder:text-russet/60
+      focus:border-maroon focus:outline-none;
   }
 
-  /* ── Inline Text Link ──────────────────────────────────────
-     Plain text, Iris #5551ff, no underline. */
+  /* ── Inline Text Link ────────────────────────────────────── */
   .link,
   a.text-link {
-    color: theme(colors.iris);
-    text-decoration: none;
+    color: theme(colors.maroon);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   .link:hover,
   a.text-link:hover {
-    color: theme(colors.iris);
-    opacity: 0.8;
+    color: theme(colors.maroon-dark);
+    opacity: 0.85;
   }
 
   a,
@@ -212,26 +205,25 @@
   }
 
   /* ── Navigation Pill ───────────────────────────────────────
-     Editorial top nav links: ink text, mist fill on hover. */
+     Editorial top nav links: Terracotta text, sand wash on hover. */
   .nav-pill {
     @apply flex min-h-[44px] items-center rounded-btn-pill px-4
-      text-[15px] font-medium text-ink transition-colors duration-200
-      hover:bg-mist/60;
+      text-[15px] font-medium text-maroon transition-colors duration-200
+      hover:bg-pebble/60;
   }
 
-  /* Links on the dark obsidian footer. */
+  /* Links on the dark footer / statement. */
   .link-gold {
-    color: theme(colors.cream);
+    color: theme(colors.gold);
     text-decoration: none;
   }
 
   .link-gold:hover {
     color: theme(colors.cream);
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
-  /* ── Serif editorial voice ─────────────────────────────────
-     Cormorant Garamond pull-quotes and poetic room descriptions. */
+  /* ── Serif editorial voice ───────────────────────────────── */
   .serif-accent {
     font-family: "Cormorant Garamond Variable", "Cormorant Garamond",
       Georgia, serif;
@@ -240,13 +232,13 @@
   }
 
   /* ── Announcement banner gradient ──────────────────────────
-     The privacy-banner treatment: soft pink fading to lavender. */
+     Warm cream and sand gradient strip with subtle terracotta harmony. */
   .banner-gradient {
     background: linear-gradient(
       50deg,
-      rgb(231, 214, 197) 50px,
-      rgb(241, 232, 216) 130px,
-      rgb(241, 232, 216) 100%
+      #F5EEDB 0%,
+      #FBF6EC 50%,
+      #F5EEDB 100%
     );
   }
 }
