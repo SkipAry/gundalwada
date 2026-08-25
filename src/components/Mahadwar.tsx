@@ -24,7 +24,7 @@ export default function Mahadwar() {
     <>
     <section
       id="mahadwar"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-maroon"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-maroon"
     >
       {/* Full-bleed hero image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -42,32 +42,37 @@ export default function Mahadwar() {
         className="absolute inset-0 bg-gradient-to-t from-[#16130F]/95 via-[#16130F]/40 to-[#16130F]/20"
       />
 
-      {/* Title card — only the Devanagari name and the two CTAs live on
-          the hero frame; the positioning copy sits in the section below. */}
-      <div className="relative mx-auto w-full max-w-site px-5 py-24 text-center sm:px-8">
-        <h1
-          className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] leading-[1.15] text-cream"
-          style={{ animationDelay: "220ms" }}
-        >
-          {site.nameDevanagari}
-        </h1>
+      {/* Title card — the Devanagari name sits centred in the middle of
+          the frame; the CTAs are pinned to the bottom edge below. */}
+      <div className="relative grid flex-1 place-items-center px-5 text-center sm:px-8">
+        <div>
+          <h1
+            className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] leading-[1.15] text-cream"
+            style={{ animationDelay: "220ms" }}
+          >
+            {site.nameDevanagari}
+          </h1>
 
-        {/* Gold hairline that draws itself in after the name lands. */}
-        <div
-          aria-hidden="true"
-          className="animate-draw-rule mx-auto mt-5 h-px w-24 bg-gold/70"
-        />
+          {/* Gold hairline that draws itself in after the name lands. */}
+          <div
+            aria-hidden="true"
+            className="animate-draw-rule mx-auto mt-5 h-px w-24 bg-gold/70"
+          />
+        </div>
+      </div>
 
-        <div
-          className="animate-rise mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          style={{ animationDelay: "760ms" }}
+      {/* CTAs — side by side, pinned to the bottom of the hero on all
+          screen sizes. */}
+      <div
+        className="animate-rise relative z-10 flex flex-row items-center justify-center gap-3 px-4 pb-16"
+        style={{ animationDelay: "760ms" }}
         >
           {hasWhatsApp ? (
             <a
               href={book}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold text-maroon-dark transition-colors duration-150 hover:bg-gold-light active:scale-[0.98]"
+              className="inline-flex min-h-[48px] items-center justify-center whitespace-nowrap rounded-btn-pill bg-gold px-4 py-3 text-[14px] font-semibold text-maroon-dark transition-colors duration-150 hover:bg-gold-light active:scale-[0.98] sm:px-6 sm:text-[15px]"
             >
               Book on WhatsApp
             </a>
@@ -80,23 +85,19 @@ export default function Mahadwar() {
 
           <a
             href="#angan"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-btn-pill border border-cream/60 bg-transparent px-6 py-3 text-[15px] font-medium text-cream transition-colors duration-150 hover:bg-cream/10 active:scale-[0.98]"
+            className="inline-flex min-h-[48px] items-center justify-center whitespace-nowrap rounded-btn-pill border border-cream/60 bg-transparent px-4 py-3 text-[14px] font-medium text-cream transition-colors duration-150 hover:bg-cream/10 active:scale-[0.98] sm:px-6 sm:text-[15px]"
           >
             See the wada
           </a>
-        </div>
       </div>
 
       {/* Scroll cue — a thin gold line breathing at the base of the frame. */}
       <div
         aria-hidden="true"
-        className="animate-rise absolute inset-x-0 bottom-6 flex flex-col items-center gap-2"
+        className="animate-rise absolute inset-x-0 bottom-4 flex flex-col items-center gap-1"
         style={{ animationDelay: "1200ms" }}
       >
-        <span className="text-[10px] font-medium uppercase tracking-eyebrow text-cream/60">
-          Scroll
-        </span>
-        <span className="animate-scroll-cue block h-8 w-px bg-gradient-to-b from-gold/80 to-transparent" />
+        <span className="animate-scroll-cue block h-6 w-px bg-gradient-to-b from-gold/80 to-transparent" />
       </div>
 
     </section>
