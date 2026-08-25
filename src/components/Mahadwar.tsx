@@ -39,7 +39,7 @@ export default function Mahadwar() {
           marigold type floats above the photograph like a title card. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-[#16130F]/95 via-[#16130F]/40 to-[#16130F]/20"
+        className="absolute inset-0 bg-[#16130F]/10"
       />
 
       {/* Title card — the Devanagari name and CTAs are grouped centred on
