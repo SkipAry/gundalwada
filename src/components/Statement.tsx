@@ -1,5 +1,6 @@
 import { hasWhatsApp, whatsappLink, site } from "@/data/site";
 import Accent from "./Accent";
+import Parallax from "./Parallax";
 
 /**
  * STATEMENT — the full-bleed moment.
@@ -36,15 +37,20 @@ export default function Statement({
   highlight?: string;
 }) {
   return (
-    <section id={id} className="relative isolate overflow-hidden bg-obsidian">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={image}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+    <section id={id} className="group relative isolate overflow-hidden bg-obsidian">
+      {/* The photograph drifts a few percent against the scroll (Parallax)
+          and breathes 3% on hover at pointer devices — depth without
+          demanding attention. */}
+      <Parallax speed={0.08} className="absolute inset-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="img-breathe h-[112%] w-full object-cover"
+        />
+      </Parallax>
       {/* Wash weighted to the bottom where the type sits, so the top of the
           photograph keeps its detail. */}
       <div

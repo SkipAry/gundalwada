@@ -1,19 +1,20 @@
 import type { Config } from "tailwindcss";
 
 /**
- * GUNDAL WADA — 3-Color Heritage System
+ * GUNDAL WADA — Dark Luxury Cinematic System
  *
  * Primary Palette:
- *   #FBF6EC -> Warm Cream / Alabaster Paper Canvas
- *   #7C2C0F -> Deep Terracotta / Heritage Maroon
- *   #DEB13A -> Saffron Ochre / Mustard Gold
+ *   #171310 -> Deep Espresso / polished near-black canvas
+ *   #D4A94E -> Antique Gold — the single luxury accent
+ *   #F3EBDC -> Warm Ivory — editorial text on dark ground
  *
- * System token mapping:
- *   canvas, cream     -> #FBF6EC (warm paper background & cards)
- *   maroon, obsidian  -> #7C2C0F (primary brand, headings & dark bands)
- *   gold, orchid      -> #DEB13A (saffron highlights & booking CTA)
- *   pebble, mist      -> #E3D5C0 (warm sand hairline borders)
- *   russet, slate     -> #8C4022 (secondary helper text)
+ * The token NAMES are kept from the previous light theme so every
+ * component inherits the new look without structural edits:
+ *   cream, canvas   -> deep espresso ground (was paper)
+ *   ink             -> warm ivory type (was roast ink)
+ *   gold            -> antique gold accent
+ *   maroon          -> antique brass (buttons, eyebrows, links)
+ * ─────────────────────────────────────────────────────────────
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
@@ -23,70 +24,61 @@ const config: Config = {
         short: { raw: "(max-height: 820px)" },
       },
       colors: {
-        /* ── The 3-Color Heritage Palette ────────────────────────
-           #FBF6EC -> Warm Cream / Alabaster Paper
-           #7C2C0F -> Deep Terracotta / Heritage Maroon / Mahogany
-           #DEB13A -> Saffron Ochre / Mustard Gold
-           ─────────────────────────────────────────────────────── */
+        /* ── Gallery Ivory surfaces ─────────────────────────────── */
+        cream: "#FAF9F6", // Gallery Ivory — page canvas
+        "cream-light": "#FFFFFF", // Elevated card surface
+        canvas: "#FAF9F6",
+        ivory: "#F2F0EA", // Section wash surface
+        lavender: "#F2F0EA",
+        porcelain: "#FFFFFF",
 
-        /* Light surfaces / canvas */
-        cream: "#FBF6EC", // Warm Alabaster Paper Canvas
-        "cream-light": "#FFFDF9", // Elevated card surface
-        canvas: "#FBF6EC", // Primary editorial paper ground
-        ivory: "#F5EEDB", // Warm Sand — section wash surfaces
-        lavender: "#F5EEDB", // Section wash alias
-        porcelain: "#FBF6EC",
+        /* Soft Ink — primary brand, buttons, structure */
+        maroon: "#1A1815",
+        "maroon-dark": "#000000",
+        "maroon-light": "#3A362F",
+        obsidian: "#16130F", // Deep band & footer
+        cocoa: "#1A1815", // Headline tone
+        "dark-oak": "#45403A",
+        oxblood: "#1A1815",
+        ink: "#1A1815", // Primary body text — soft black
+        charcoal: "#1A1815",
+        onyx: "#16130F",
 
-        /* Deep Terracotta / Heritage Maroon */
-        maroon: "#7C2C0F", // Deep Terracotta — primary brand
-        "maroon-dark": "#5C1F0A", // Rich Roasted Earth — hover & deep bands
-        "maroon-light": "#9E3C1A", // Warm Terracotta — accents & highlights
-        obsidian: "#7C2C0F", // Heritage dark bands & filled buttons
-        cocoa: "#7C2C0F", // Deep Terracotta — headings & text
-        "dark-oak": "#5C1F0A", // Dark mahogany text
-        oxblood: "#7C2C0F", // Deep Terracotta (alias)
-        ink: "#3D1507", // Deep Roasted Ink — primary body text for max contrast
-        charcoal: "#3D1507",
-        onyx: "#3D1507",
-
-        /* Saffron / Mustard Gold Accent */
-        gold: "#DEB13A", // Saffron Gold — primary accent / highlights
-        "gold-dark": "#C69A28", // Deep gold for hover
-        "gold-light": "#F7D97B", // Soft warm gold wash
-        orchid: "#DEB13A", // Saffron highlight word per headline
-        iris: "#DEB13A", // Saffron conversion CTA / booking button
+        /* Antique Brass accent — used sparingly */
+        gold: "#96742E",
+        "gold-dark": "#7A5E22",
+        "gold-light": "#B08C42",
+        orchid: "#96742E",
+        iris: "#1A1815",
 
         /* Muted tones & hairlines */
-        russet: "#8C4022", // Muted terracotta — secondary helper text
-        terracotta: "#8C4022", // Muted terracotta (alias)
-        slate: "#8C4022", // Helper text
-        "warm-gray": "#A67C52", // Warm gray / earthy tone
-        ash: "#BFA47E", // Warm stone placeholder / border
-        pebble: "#E3D5C0", // Warm sand hairline borders
-        hairline: "#E3D5C0", // Hairline border (alias)
-        sand: "#E3D5C0", // Sand hairline border (alias)
-        mist: "#E3D5C0", // Mist border (alias)
-        fog: "#D9C7AC", // Warm fog
-        smoke: "#8C4022",
-        bone: "#E3D5C0",
-        moss: "#7C2C0F",
-        "signal-blue": "#DEB13A",
-        "cobalt-spark": "#DEB13A",
+        russet: "#857656", // Muted bronze — secondary/helper text
+        terracotta: "#857656",
+        slate: "#6E675C",
+        "warm-gray": "#8A8478",
+        ash: "#C9C4BA",
+        pebble: "#E6E2DA", // Hairline borders
+        hairline: "#E6E2DA",
+        sand: "#E6E2DA",
+        mist: "#E6E2DA",
+        fog: "#DAD5CB",
+        smoke: "#857656",
+        bone: "#EFEDE7",
+        moss: "#1A1815",
+        "signal-blue": "#96742E",
+        "cobalt-spark": "#96742E",
       },
 
       fontFamily: {
         /**
-         * ONE FAMILY FOR EVERYTHING — Poppins, the WRITER reference's
-         * geometric sans. 64px display headlines (weight 500, tight
-         * tracking) down to 11px wide-tracked eyebrows.
+         * LUXURY DISPLAY — Cormorant Garamond carries all headlines.
+         * High-contrast serif at display sizes reads couture.
          */
         display: [
-          '"Poppins"',
-          '"Inter Tight Variable"',
-          '"Inter Tight"',
-          "Inter",
-          "system-ui",
-          "sans-serif",
+          '"Cormorant Garamond Variable"',
+          '"Cormorant Garamond"',
+          "Georgia",
+          "serif",
         ],
         sans: ['"Poppins"', '"Inter Variable"', "Inter", "system-ui", "sans-serif"],
         /**

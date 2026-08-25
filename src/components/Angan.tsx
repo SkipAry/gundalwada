@@ -99,12 +99,14 @@ export default function Angan() {
                 className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle group-hover:brightness-[1.03]"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* Slow editorial zoom — the photograph breathes on hover,
+                    like turning a page in a palace brochure. */}
                 <img
                   src={shot.src}
                   alt={shot.alt}
                   loading="lazy"
                   decoding="async"
-                  className="flush h-full w-full object-cover transition-[filter] duration-300 ease-settle group-hover:brightness-[1.06]"
+                  className="img-breathe flush h-[103%] w-full object-cover"
                 />
               </button>
             </li>

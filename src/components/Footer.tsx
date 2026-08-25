@@ -21,17 +21,17 @@ export default function Footer() {
     <footer className="relative bg-obsidian text-cream">
 
       <div className="mx-auto max-w-site px-5 pb-12 pt-16 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-3">
-          {/* Brand */}
-          <div>
-            <p className="font-display text-2xl font-semibold text-cream">
-              <span className="font-marathi">{site.nameDevanagari}</span>
-            </p>
-            <p className="mt-1 text-[13px] uppercase tracking-caps text-cream/70">
-              {site.parentBrand}
-            </p>
-          </div>
+        {/* Palace masthead — centred lockup with gold rules, the way a
+            heritage hotel signs off. */}
+        <div className="flex flex-col items-center border-b border-cream/15 pb-10 text-center">
+          <p className="eyebrow text-gold">{site.parentBrand}</p>
+          <p className="mt-3 font-marathi text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-cream">
+            {site.nameDevanagari}
+          </p>
+          <div aria-hidden="true" className="mt-4 h-px w-16 bg-gold/60" />
+        </div>
 
+        <div className="mt-10 grid gap-10 md:grid-cols-2">
           {/* NAP — matches the Google Business Profile */}
           <div>
             <h2 className="text-[11px] font-semibold uppercase tracking-caps text-cream/85">

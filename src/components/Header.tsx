@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { site, hasWhatsApp, whatsappLink } from "@/data/site";
+import { useHeroPassed } from "@/lib/useHeroPassed";
 
 /**
  * HEADER — Heritage editorial top navigation.
@@ -36,6 +37,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  /* Over-hero: transparent chrome, cream type. After: solid ivory bar. */
+  const heroPassed = useHeroPassed();
+  const solid = heroPassed || open;
 
   const close = useCallback((restoreFocus = false) => {
     setOpen(false);
@@ -76,9 +80,11 @@ export default function Header() {
   return (
     /* Pure White sticky bar — the hairline is the only structure. */
     <header
-      className="sticky top-0 z-50 border-b border-mist bg-cream/90
-                 backdrop-blur supports-[backdrop-filter]:bg-cream/80
-                 text-ink"
+      className={`sticky top-0 z-50 -mb-14 transition-colors duration-500 ease-settle ${
+        solid
+          ? "border-b border-mist bg-cream/90 text-ink backdrop-blur supports-[backdrop-filter]:bg-cream/80"
+          : "border-b border-transparent bg-transparent text-cream"
+      }`}
     >
       <div className="mx-auto flex h-14 items-center justify-between gap-6 px-5 sm:px-8">
         {/* Wordmark, left */}
@@ -89,10 +95,14 @@ export default function Header() {
           aria-label={`${site.name}, back to top`}
         >
           <span className="flex items-baseline gap-2">
-            <span className="font-marathi text-[20px] font-semibold leading-none text-ink md:text-[22px]">
+            <span className="font-marathi text-[20px] font-semibold leading-none md:text-[22px]">
               {site.nameDevanagari}
             </span>
-            <span className="hidden text-[13px] text-slate sm:inline">
+            <span
+              className={`hidden text-[13px] sm:inline ${
+                solid ? "text-slate" : "text-cream/70"
+              }`}
+            >
               {site.parentBrand}
             </span>
           </span>
@@ -102,7 +112,11 @@ export default function Header() {
         <div className="hidden items-center gap-1 lg:flex">
           <nav aria-label="Sections" className="flex items-center gap-1">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="nav-pill">
+              <a
+                key={l.href}
+                href={l.href}
+                className={solid ? "nav-pill" : "nav-pill nav-pill-light"}
+              >
                 {l.en}
               </a>
             ))}
@@ -112,7 +126,11 @@ export default function Header() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-iris ml-2"
+              className={`ml-2 inline-flex min-h-[48px] items-center justify-center rounded-btn-pill px-6 py-3 text-[15px] font-medium active:scale-[0.98] ${
+                solid
+                  ? "btn-gold"
+                  : "border border-cream/70 text-cream hover:bg-cream/10"
+              }`}
             >
               Book
             </a>
@@ -131,17 +149,21 @@ export default function Header() {
         >
           <span aria-hidden="true" className="relative block h-4 w-6">
             <span
-              className={`absolute left-0 top-0 block h-px w-6 bg-ink transition-transform duration-300 ease-settle ${
+              className={`absolute left-0 top-0 block h-px w-6 ${
+                solid ? "bg-ink" : "bg-cream"
+              } transition-transform duration-300 ease-settle ${
                 open ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
             <span
-              className={`absolute left-0 top-[7px] block h-px w-6 bg-ink transition-opacity duration-200 ${
-                open ? "opacity-0" : ""
-              }`}
+              className={`absolute left-0 top-[7px] block h-px w-6 ${
+                solid ? "bg-ink" : "bg-cream"
+              } transition-opacity duration-200 ${open ? "opacity-0" : ""}`}
             />
             <span
-              className={`absolute left-0 top-[14px] block h-px w-6 bg-ink transition-transform duration-300 ease-settle ${
+              className={`absolute left-0 top-[14px] block h-px w-6 ${
+                solid ? "bg-ink" : "bg-cream"
+              } transition-transform duration-300 ease-settle ${
                 open ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />
@@ -174,7 +196,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => close()}
-              className="btn-iris mb-3 mt-5 w-full"
+              className="btn-gold mb-3 mt-5 w-full"
             >
               Book on WhatsApp
             </a>

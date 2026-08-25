@@ -1,4 +1,3 @@
-import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Mahadwar from "@/components/Mahadwar";
 import Marquee from "@/components/Marquee";
@@ -34,7 +33,6 @@ import { asset } from "@/lib/asset";
 export default function Home() {
   return (
     <>
-      <AnnouncementBar />
       <Header />
       <main>
         <Mahadwar />

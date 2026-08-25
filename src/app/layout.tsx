@@ -43,6 +43,26 @@ export const metadata: Metadata = {
     title: `${site.name} — heritage wada shoot location near Pune`,
     description,
     locale: "en_IN",
+    /* Only once the real domain is known: without metadataBase Next would
+       resolve these against localhost and ship a broken link preview.
+       ⚠ CLIENT INPUT: set `url` in src/data/site.ts. */
+    ...(site.url
+      ? {
+          images: [
+            {
+              url: asset("/img/mahadwar-poster.webp"),
+              width: 1200,
+              height: 630,
+              alt: "The cusped-arch verandah of Gundal Wada at low light.",
+            },
+          ],
+        }
+      : {}),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — heritage wada shoot location near Pune`,
+    description,
   },
   robots: { index: true, follow: true },
 };

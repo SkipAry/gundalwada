@@ -61,6 +61,13 @@ export default function SectionHead({
         {title}
       </p>
 
+      {/* Gold flourish — a short champagne hairline that separates the
+          heading from the intro, centred or left per alignment. */}
+      <div
+        aria-hidden="true"
+        className={`mt-5 h-px w-12 bg-gold/70 ${centered ? "mx-auto" : ""}`}
+      />
+
       {intro ? (
         <p
           className={`mt-6 max-w-copy text-[18px] leading-[1.56] ${

@@ -21,57 +21,53 @@ export default function Mahadwar() {
   );
 
   return (
+    <>
     <section
       id="mahadwar"
-      className="relative flex min-h-[100svh] items-end overflow-hidden bg-maroon"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-maroon"
     >
       {/* Full-bleed hero image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={asset("/img/thumbnail.jpg")}
-        alt="The verandah arcade at Gundal Wada, its cusped arches and tiled roofline in low light."
-        className="absolute inset-0 h-full w-full object-cover"
+        src={asset("/img/chowk-evening.webp")}
+        alt="The evening courtyard at Gundal Wada — tulsi vrindavan at the centre, teak pillars and lit lanterns under the tiled eaves."
+        className="animate-kenburns absolute inset-0 h-full w-full object-cover object-[50%_60%]"
         fetchPriority="high"
       />
 
-      {/* Light scrim — just enough at the bottom for text legibility,
-          letting the wada photograph stay clearly visible. */}
+      {/* Warm heritage scrim — deep mahogany at the base so the ivory and
+          marigold type floats above the photograph like a title card. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-maroon/40 via-maroon/10 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-[#16130F]/95 via-[#16130F]/40 to-[#16130F]/20"
       />
 
-      {/* Headline block overlaid on the image */}
-      <div className="relative mx-auto w-full max-w-site px-5 pb-16 pt-32 text-center sm:px-8 md:pb-24">
-        <p className="eyebrow text-cream/80">Heritage shoot location · Pune</p>
-
-        <h1 className="mx-auto mt-4 max-w-4xl font-marathi font-semibold text-[clamp(3rem,8vw,5rem)] text-cream">
+      {/* Title card — only the Devanagari name and the two CTAs live on
+          the hero frame; the positioning copy sits in the section below. */}
+      <div className="relative mx-auto w-full max-w-site px-5 py-24 text-center sm:px-8">
+        <h1
+          className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] leading-[1.15] text-cream"
+          style={{ animationDelay: "220ms" }}
+        >
           {site.nameDevanagari}
         </h1>
 
-        {/* The English name is the caption on the Marathi headline. */}
-        <p className="mt-2 text-[17px] tracking-sub text-cream/80">{site.name}</p>
+        {/* Gold hairline that draws itself in after the name lands. */}
+        <div
+          aria-hidden="true"
+          className="animate-draw-rule mx-auto mt-5 h-px w-24 bg-gold/70"
+        />
 
-        {/* Display headline — Poppins weight 500, ONE maroon word. */}
-        <h2 className="mx-auto mt-8 max-w-5xl font-display font-medium text-[clamp(2.2rem,6vw,4.5rem)] leading-[1.07] tracking-display text-cream">
-          <Accent
-            text="A Peshwa-era wada built for forever shoots"
-            highlight="forever"
-            className="text-gold"
-          />
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-copy text-[17px] leading-[1.47] text-cream/85">
-          {site.positioning}. {site.distanceFromPune}.
-        </p>
-
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div
+          className="animate-rise mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          style={{ animationDelay: "760ms" }}
+        >
           {hasWhatsApp ? (
             <a
               href={book}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold text-maroon-dark transition-colors duration-150 hover:bg-gold-dark active:scale-[0.98]"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold text-maroon-dark transition-colors duration-150 hover:bg-gold-light active:scale-[0.98]"
             >
               Book on WhatsApp
             </a>
@@ -90,6 +86,57 @@ export default function Mahadwar() {
           </a>
         </div>
       </div>
+
+      {/* Scroll cue — a thin gold line breathing at the base of the frame. */}
+      <div
+        aria-hidden="true"
+        className="animate-rise absolute inset-x-0 bottom-6 flex flex-col items-center gap-2"
+        style={{ animationDelay: "1200ms" }}
+      >
+        <span className="text-[10px] font-medium uppercase tracking-eyebrow text-cream/60">
+          Scroll
+        </span>
+        <span className="animate-scroll-cue block h-8 w-px bg-gradient-to-b from-gold/80 to-transparent" />
+      </div>
+
     </section>
+
+    {/* Intro section — the positioning copy that used to sit on the hero
+        frame now breathes on its own, directly below the full-screen photo. */}
+    <section className="bg-ivory text-ink">
+      <div className="mx-auto w-full max-w-site px-5 py-20 text-center sm:px-8">
+        <p className="eyebrow animate-rise text-ink/70">
+          Heritage shoot location · Pune
+        </p>
+
+        <div
+          aria-hidden="true"
+          className="animate-draw-rule mx-auto mt-4 mb-4 h-px w-16 bg-gold/70"
+        />
+
+        <p
+          className="animate-rise text-[17px] tracking-sub text-ink/70"
+        >
+          {site.name}
+        </p>
+
+        <h2
+          className="animate-rise mx-auto mt-4 max-w-5xl font-display font-medium text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] tracking-display"
+        >
+          <Accent
+            text="A Peshwa-era wada built for forever shoots"
+            highlight="forever"
+            className="text-gold-dark"
+          />
+        </h2>
+
+        <p
+          className="animate-rise mx-auto mt-5 max-w-copy text-[17px] leading-[1.47] text-ink/80"
+        >
+          {site.positioning}. {site.distanceFromPune}.
+        </p>
+      </div>
+    </section>
+    </>
   );
 }
