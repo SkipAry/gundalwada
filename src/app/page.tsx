@@ -8,6 +8,7 @@ import Diwankhana from "@/components/Diwankhana";
 import Naksha from "@/components/Naksha";
 import Vyavastha from "@/components/Vyavastha";
 import Sopa from "@/components/Sopa";
+import Niyam from "@/components/Niyam";
 import Awwal from "@/components/Awwal";
 import Bolava from "@/components/Bolava";
 import Footer from "@/components/Footer";
@@ -66,6 +67,11 @@ export default function Home() {
         </Reveal>
         <Reveal>
           <Sopa />
+        </Reveal>
+        {/* The terms the booking runs on — read calmly here rather than
+            remembered wrong over the phone. Cost → terms → proof → form. */}
+        <Reveal>
+          <Niyam />
         </Reveal>
         <Reveal>
           <Awwal />

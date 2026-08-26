@@ -31,6 +31,7 @@ const allLinks = [
   { href: "#naksha", mr: "नकाशा", en: "Locations" },
   { href: "#vyavastha", mr: "व्यवस्था", en: "Before You Book" },
   { href: "#sopa", mr: "सोपा", en: "Booking" },
+  { href: "#niyam", mr: "नियम", en: "House Rules" },
 ];
 
 export default function Header() {
