@@ -24,49 +24,52 @@ const config: Config = {
         short: { raw: "(max-height: 820px)" },
       },
       colors: {
-        /* ── Gallery Ivory surfaces ─────────────────────────────── */
-        cream: "#FAF9F6", // Gallery Ivory — page canvas
+        /* ── Surfaces ───────────────────────────────────────────────
+           All light surfaces pure white #FFFFFF (user override 26 Aug:
+           canvas first, then wash). Rhythm now comes from umber dark
+           bands, cards and teak hairlines alone. */
+        cream: "#FFFFFF", // Page canvas — pure white
         "cream-light": "#FFFFFF", // Elevated card surface
-        canvas: "#FAF9F6",
-        ivory: "#F2F0EA", // Section wash surface
-        lavender: "#F2F0EA",
+        canvas: "#FFFFFF",
+        ivory: "#FFFFFF", // Section wash — now white
+        lavender: "#FFFFFF",
         porcelain: "#FFFFFF",
 
-        /* Soft Ink — primary brand, buttons, structure */
-        maroon: "#1A1815",
-        "maroon-dark": "#000000",
-        "maroon-light": "#3A362F",
-        obsidian: "#16130F", // Deep band & footer
-        cocoa: "#1A1815", // Headline tone
-        "dark-oak": "#45403A",
-        oxblood: "#1A1815",
-        ink: "#1A1815", // Primary body text — soft black
-        charcoal: "#1A1815",
-        onyx: "#16130F",
+        /* Wada Umber — body text, headings, dark bands */
+        maroon: "#6E1E2B", // Peshwa Maroon — rare jewel accent (tags/focus)
+        "maroon-dark": "#571622",
+        "maroon-light": "#8A2E3C",
+        obsidian: "#221C15", // Dark bands & footer — Wada Umber
+        cocoa: "#221C15", // Headline tone
+        "dark-oak": "#3B3126",
+        oxblood: "#221C15",
+        ink: "#221C15", // Primary body text — Wada Umber
+        charcoal: "#221C15",
+        onyx: "#221C15",
 
-        /* Antique Brass accent — used sparingly */
-        gold: "#96742E",
-        "gold-dark": "#7A5E22",
-        "gold-light": "#B08C42",
-        orchid: "#96742E",
-        iris: "#1A1815",
+        /* Sindoor Terracotta — labels, highlight words, links, hovers */
+        gold: "#B8863E", // Antique Brass — primary CTAs, small accents
+        "gold-dark": "#8F6A2C", // Brass hover
+        "gold-light": "#C89B55",
+        orchid: "#A3492A", // Headline highlight word — Terracotta
+        iris: "#B8863E", // Primary CTA — Brass
 
-        /* Muted tones & hairlines */
-        russet: "#857656", // Muted bronze — secondary/helper text
-        terracotta: "#857656",
-        slate: "#6E675C",
-        "warm-gray": "#8A8478",
-        ash: "#C9C4BA",
-        pebble: "#E6E2DA", // Hairline borders
-        hairline: "#E6E2DA",
-        sand: "#E6E2DA",
-        mist: "#E6E2DA",
-        fog: "#DAD5CB",
-        smoke: "#857656",
-        bone: "#EFEDE7",
-        moss: "#1A1815",
-        "signal-blue": "#96742E",
-        "cobalt-spark": "#96742E",
+        russet: "#A3492A", // Eyebrow labels & text links — Terracotta
+        terracotta: "#A3492A", // Sindoor Terracotta
+        "terracotta-dark": "#8A3B22", // Terracotta hover
+        slate: "#5C4B3A", // Secondary text — teak-brown
+        "warm-gray": "#5C4B3A",
+        ash: "#C6B9A5", // Tertiary / placeholders — light teak
+        pebble: "#DFD8CA", // Hairlines — Teak Bark ~12% on ivory
+        hairline: "#DFD8CA",
+        sand: "#DFD8CA",
+        mist: "#DFD8CA",
+        fog: "#E6DECE",
+        smoke: "#A3492A",
+        bone: "#EFE8D6",
+        moss: "#221C15",
+        "signal-blue": "#B8863E",
+        "cobalt-spark": "#B8863E",
       },
 
       fontFamily: {

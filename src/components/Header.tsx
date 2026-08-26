@@ -27,6 +27,7 @@ const navLinks = [
 
 const allLinks = [
   { href: "#angan", mr: "अंगण", en: "Gallery" },
+  { href: "#itihas", mr: "इतिहास", en: "History" },
   { href: "#diwankhana", mr: "दिवाणखाना", en: "The Wada" },
   { href: "#naksha", mr: "नकाशा", en: "Locations" },
   { href: "#vyavastha", mr: "व्यवस्था", en: "Before You Book" },

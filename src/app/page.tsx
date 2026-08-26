@@ -4,6 +4,7 @@ import Marquee from "@/components/Marquee";
 import Angan from "@/components/Angan";
 import Reels from "@/components/Reels";
 import Statement from "@/components/Statement";
+import Itihas from "@/components/Itihas";
 import Diwankhana from "@/components/Diwankhana";
 import Naksha from "@/components/Naksha";
 import Vyavastha from "@/components/Vyavastha";
@@ -52,6 +53,12 @@ export default function Home() {
           body="A wada is built around its courtyard, so the light changes all day without anyone touching a lamp. That is the whole reason this house photographs the way it does."
           cta={{ label: "See the reels", href: "#reels" }}
         />
+
+        {/* The story of the house, right after the statement that shows it.
+            Feel it first, then read what it is — then the reels prove it. */}
+        <Reveal>
+          <Itihas />
+        </Reveal>
 
         <Reveal>
           <Reels />

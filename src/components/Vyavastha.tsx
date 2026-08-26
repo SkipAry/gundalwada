@@ -37,7 +37,7 @@ export default function Vyavastha() {
           {answered.length ? (
             <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
               {answered.map((f) => (
-                <div key={f.q} className="border-t border-russet/20 pt-4">
+                <div key={f.q} className="border-t border-cream/15 pt-4">
                   <dt className="text-[13px] font-semibold uppercase tracking-caps text-cream/60">
                     {f.q}
                   </dt>

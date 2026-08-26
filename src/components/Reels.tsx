@@ -105,10 +105,8 @@ export default function Reels() {
                         decoding="async"
                         className="h-full w-full object-cover"
                       />
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-maroon/70 via-transparent to-transparent"
-                      />
+                      {/* No scrim — user override 26 Aug: posters show clean,
+                          the pill play-button alone carries the affordance. */}
                       {/* Play affordance */}
                       <span
                         aria-hidden="true"

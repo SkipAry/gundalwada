@@ -19,6 +19,26 @@
    (Cormorant Garamond, CanelaDeck substitute) surfaces sparingly
    for pull-quotes and poetic room descriptions.
    ───────────────────────────────────────────────────────────── */
+/* ── Wada Plaster palette (source of truth) ───────────────────
+   Ivory Plaster / Wada Umber / Sindoor Terracotta / Antique Brass /
+   Peshwa Maroon / Teak Bark. Tailwind tokens in tailwind.config.ts
+   are remapped to these values. User override 26 Aug: ALL light surfaces
+   pure white #FFFFFF (canvas + wash); --ivory documented as white now.
+   Derived tints documented below. */
+:root {
+  --ivory: #ffffff;
+  --umber: #221c15;
+  --terracotta: #a3492a;
+  --brass: #b8863e;
+  --maroon: #6e1e2b;
+  --teak: #4a3728;
+  /* Derived tints */
+  --plaster-wash: #ffffff;
+  --plaster-light: #ffffff;
+  --brass-dark: #8f6a2c;
+  --terracotta-dark: #8a3b22;
+}
+
 
 @layer base {
   html {
@@ -151,31 +171,31 @@
   }
 
   /* ── Primary Action Button ─────────────────────────────────
-     Deep Terracotta #7C2C0F fill pill (60px radius), Cream text. */
+     Antique Brass #B8863E fill pill (60px radius), Umber text. */
   .btn {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-maroon px-6 py-3 text-[15px] font-medium
-      text-cream transition-colors duration-150 hover:bg-maroon-dark
+      rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-medium
+      text-ink transition-colors duration-150 hover:bg-gold-dark
       active:scale-[0.98];
   }
 
-  /* Primary inverted action on dark hero/statement bars.
-     Warm Cream #FBF6EC fill pill, Deep Terracotta text. */
+  /* Primary action on dark hero/statement bands: Brass is the ONE
+     interactive element allowed to shine on Umber (palette rule 3). */
   .btn-invert {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-cream px-6 py-3 text-[15px] font-semibold
-      text-maroon transition-colors duration-150 hover:bg-cream/90
+      rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-semibold
+      text-ink transition-colors duration-150 hover:bg-gold-dark
       active:scale-[0.98];
   }
 
   /* ── The Booking Accent ───────────────────────────────────────
-     Soft-ink pill — the single conversion control. One warm light
+     Brass pill — the single conversion control. One warm light
      sweep on hover; nothing else on the page is allowed to shout. */
   .btn-iris,
   .btn-gold {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill bg-[#1A1815] px-6 py-3 text-[15px] font-medium
-      text-[#FAF9F6] transition-colors duration-150 hover:bg-[#332F29]
+      rounded-btn-pill bg-gold px-6 py-3 text-[15px] font-medium
+      text-ink transition-colors duration-150 hover:bg-gold-dark
       active:scale-[0.98];
   }
 
@@ -184,9 +204,9 @@
   .btn-ghost,
   .btn-outline {
     @apply inline-flex min-h-[48px] items-center justify-center
-      rounded-btn-pill border border-maroon bg-transparent px-6 py-3
-      text-[15px] font-medium text-maroon transition-colors duration-150
-      hover:bg-maroon hover:text-cream active:scale-[0.98];
+      rounded-btn-pill border border-terracotta bg-transparent px-6 py-3
+      text-[15px] font-medium text-terracotta transition-colors duration-150
+      hover:bg-terracotta hover:text-cream active:scale-[0.98];
   }
 
   /* ── Badge Chip ────────────────────────────────────────────
@@ -200,22 +220,22 @@
      72px radius, cream bg, 1px sand border, russet placeholder. */
   .input-pill {
     @apply w-full rounded-input-pill border border-pebble bg-cream
-      px-5 py-3 text-[15px] text-ink placeholder:text-russet/60
+      px-5 py-3 text-[15px] text-ink placeholder:text-slate/70
       focus:border-maroon focus:outline-none;
   }
 
-  /* ── Inline Text Link ────────────────────────────────────── */
+  /* ── Inline Text Link ──────────────────────────────────────
+      Terracotta — links and hover states carry the sindoor accent. */
   .link,
   a.text-link {
-    color: theme(colors.maroon);
+    color: theme(colors.terracotta);
     text-decoration: underline;
     text-underline-offset: 4px;
   }
 
   .link:hover,
   a.text-link:hover {
-    color: theme(colors.maroon-dark);
-    opacity: 0.85;
+    color: theme(colors.terracotta-dark);
   }
 
   a,
@@ -229,7 +249,7 @@
      that grows from the left on hover — quiet, precise. */
   .nav-pill {
     @apply relative flex min-h-[44px] items-center rounded-btn-pill px-4
-      text-[15px] font-medium text-maroon transition-colors duration-200
+      text-[15px] font-medium text-ink transition-colors duration-200
       hover:bg-pebble/60;
   }
 
@@ -284,9 +304,9 @@
   .banner-gradient {
     background: linear-gradient(
       50deg,
-      #F2F0EA 0%,
-      #FAF9F6 50%,
-      #F2F0EA 100%
+      #f6f1e3 0%,
+      #ffffff 50%,
+      #f6f1e3 100%
     );
   }
 }

@@ -327,6 +327,17 @@ export const spaceNotes = [
   "Dressed basalt walls that hold their colour in photographs instead of blowing out.",
 ];
 
+/* ── History (इतिहास) ─────────────────────────────────────────
+   The client's own story of the wada, supplied 26 Aug 2026. Kept
+   near-verbatim — split into two paragraphs for reading rhythm.
+   No century is claimed for the building itself; "Maratha and
+   Peshwa eras" describes the wada architectural style, as the
+   client wrote it. */
+export const historyStory: string[] = [
+  "Gundal Wada is a heritage property near Pune that brings the rich history of Maharashtra to life. It is built in the traditional wada style — the grand mansion popular in the Maratha and Peshwa eras — with classic stone walls, wooden pillars and a big open central courtyard, the chowk, that keeps the house cool and bright.",
+  "While many old historic homes have faded away, Gundal Wada has been carefully protected and restored. Today it connects the past with the present as a cultural studio: vintage rooms and majestic royal looks that make it the perfect backdrop for traditional Indian photoshoots, festivals and family celebrations.",
+];
+
 /* ── ⚠ Pricing (brief §3, Sopa) ─────────────────────────────
    Brief §6 forbids inventing a price, and this is the single biggest gap
    on the site — no rate is published anywhere today, which is exactly why

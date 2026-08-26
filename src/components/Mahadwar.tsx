@@ -128,7 +128,7 @@ export default function Mahadwar() {
           <Accent
             text="A Peshwa-era wada built for forever shoots"
             highlight="forever"
-            className="text-gold-dark"
+            className="text-terracotta"
           />
         </h2>
 

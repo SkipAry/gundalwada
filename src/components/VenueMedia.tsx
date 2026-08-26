@@ -60,10 +60,8 @@ export default function VenueMedia({
               aria-label={`Play footage of ${name}`}
               className="group absolute inset-0 flex items-center justify-center"
             >
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 bg-maroon/25 transition-colors duration-200 ease-settle group-hover:bg-maroon/10"
-              />
+              {/* No tint scrim — user override 26 Aug: poster shows at full
+                  clarity; the pill play-button alone carries the affordance. */}
               <span
                 aria-hidden="true"
                 className="relative flex h-14 w-14 items-center justify-center rounded-pill border border-gold/70 bg-maroon/80 transition-all duration-200 ease-settle group-hover:scale-105 group-hover:bg-maroon"
