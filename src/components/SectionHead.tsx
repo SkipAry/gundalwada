@@ -54,7 +54,7 @@ export default function SectionHead({
       </h2>
 
       <p
-        className={`font-display font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.4] tracking-heading ${
+        className={`font-display font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.45] tracking-heading ${
           onDark ? "text-cream/90" : "text-cocoa"
         }`}
       >
@@ -70,7 +70,7 @@ export default function SectionHead({
 
       {intro ? (
         <p
-          className={`mt-6 max-w-copy text-[18px] leading-[1.56] ${
+          className={`mt-6 max-w-copy text-[18px] leading-relaxed ${
             centered ? "mx-auto" : ""
           } ${onDark ? "text-cream/80" : "text-cocoa"}`}
         >

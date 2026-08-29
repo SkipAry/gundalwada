@@ -47,8 +47,11 @@ export default function Mahadwar() {
           the bottom edge, side by side. */}
       <div className="relative grid flex-1 place-items-center px-5 pb-20 text-center sm:px-8 sm:pb-0">
         <div>
+          {/* No leading utility here on purpose: the Devanagari rhythm from
+              globals.css (.font-marathi, 1.45) must win — a tight Latin
+              leading clipped the stacked matras at this size. */}
           <h1
-            className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] leading-[1.15] text-cream max-sm:text-[clamp(2.5rem,13vw,3.25rem)]"
+            className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] text-cream max-sm:text-[clamp(2.5rem,13vw,3.25rem)]"
             style={{ animationDelay: "220ms" }}
           >
             {site.nameDevanagari}
@@ -123,7 +126,7 @@ export default function Mahadwar() {
         </p>
 
         <h2
-          className="animate-rise mx-auto mt-4 max-w-5xl font-display font-medium text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] tracking-display"
+          className="animate-rise mx-auto mt-4 max-w-5xl font-display font-medium text-[clamp(2rem,5vw,3.75rem)] leading-[1.15] tracking-display"
         >
           <Accent
             text="A Peshwa-era wada built for forever shoots"
@@ -133,7 +136,7 @@ export default function Mahadwar() {
         </h2>
 
         <p
-          className="animate-rise mx-auto mt-5 max-w-copy text-[17px] leading-[1.47] text-ink/80"
+          className="animate-rise mx-auto mt-5 max-w-copy text-[17px] leading-relaxed text-ink/80"
         >
           {site.positioning}. {site.distanceFromPune}.
         </p>

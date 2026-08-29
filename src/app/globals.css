@@ -50,8 +50,10 @@
     /* Warm Alabaster Cream editorial paper (#FBF6EC). */
     @apply bg-canvas text-ink antialiased;
     font-family: "Poppins", "Inter Variable", system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
+    /* 1.6, not 1.4: 15-16px editorial body copy needs the air. The old
+       1.4 default was overridden by leading-relaxed in nearly every
+       component — the default now agrees with the design. */
+    line-height: 1.6;
     letter-spacing: -0.019em;
     font-weight: 400;
     font-feature-settings: "cv11", "ss01", "numr";
@@ -136,7 +138,9 @@
   .font-marathi,
   h1.font-marathi,
   h2.font-marathi {
-    line-height: 1.38;
+    /* 1.45: Noto Sans Devanagari stacks matras well above the shirorekha;
+       1.38 still clipped the upper vowel signs at heading sizes. */
+    line-height: 1.45;
   }
 
   /* Latin display headlines keep their tight editorial leading, but a

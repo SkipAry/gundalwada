@@ -32,7 +32,7 @@ export default function Itihas() {
               {historyStory.map((p) => (
                 <p
                   key={p.slice(0, 24)}
-                  className="text-[16px] leading-[1.6] text-cocoa/85"
+                  className="text-[16px] leading-relaxed text-cocoa/85"
                 >
                   {p}
                 </p>

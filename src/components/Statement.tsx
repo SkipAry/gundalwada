@@ -60,12 +60,12 @@ export default function Statement({
 
       {/* Centred, like every other heading on the page. */}
       <div className="relative mx-auto flex min-h-[78svh] max-w-site flex-col items-center justify-end px-5 pb-16 pt-32 text-center sm:px-8 md:min-h-[86svh] md:pb-24">
-           <h2 className="max-w-[19ch] font-display font-medium text-[clamp(2.4rem,5.5vw,3.4rem)] leading-[1.07] tracking-heading text-cream">
+           <h2 className="max-w-[19ch] font-display font-medium text-[clamp(2.4rem,5.5vw,3.4rem)] leading-[1.12] tracking-heading text-cream">
            <Accent text={headline} highlight={highlight} />
          </h2>
 
          {body ? (
-           <p className="mt-6 max-w-copy text-[17px] leading-[1.47] text-cream/85">
+           <p className="mt-6 max-w-copy text-[17px] leading-relaxed text-cream/85">
              {body}
            </p>
         ) : null}
