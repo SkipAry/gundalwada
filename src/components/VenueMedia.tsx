@@ -1,18 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
- * VENUE MEDIA — poster first, video on tap.
+ * VENUE MEDIA — continuous ambient loop for both properties.
  *
- * Same reasoning as the reels rail: two autoplaying loops side by side is
- * ~1.5MB unasked-for on a mid-tier connection, and mobile browsers refuse
- * muted autoplay often enough that the honest default is a still.
- *
- * Cowboy treatment: 8px-radius media frame with a 1px hairline border.
- *
- * The poster is real footage of THAT venue, so even if nobody presses play
- * the card shows the place rather than a placeholder.
+ * Autoplays muted, loops continuously, with playsInline for mobile compatibility.
  */
 export default function VenueMedia({
   name,
@@ -23,20 +16,26 @@ export default function VenueMedia({
   poster: string;
   video?: string;
 }) {
-  const [play, setPlay] = useState(false);
   const ref = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.defaultMuted = true;
+      ref.current.muted = true;
+      ref.current.play().catch(() => {});
+    }
+  }, [video]);
 
   return (
     <div className="relative aspect-[16/9] overflow-hidden bg-cocoa">
-      {play && video ? (
+      {video ? (
         <video
           ref={ref}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover brightness-110 contrast-105"
           poster={poster}
           muted
           loop
           playsInline
-          controls
           autoPlay
           preload="auto"
           aria-label={`Footage of ${name}`}
@@ -44,35 +43,14 @@ export default function VenueMedia({
           <source src={video} type="video/mp4" />
         </video>
       ) : (
-        <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={poster}
-            alt={`${name} — the property`}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-          {video ? (
-            <button
-              type="button"
-              onClick={() => setPlay(true)}
-              aria-label={`Play footage of ${name}`}
-              className="group absolute inset-0 flex items-center justify-center"
-            >
-              {/* No tint scrim — user override 26 Aug: poster shows at full
-                  clarity; the pill play-button alone carries the affordance. */}
-              <span
-                aria-hidden="true"
-                className="relative flex h-14 w-14 items-center justify-center rounded-pill border border-gold/70 bg-maroon/80 transition-all duration-200 ease-settle group-hover:scale-105 group-hover:bg-maroon"
-              >
-                <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-gold">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-            </button>
-          ) : null}
-        </>
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={poster}
+          alt={`${name} — the property`}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover brightness-110 contrast-105"
+        />
       )}
     </div>
   );

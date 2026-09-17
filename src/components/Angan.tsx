@@ -83,8 +83,12 @@ export default function Angan() {
         {/* Mosaic — 8px radius cards with 1px hairline border, the Cowboy
             showroom treatment */}
         <ul
-          className={`mt-10 grid grid-cols-2 gap-3 lg:gap-4 ${
-            dense ? "md:grid-cols-3" : ""
+          className={`mt-10 ${
+            shots.length === 1
+              ? "mx-auto max-w-2xl"
+              : `grid grid-cols-2 gap-3 lg:gap-4 ${
+                  dense ? "md:grid-cols-3" : ""
+                }`
           }`}
         >
           {shots.map((shot) => (
@@ -96,7 +100,9 @@ export default function Angan() {
                   setLightbox(shot);
                 }}
                 aria-label={`View larger: ${shot.alt.slice(0, 60)}…`}
-                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle group-hover:brightness-[1.03]"
+                className={`group relative block w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle group-hover:brightness-[1.03] ${
+                  shots.length === 1 ? "aspect-[16/10]" : "aspect-[4/3]"
+                }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 {/* Slow editorial zoom — the photograph breathes on hover,

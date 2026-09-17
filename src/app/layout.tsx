@@ -113,7 +113,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <link rel="icon" href={asset("/brand/logo.webp")} type="image/webp" />
         <meta name="geo.region" content="IN-MH" />

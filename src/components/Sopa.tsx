@@ -28,8 +28,8 @@ export default function Sopa() {
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"
-          marathi="सोपा"
-          gloss="The verandah"
+          marathi="नोंदणी"
+          gloss="The Booking"
           title="Booking the wada"
           intro="Shoots are booked by the half day or the full day. Festival dates go early, Sankranti and the Haldi season especially, so it is worth asking well ahead."
         />

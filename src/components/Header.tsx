@@ -28,10 +28,11 @@ const navLinks = [
 const allLinks = [
   { href: "#angan", mr: "अंगण", en: "Gallery" },
   { href: "#itihas", mr: "इतिहास", en: "History" },
+  { href: "#packages", mr: "दर पत्रक", en: "Packages" },
   { href: "#diwankhana", mr: "दिवाणखाना", en: "The Wada" },
   { href: "#naksha", mr: "नकाशा", en: "Locations" },
   { href: "#vyavastha", mr: "व्यवस्था", en: "Before You Book" },
-  { href: "#sopa", mr: "सोपा", en: "Booking" },
+  { href: "#sopa", mr: "नोंदणी", en: "Booking" },
   { href: "#niyam", mr: "नियम", en: "House Rules" },
 ];
 

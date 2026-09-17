@@ -146,7 +146,7 @@ export const sections = [
   { id: "mahadwar", mr: "महाद्वार", en: "Mahadwar", gloss: "The great door", confirmed: true },
   { id: "angan", mr: "अंगण", en: "Angan", gloss: "The courtyard", confirmed: true },
   { id: "diwankhana", mr: "दिवाणखाना", en: "Diwankhana", gloss: "The hall", confirmed: true },
-  { id: "sopa", mr: "सोपा", en: "Sopa", gloss: "The verandah", confirmed: false },
+  { id: "sopa", mr: "नोंदणी", en: "Nondani", gloss: "The booking", confirmed: false },
   { id: "awwal", mr: "अव्वल", en: "Awwal", gloss: "Word of mouth", confirmed: false },
   { id: "bolava", mr: "बोलावा", en: "Bolava", gloss: "The invitation", confirmed: false },
 ] as const;
@@ -201,24 +201,48 @@ export type Shot = {
 
 export const gallery: Shot[] = [
   {
-    src: asset("/img/chowk-courtyard.webp"),
-    alt: "The open central courtyard, its sunken stone floor ringed by teak pillars on carved stone bases, with a tulsi vrindavan at the centre and the sky framed by the eaves above.",
+    src: asset("/img/DMYT0989_4x3.webp"),
+    alt: "Offering water from a copper kalash to the tulsi vrindavan, dressed in traditional Paithani with marigold decor.",
+    shoot: "festival",
+  },
+  {
+    src: asset("/img/JNXG4261_4x3.webp"),
+    alt: "Women in traditional Maharashtrian sarees gathered on the stone threshold of the grand carved Mahadwar.",
     shoot: "pre-wedding",
-    tall: true,
   },
   {
-    src: asset("/img/haldi-samai-rangoli.webp"),
-    alt: "A woman in a purple Paithani saree seated on the stone floor beside a tall brass samai, with a marigold rangoli laid around it and a carved wooden jharokha on the wall behind.",
+    src: asset("/img/LPFN9818_4x3.webp"),
+    alt: "Traditional courtyard scene with women seated by the stone grinder (jaata) and stone battlements.",
+    shoot: "festival",
+  },
+  {
+    src: asset("/img/NRKD1476_4x3.webp"),
+    alt: "Portrait with a classical veena against the wooden lattice work and traditional seating.",
+    shoot: "portrait",
+  },
+  {
+    src: asset("/img/QVVG3487_4x3.webp"),
+    alt: "Traditional rustic wada kitchen setup with earthenware hearth, brass pots, and heritage cookware.",
+    shoot: "festival",
+  },
+  {
+    src: asset("/img/RHJS2659_4x3.webp"),
+    alt: "Lighting traditional clay oil lamps around the carved stone tulsi vrindavan during an evening ritual.",
     shoot: "haldi",
   },
   {
-    src: asset("/img/haldi-jharokha.webp"),
-    alt: "The same setting from the side: lit brass samai in the foreground, dressed stone wall and the carved wooden balcony above.",
+    src: asset("/img/RIGT6859_4x3.webp"),
+    alt: "Celebration in the diwankhana under warm pendant lanterns with a tall brass samai lamp.",
     shoot: "haldi",
   },
   {
-    src: asset("/img/haldi-offering.webp"),
-    alt: "Seated with cupped hands raised in offering, the marigold rangoli and brass lamp filling the foreground.",
+    src: asset("/img/ROWY8637_4x3.webp"),
+    alt: "Traditional hearth cooking setup with copper utensils, blowing pipe, and clay stove in the wada kitchen.",
+    shoot: "portrait",
+  },
+  {
+    src: asset("/img/TAAT6524_4x3.webp"),
+    alt: "Festive celebration beside the courtyard tulsi vrindavan with teak pillars and wooden swing.",
     shoot: "festival",
   },
 ];

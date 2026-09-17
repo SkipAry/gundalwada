@@ -80,7 +80,7 @@ export default function Reels() {
                       ref={(el) => {
                         refs.current[r.id] = el;
                       }}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover brightness-110 contrast-105"
                       poster={r.poster}
                       loop
                       playsInline
@@ -103,7 +103,7 @@ export default function Reels() {
                         alt={r.caption}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover brightness-110 contrast-105"
                       />
                       {/* No scrim — user override 26 Aug: posters show clean,
                           the pill play-button alone carries the affordance. */}
