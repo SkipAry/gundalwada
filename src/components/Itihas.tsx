@@ -16,7 +16,7 @@ import SectionHead from "./SectionHead";
  */
 export default function Itihas() {
   return (
-    <section id="itihas" className="bg-ivory py-12 sm:py-24">
+    <section id="itihas" className="bg-ivory py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-2 lg:gap-14">
           {/* The story holds the left column on desktop and leads on mobile. */}

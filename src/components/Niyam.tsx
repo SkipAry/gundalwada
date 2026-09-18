@@ -22,7 +22,7 @@ export default function Niyam() {
   );
 
   return (
-    <section id="niyam" className="bg-porcelain py-12 sm:py-24">
+    <section id="niyam" className="bg-porcelain py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="नियम"

@@ -56,7 +56,7 @@ export default function Reels() {
   if (!reels.length) return null;
 
   return (
-    <section id="reels" className="bg-ivory py-12 sm:py-24">
+    <section id="reels" className="bg-ivory py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="चित्रफिती"

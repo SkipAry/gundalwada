@@ -23,7 +23,7 @@ export default function Vyavastha() {
   );
 
   return (
-    <section id="vyavastha" className="bg-obsidian py-12 sm:py-24">
+    <section id="vyavastha" className="bg-obsidian py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="व्यवस्था"

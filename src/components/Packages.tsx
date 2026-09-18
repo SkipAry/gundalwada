@@ -24,7 +24,7 @@ export default function Packages() {
   )}`;
 
   return (
-    <section id="packages" className="bg-[#FAF7F2] py-12 pb-24 sm:py-24 sm:pb-28 border-t border-pebble/70">
+    <section id="packages" className="bg-[#FAF7F2] py-12 pb-24 sm:py-16 sm:pb-20 border-t border-pebble/70">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"

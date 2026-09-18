@@ -22,7 +22,7 @@ export default function Awwal() {
   const has = testimonials.length > 0;
 
   return (
-    <section id="awwal" className="bg-ivory py-12 sm:py-24">
+    <section id="awwal" className="bg-ivory py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अभिप्राय"

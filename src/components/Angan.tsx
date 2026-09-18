@@ -96,7 +96,7 @@ export default function Angan() {
   }, [activeShot, close, showPrev, showNext]);
 
   return (
-    <section id="angan" className="bg-ivory py-12 sm:py-24">
+    <section id="angan" className="bg-ivory py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अंगण"

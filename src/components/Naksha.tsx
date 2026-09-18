@@ -20,7 +20,7 @@ import SectionHead from "./SectionHead";
  */
 export default function Naksha() {
   return (
-    <section id="naksha" className="bg-ivory py-12 sm:py-24">
+    <section id="naksha" className="bg-ivory py-12 sm:py-16">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="नकाशा"
