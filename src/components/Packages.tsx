@@ -24,7 +24,7 @@ export default function Packages() {
   )}`;
 
   return (
-    <section id="packages" className="bg-[#FAF7F2] py-20 sm:py-24 border-t border-pebble/70">
+    <section id="packages" className="bg-[#FAF7F2] py-20 pb-28 sm:py-24 sm:pb-28 border-t border-pebble/70">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"
@@ -36,39 +36,42 @@ export default function Packages() {
 
         {/* ── Venue Filter Tabs ── */}
         <div className="mt-10 flex justify-center">
-          <div className="inline-flex rounded-full border border-pebble bg-cream p-1.5 shadow-sm">
+          <div className="inline-flex overflow-x-auto no-scrollbar rounded-full border border-pebble bg-cream p-1.5 shadow-sm max-w-full">
             <button
               type="button"
               onClick={() => setActiveTab("all")}
-              className={`rounded-full px-5 py-2 text-[13px] font-medium transition-all ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "all"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
               }`}
             >
-              Both Properties
+              <span className="sm:hidden">All</span>
+              <span className="hidden sm:inline">Both Properties</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("wada1")}
-              className={`rounded-full px-5 py-2 text-[13px] font-medium transition-all ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "wada1"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
               }`}
             >
-              Wada 1 (Vadhu Budruk)
+              <span className="sm:hidden">Wada 1</span>
+              <span className="hidden sm:inline">Wada 1 (Vadhu Budruk)</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("wada2")}
-              className={`rounded-full px-5 py-2 text-[13px] font-medium transition-all ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "wada2"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
               }`}
             >
-              Wada 2 (Bhosari)
+              <span className="sm:hidden">Wada 2</span>
+              <span className="hidden sm:inline">Wada 2 (Bhosari)</span>
             </button>
           </div>
         </div>
@@ -88,7 +91,7 @@ export default function Packages() {
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
                 <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
                   <div>
                     <span className="eyebrow text-gold">Location 01 · Vadhu Budruk</span>
@@ -110,19 +113,19 @@ export default function Packages() {
                 {/* 1. Couples Photo Shoot */}
                 <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-gold/15 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
                           Couples Favorite
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Couples Photo Shoot
                         </h4>
                         <p className="mt-1 text-[13px] text-slate">
                           3 Hours dedicated photo session
                         </p>
                       </div>
-                      <div className="text-right shrink-0">
+                      <div className="sm:text-right shrink-0">
                         <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-cocoa">
                           ₹10,000<span className="text-sm font-normal text-slate">/-</span>
                         </div>
@@ -130,20 +133,20 @@ export default function Packages() {
                       </div>
                     </div>
 
-                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/80">
+                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
                       A perfect photo shoot experience for your special moments in a beautiful traditional ambiance. Includes full access to the courtyard, verandah, and architectural corners.
                     </p>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Ideal for: Pre-wedding, Maternity & Couple Portraits
                     </span>
                     <a
                       href={getWaLink("Wada 1", "Couples Photo Shoot", "₹10,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-obsidian px-4 py-1.5 text-[12px] font-medium text-gold hover:bg-cocoa transition-colors"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-obsidian px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-gold hover:bg-cocoa transition-colors max-sm:w-full"
                     >
                       Book 3h Session →
                     </a>
@@ -157,19 +160,19 @@ export default function Packages() {
                   </div>
 
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-gold/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
                           Full Private Access
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Private / Group Booking
                         </h4>
-                        <p className="mt-1 text-[13px] text-slate">
+                        <p className="mt-1 text-[13px] text-slate sm:whitespace-nowrap">
                           Exclusive estate access for family & group ceremonies
                         </p>
                       </div>
-                      <div className="text-right shrink-0">
+                      <div className="sm:text-right shrink-0">
                         <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-russet">
                           ₹25,000<span className="text-sm font-normal text-slate">/-</span>
                         </div>
@@ -177,7 +180,7 @@ export default function Packages() {
                       </div>
                     </div>
 
-                    <ul className="mt-4 space-y-2.5 border-t border-pebble/80 pt-3.5 text-[13.5px] text-cocoa/85">
+                    <ul className="mt-4 space-y-3 border-t border-pebble/80 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/85">
                       <li className="flex items-start gap-2.5">
                         <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
@@ -199,15 +202,15 @@ export default function Packages() {
                     </ul>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Ideal for: Haldi, Kumkum, Ring Ceremonies & Family Gatherings
                     </span>
                     <a
                       href={getWaLink("Wada 1", "Private / Group Booking", "₹25,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm max-sm:w-full"
                     >
                       Reserve Group Date →
                     </a>
@@ -217,40 +220,40 @@ export default function Packages() {
                 {/* 3. Brand Shoot */}
                 <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-pebble/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-slate">
                           Commercial Production
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Brand Shoot
                         </h4>
                         <p className="mt-1 text-[13px] text-slate">
                           Fashion, catalogue, advertisement & commercial filming
                         </p>
                       </div>
-                      <div className="text-right shrink-0">
+                      <div className="sm:text-right shrink-0">
                         <div className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-cocoa">
                           Custom Quote
                         </div>
-                        <p className="mt-0.5 text-[11px] font-medium text-slate">Rate: Depends</p>
+                        <p className="mt-0.5 text-[11px] font-medium text-slate">Based on scope</p>
                       </div>
                     </div>
 
-                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/80">
+                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
                       For Brand / Product / Commercial shoots: Rates will be determined based on the nature of the shoot, crew size, equipment footprint, power requirements, and required amenities.
                     </p>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Tailored arrangements for cameras, lights & crew
                     </span>
                     <a
                       href={getWaLink("Wada 1", "Brand Shoot", "Custom Quote")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-1.5 text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all max-sm:w-full"
                     >
                       Inquire Commercial Tariff →
                     </a>
@@ -273,7 +276,7 @@ export default function Packages() {
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
                 <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
                   <div>
                     <span className="eyebrow text-gold">Location 02 · Bhosari</span>
@@ -295,19 +298,19 @@ export default function Packages() {
                 {/* 1. Gold Package */}
                 <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-pebble/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-slate">
                           Standard Session
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Gold Package
                         </h4>
                         <p className="mt-1 text-[13px] text-slate">
                           3 Hour exclusive house access
                         </p>
                       </div>
-                      <div className="text-right shrink-0">
+                      <div className="sm:text-right shrink-0">
                         <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-cocoa">
                           ₹6,000<span className="text-sm font-normal text-slate">/-</span>
                         </div>
@@ -315,20 +318,20 @@ export default function Packages() {
                       </div>
                     </div>
 
-                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/80">
+                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
                       Whole house will be offered, but without decoration. Perfect for clean architectural shots, authentic wooden backdrops, and natural light portraits.
                     </p>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Includes: Full property access (3 Hours)
                     </span>
                     <a
                       href={getWaLink("Wada 2", "Gold Package", "₹6,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-obsidian px-4 py-1.5 text-[12px] font-medium text-gold hover:bg-cocoa transition-colors"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-obsidian px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-gold hover:bg-cocoa transition-colors max-sm:w-full"
                     >
                       Book Gold (3h) →
                     </a>
@@ -342,19 +345,19 @@ export default function Packages() {
                   </div>
 
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-gold/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
                           Decorated Studio
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Platinum Package
                         </h4>
                         <p className="mt-1 text-[13px] text-slate">
                           5 Hour session with choice decoration
                         </p>
                       </div>
-                      <div className="text-right shrink-0">
+                      <div className="sm:text-right shrink-0">
                         <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-russet">
                           ₹12,000<span className="text-sm font-normal text-slate">/-</span>
                         </div>
@@ -362,7 +365,7 @@ export default function Packages() {
                       </div>
                     </div>
 
-                    <ul className="mt-4 space-y-2.5 border-t border-pebble/80 pt-3.5 text-[13.5px] text-cocoa/85">
+                    <ul className="mt-4 space-y-3 border-t border-pebble/80 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/85">
                       <li className="flex items-start gap-2.5">
                         <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
@@ -384,15 +387,15 @@ export default function Packages() {
                     </ul>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Ideal for: Elaborate pre-weddings & Haldi looks
                     </span>
                     <a
                       href={getWaLink("Wada 2", "Platinum Package", "₹12,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-1.5 text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm max-sm:w-full"
                     >
                       Book Platinum (5h) →
                     </a>
@@ -402,12 +405,12 @@ export default function Packages() {
                 {/* 3. Add-ons & Extra Services */}
                 <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
                   <div>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div>
                         <span className="inline-flex items-center rounded bg-pebble/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-slate">
                           Custom Extras
                         </span>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-cocoa leading-tight">
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
                           Special Add-ons & Extras
                         </h4>
                         <p className="mt-1 text-[13px] text-slate">
@@ -456,15 +459,15 @@ export default function Packages() {
                     </div>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[12px] text-slate">
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
                       Add-ons can be selected when confirming your shoot date
                     </span>
                     <a
                       href={getWaLink("Wada 2", "Shoot with Add-ons (Group/Chulghar)", "Inquiry")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-1.5 text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all max-sm:w-full"
                     >
                       Inquire Add-ons →
                     </a>

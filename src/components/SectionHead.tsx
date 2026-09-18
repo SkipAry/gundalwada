@@ -70,7 +70,7 @@ export default function SectionHead({
 
       {intro ? (
         <p
-          className={`mt-6 max-w-copy text-[18px] leading-relaxed ${
+          className={`mt-6 max-w-copy text-[16px] sm:text-[18px] leading-normal sm:leading-relaxed ${
             centered ? "mx-auto" : ""
           } ${onDark ? "text-cream/80" : "text-cocoa"}`}
         >
