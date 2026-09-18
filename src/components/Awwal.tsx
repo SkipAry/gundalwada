@@ -22,7 +22,7 @@ export default function Awwal() {
   const has = testimonials.length > 0;
 
   return (
-    <section id="awwal" className="bg-ivory py-20 sm:py-24">
+    <section id="awwal" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अभिप्राय"
@@ -36,16 +36,21 @@ export default function Awwal() {
         />
 
         {has ? (
-          <ul className="mt-14 grid gap-6 md:grid-cols-3">
+          <ul className="mt-8 sm:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((t) => (
-              <li key={t.quote} className="rounded-lg border border-pebble bg-ivory p-7">
-                <blockquote className="font-display text-[19px] leading-snug text-oxblood">
+              <li
+                key={t.person}
+                className="flex flex-col justify-between rounded-lg border border-pebble bg-cream p-7"
+              >
+                <blockquote className="text-[15px] leading-relaxed text-cocoa/90">
                   “{t.quote}”
                 </blockquote>
-                <p className="mt-5 text-[13px] font-semibold text-cocoa">
-                  {t.person}
-                  <span className="block font-normal text-cocoa/65">{t.role}</span>
-                </p>
+                <figcaption className="mt-6 border-t border-pebble pt-4">
+                  <span className="font-semibold text-cocoa">{t.person}</span>
+                  <span className="mt-0.5 block text-[13px] text-cocoa/60">
+                    {t.role}
+                  </span>
+                </figcaption>
               </li>
             ))}
           </ul>
@@ -54,7 +59,7 @@ export default function Awwal() {
              couples, or permission to pull them from Instagram comments.
              Fill `testimonials` in src/data/site.ts and the grid above
              replaces this automatically. */
-          <div className="mx-auto mt-12 max-w-2xl text-center">
+          <div className="mx-auto mt-8 sm:mt-12 max-w-2xl text-center">
             <ul className="flex flex-col justify-center gap-3 sm:flex-row">
               {[
                 { name: "@gundal_wada", href: "https://www.instagram.com/gundal_wada/" },

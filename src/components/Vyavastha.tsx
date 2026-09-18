@@ -23,7 +23,7 @@ export default function Vyavastha() {
   );
 
   return (
-    <section id="vyavastha" className="bg-obsidian py-20 sm:py-24">
+    <section id="vyavastha" className="bg-obsidian py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="व्यवस्था"
@@ -33,7 +33,7 @@ export default function Vyavastha() {
           onDark
         />
 
-        <div className="mx-auto mt-14 max-w-3xl">
+        <div className="mx-auto mt-8 sm:mt-14 max-w-3xl">
           {answered.length ? (
             <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
               {answered.map((f) => (

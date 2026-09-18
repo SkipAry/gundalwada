@@ -17,7 +17,7 @@ import SectionHead from "./SectionHead";
  */
 export default function Diwankhana() {
   return (
-    <section id="diwankhana" className="bg-ivory py-20 sm:py-24">
+    <section id="diwankhana" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="दिवाणखाना"
@@ -26,7 +26,7 @@ export default function Diwankhana() {
           intro="A wada is not a hall with decoration applied. It is rooms arranged around open sky, which is what gives a shoot several different backdrops within a few steps."
         />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        <div className="mt-8 sm:mt-14 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
           {/* What is actually here */}
           <ul className="space-y-5">
             {spaceNotes.map((note) => (

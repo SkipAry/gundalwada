@@ -22,7 +22,7 @@ export default function Niyam() {
   );
 
   return (
-    <section id="niyam" className="bg-porcelain py-20 sm:py-24">
+    <section id="niyam" className="bg-porcelain py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="नियम"
@@ -31,7 +31,7 @@ export default function Niyam() {
           intro="The terms every booking runs on, from the deposit to the cancellation policy, agreed before the date is locked, so the day itself stays smooth."
         />
 
-        <div className="mx-auto mt-14 max-w-4xl">
+        <div className="mx-auto mt-8 sm:mt-14 max-w-4xl">
           {/* The rules themselves — a quiet ledger, gold hairline markers,
               hairline row tops. No cards: this is the plain text of the
               agreement and should read like one. */}

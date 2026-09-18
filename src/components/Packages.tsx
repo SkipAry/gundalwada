@@ -24,7 +24,7 @@ export default function Packages() {
   )}`;
 
   return (
-    <section id="packages" className="bg-[#FAF7F2] py-20 pb-28 sm:py-24 sm:pb-28 border-t border-pebble/70">
+    <section id="packages" className="bg-[#FAF7F2] py-12 pb-24 sm:py-24 sm:pb-28 border-t border-pebble/70">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"
@@ -35,7 +35,7 @@ export default function Packages() {
         />
 
         {/* ── Venue Filter Tabs ── */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-6 sm:mt-10 flex justify-center">
           <div className="inline-flex overflow-x-auto no-scrollbar rounded-full border border-pebble bg-cream p-1.5 shadow-sm max-w-full">
             <button
               type="button"
@@ -77,7 +77,7 @@ export default function Packages() {
         </div>
 
         {/* ── Cards Grid ── */}
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
+        <div className="mt-8 sm:mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
           {/* ══════════════════════════════════════════════════════════════
               WADA 1 · ESTATE
              ══════════════════════════════════════════════════════════════ */}

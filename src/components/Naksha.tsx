@@ -20,7 +20,7 @@ import SectionHead from "./SectionHead";
  */
 export default function Naksha() {
   return (
-    <section id="naksha" className="bg-ivory py-20 sm:py-24">
+    <section id="naksha" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="नकाशा"
@@ -29,7 +29,7 @@ export default function Naksha() {
           intro="Gundal Wada runs two properties. They photograph very differently, so it is worth choosing before you book."
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 md:gap-7">
+        <div className="mt-8 sm:mt-14 grid gap-6 md:grid-cols-2 md:gap-7">
           {venues.map((v) => (
             <article key={v.id} className="flex flex-col overflow-hidden rounded-lg border border-pebble bg-cream">
               {/* Each venue shows its own footage. */}

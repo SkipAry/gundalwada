@@ -19,7 +19,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-obsidian text-cream">
-      <div className="mx-auto max-w-site px-5 pb-28 pt-20 sm:px-8 sm:pb-16 sm:pt-24">
+      <div className="mx-auto max-w-site px-5 pb-28 pt-12 sm:px-8 sm:pb-16 sm:pt-24">
         {/* Palace masthead — centred lockup with gold rules, the way a
             heritage hotel signs off. */}
         <div className="flex flex-col items-center border-b border-cream/15 pb-10 text-center">

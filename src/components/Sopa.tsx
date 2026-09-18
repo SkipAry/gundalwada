@@ -24,7 +24,7 @@ export default function Sopa() {
   );
 
   return (
-    <section id="sopa" className="bg-ivory py-20 sm:py-24">
+    <section id="sopa" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"
@@ -34,7 +34,7 @@ export default function Sopa() {
           intro="Shoots are booked by the half day or the full day. Festival dates go early, Sankranti and the Haldi season especially, so it is worth asking well ahead."
         />
 
-        <div className="mx-auto mt-14 max-w-3xl">
+        <div className="mx-auto mt-8 sm:mt-14 max-w-3xl">
           {hasPricing ? (
             <div className="grid gap-5 sm:grid-cols-2">
               <RateCard label="Half day" rate={pricing.halfDay} />

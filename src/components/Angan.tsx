@@ -96,7 +96,7 @@ export default function Angan() {
   }, [activeShot, close, showPrev, showNext]);
 
   return (
-    <section id="angan" className="bg-ivory py-20 sm:py-24">
+    <section id="angan" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अंगण"
@@ -107,7 +107,7 @@ export default function Angan() {
 
         {/* Mosaic — 8px radius cards with 1px hairline border */}
         <ul
-          className={`mt-10 ${
+          className={`mt-8 sm:mt-10 ${
             shots.length === 1
               ? "mx-auto max-w-2xl"
               : `grid grid-cols-2 gap-3 lg:gap-4 ${

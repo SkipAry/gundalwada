@@ -109,7 +109,7 @@ export default function Mahadwar() {
     {/* Intro section — the positioning copy that used to sit on the hero
         frame now breathes on its own, directly below the full-screen photo. */}
     <section className="bg-ivory text-ink">
-      <div className="mx-auto w-full max-w-site px-5 py-20 text-center sm:px-8">
+      <div className="mx-auto w-full max-w-site px-5 py-12 sm:py-20 text-center sm:px-8">
         <p className="eyebrow animate-rise text-ink/70">
           Heritage shoot location · Pune
         </p>

@@ -54,7 +54,7 @@ export default function Bolava() {
     "w-full rounded-input-pill border border-pebble bg-cream px-5 py-3 text-[15px] text-ink placeholder:text-russet/60 focus:border-maroon focus:outline-none transition-colors";
 
   return (
-    <section id="bolava" className="bg-ivory py-20 sm:py-24">
+    <section id="bolava" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"
@@ -64,7 +64,7 @@ export default function Bolava() {
           intro="Fill this in and it opens WhatsApp with your details already written. Nothing is sent anywhere else."
         />
 
-        <div className="mx-auto mt-12 max-w-2xl rounded-lg border border-pebble bg-cream p-6 sm:p-9">
+        <div className="mx-auto mt-8 sm:mt-12 max-w-2xl rounded-lg border border-pebble bg-cream p-6 sm:p-9">
           {/* Not a <form>: there is no action and no submit. Making it a real
               form would invite Enter-to-submit with nowhere to go. */}
           <div className="grid gap-4 sm:grid-cols-2">

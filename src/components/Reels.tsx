@@ -56,7 +56,7 @@ export default function Reels() {
   if (!reels.length) return null;
 
   return (
-    <section id="reels" className="bg-ivory py-20 sm:py-24">
+    <section id="reels" className="bg-ivory py-12 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="चित्रफिती"
@@ -66,7 +66,7 @@ export default function Reels() {
         />
 
         {/* Horizontal rail on phones, three-up from md. */}
-        <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
+        <ul className="no-scrollbar mt-8 sm:mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
           {reels.map((r) => {
             const isPlaying = playing === r.id;
             return (
