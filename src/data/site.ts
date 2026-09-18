@@ -358,7 +358,7 @@ export const spaceNotes = [
    Peshwa eras" describes the wada architectural style, as the
    client wrote it. */
 export const historyStory: string[] = [
-  "Gundal Wada is a heritage property near Pune that brings the rich history of Maharashtra to life. It is built in the traditional wada style — the grand mansion popular in the Maratha and Peshwa eras — with classic stone walls, wooden pillars and a big open central courtyard, the chowk, that keeps the house cool and bright.",
+  "Gundal Wada is a heritage property near Pune that brings the rich history of Maharashtra to life. It is built in the traditional wada style, the grand mansion popular in the Maratha and Peshwa eras, with classic stone walls, wooden pillars and a big open central courtyard, the chowk, that keeps the house cool and bright.",
   "While many old historic homes have faded away, Gundal Wada has been carefully protected and restored. Today it connects the past with the present as a cultural studio: vintage rooms and majestic royal looks that make it the perfect backdrop for traditional Indian photoshoots, festivals and family celebrations.",
 ];
 

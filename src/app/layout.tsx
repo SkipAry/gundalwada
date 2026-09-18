@@ -23,7 +23,7 @@ const description =
 export const metadata: Metadata = {
   ...(site.url ? { metadataBase: new URL(site.url) } : {}),
   title: {
-    default: `${site.name} — heritage wada shoot location near Pune`,
+    default: `${site.name} - heritage wada shoot location near Pune`,
     template: `%s · ${site.name}`,
   },
   description,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `${site.name} — heritage wada shoot location near Pune`,
+    title: `${site.name} - heritage wada shoot location near Pune`,
     description,
     locale: "en_IN",
     /* Only once the real domain is known: without metadataBase Next would
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — heritage wada shoot location near Pune`,
+    title: `${site.name} - heritage wada shoot location near Pune`,
     description,
   },
   robots: { index: true, follow: true },

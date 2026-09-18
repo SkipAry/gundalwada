@@ -24,7 +24,7 @@ export default function AnnouncementBar() {
     <div className="banner-gradient relative z-50">
       <div className="mx-auto flex max-w-site items-center justify-center gap-3 px-5 py-2 sm:px-8">
         <p className="pr-8 text-center text-[12px] font-normal leading-relaxed text-ink">
-          {site.nameDevanagari} — {site.distanceFromPune}.{" "}
+          {site.nameDevanagari} · {site.distanceFromPune}.{" "}
           <a
             href={whatsappLink()}
             target="_blank"

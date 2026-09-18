@@ -54,7 +54,7 @@ export default function Bolava() {
     "w-full rounded-input-pill border border-pebble bg-cream px-5 py-3 text-[15px] text-ink placeholder:text-russet/60 focus:border-maroon focus:outline-none transition-colors";
 
   return (
-    <section id="bolava" className="bg-ivory py-16">
+    <section id="bolava" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"

@@ -56,7 +56,7 @@ export default function Reels() {
   if (!reels.length) return null;
 
   return (
-        <section id="reels" className="bg-canvas py-16">
+    <section id="reels" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="चित्रफिती"
@@ -123,10 +123,6 @@ export default function Reels() {
             );
           })}
         </ul>
-
-        <p className="mt-7 text-center text-[14px] leading-relaxed text-russet">
-          Filmed at the wada. Photography by {site.photoCredit}.
-        </p>
       </div>
     </section>
   );

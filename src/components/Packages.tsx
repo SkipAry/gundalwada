@@ -79,7 +79,7 @@ export default function Packages() {
         {/* ── Cards Grid ── */}
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
           {/* ══════════════════════════════════════════════════════════════
-              WADA 1 — ESTATE
+              WADA 1 · ESTATE
              ══════════════════════════════════════════════════════════════ */}
           {(activeTab === "all" || activeTab === "wada1") && (
             <div className="flex flex-col overflow-hidden rounded-2xl border border-pebble bg-cream shadow-sm">
@@ -87,7 +87,7 @@ export default function Packages() {
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
                 <img
                   src={asset("/img/wada1.png")}
-                  alt="Wada 1 — Stone Heritage Estate at Vadhu Budruk"
+                  alt="Wada 1 - Stone Heritage Estate at Vadhu Budruk"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
@@ -264,7 +264,7 @@ export default function Packages() {
           )}
 
           {/* ══════════════════════════════════════════════════════════════
-              WADA 2 — STUDIO
+              WADA 2 · STUDIO
              ══════════════════════════════════════════════════════════════ */}
           {(activeTab === "all" || activeTab === "wada2") && (
             <div className="flex flex-col overflow-hidden rounded-2xl border border-pebble bg-cream shadow-sm">
@@ -272,7 +272,7 @@ export default function Packages() {
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
                 <img
                   src={asset("/img/wada2.png")}
-                  alt="Wada 2 — Heritage Studio at Bhosari"
+                  alt="Wada 2 - Heritage Studio at Bhosari"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />

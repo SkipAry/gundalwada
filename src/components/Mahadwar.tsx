@@ -30,7 +30,7 @@ export default function Mahadwar() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={asset("/img/chowk-evening.webp")}
-        alt="The evening courtyard at Gundal Wada — tulsi vrindavan at the centre, teak pillars and lit lanterns under the tiled eaves."
+        alt="The evening courtyard at Gundal Wada, tulsi vrindavan at the centre, teak pillars and lit lanterns under the tiled eaves."
         className="animate-kenburns absolute inset-0 h-full w-full object-cover object-[50%_60%]"
         fetchPriority="high"
       />

@@ -22,13 +22,13 @@ export default function Niyam() {
   );
 
   return (
-    <section id="niyam" className="bg-porcelain py-16">
+    <section id="niyam" className="bg-porcelain py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="नियम"
           gloss="Rules & regulations"
           title="The house rules"
-          intro="The terms every booking runs on, from the deposit to the cancellation policy — agreed before the date is locked, so the day itself stays smooth."
+          intro="The terms every booking runs on, from the deposit to the cancellation policy, agreed before the date is locked, so the day itself stays smooth."
         />
 
         <div className="mx-auto mt-14 max-w-4xl">

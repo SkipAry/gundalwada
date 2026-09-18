@@ -24,7 +24,7 @@ export default function Sopa() {
   );
 
   return (
-    <section id="sopa" className="bg-ivory py-16">
+    <section id="sopa" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           align="center"

@@ -46,7 +46,7 @@ export default function SectionHead({
         <p className={`eyebrow ${onDark ? "text-cream/60" : ""}`}>{gloss}</p>
       ) : null}
       <h2
-        className={`font-marathi text-[clamp(2rem,4.5vw,3rem)] ${
+        className={`font-marathi text-[clamp(2rem,4.5vw,3rem)] leading-[1.2] ${
           onDark ? "text-cream" : "text-cocoa"
         }`}
       >
@@ -54,7 +54,7 @@ export default function SectionHead({
       </h2>
 
       <p
-        className={`font-display font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.45] tracking-heading ${
+        className={`mt-1 font-display font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.35] tracking-heading ${
           onDark ? "text-cream/90" : "text-cocoa"
         }`}
       >
@@ -65,12 +65,12 @@ export default function SectionHead({
           heading from the intro, centred or left per alignment. */}
       <div
         aria-hidden="true"
-        className={`mt-5 h-px w-12 bg-gold/70 ${centered ? "mx-auto" : ""}`}
+        className={`mt-4 sm:mt-5 h-px w-12 bg-gold/70 ${centered ? "mx-auto" : ""}`}
       />
 
       {intro ? (
         <p
-          className={`mt-6 max-w-copy text-[16px] sm:text-[18px] leading-normal sm:leading-relaxed ${
+          className={`mt-5 sm:mt-6 max-w-copy text-[15px] sm:text-[17px] leading-[1.65] sm:leading-[1.7] ${
             centered ? "mx-auto" : ""
           } ${onDark ? "text-cream/80" : "text-cocoa"}`}
         >

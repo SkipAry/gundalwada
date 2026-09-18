@@ -17,7 +17,7 @@ import SectionHead from "./SectionHead";
  */
 export default function Diwankhana() {
   return (
-    <section id="diwankhana" className="bg-ivory py-16">
+    <section id="diwankhana" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="दिवाणखाना"

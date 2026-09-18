@@ -22,7 +22,7 @@ export default function Awwal() {
   const has = testimonials.length > 0;
 
   return (
-        <section id="awwal" className="bg-canvas py-16">
+    <section id="awwal" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अभिप्राय"
@@ -79,7 +79,6 @@ export default function Awwal() {
             </ul>
 
             <p className="mt-7 text-[14px] leading-relaxed text-cocoa/75">
-              Shot at the wada by {site.photoCredit} and others.
               {hasWhatsApp ? (
                 <>
                   {" "}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { gallery, site, type Shot } from "@/data/site";
 import SectionHead from "./SectionHead";
 
@@ -11,41 +12,62 @@ import SectionHead from "./SectionHead";
  * Cowboy treatment: photo cards at 8px radius with a 1px hairline
  * border — the porcelain showroom language. No shadows; structure comes
  * from the hairline alone.
- *
- * The brief's four category tabs are deliberately NOT built yet. With four
- * photographs, tabs would mostly open onto nothing — which reads as a
- * broken site rather than a young one. A plain mosaic looks deliberate at
- * this count. When the client sends a proper set per category, the filter
- * comes back: `shootTypes` and each shot's `shoot` field are already in
- * site.ts waiting for it.
  */
 export default function Angan() {
-  const [lightbox, setLightbox] = useState<Shot | null>(null);
+  const [activeShot, setActiveShot] = useState<Shot | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const dialogRef = useRef<HTMLDivElement>(null);
   const lastTrigger = useRef<HTMLElement | null>(null);
 
   const shots = gallery;
-
-  /**
-   * The mosaic only earns a third column once there are enough
-   * photographs to fill it. With four images a 3-col grid leaves a
-   * visible hole, which reads as a broken layout rather than a sparse
-   * one, so the grid upgrades itself as the client sends more.
-   */
   const dense = shots.length >= 5;
 
-  const close = useCallback(() => {
-    setLightbox(null);
-    lastTrigger.current?.focus();
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
+  const close = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setActiveShot(null);
+      setIsClosing(false);
+      lastTrigger.current?.focus();
+    }, 200);
+  }, []);
+
+  const openShot = useCallback((shot: Shot, triggerEl?: HTMLElement) => {
+    if (triggerEl) lastTrigger.current = triggerEl;
+    setIsClosing(false);
+    setActiveShot(shot);
+  }, []);
+
+  const currentIndex = activeShot
+    ? shots.findIndex((s) => s.src === activeShot.src)
+    : -1;
+
+  const showPrev = useCallback(() => {
+    if (currentIndex < 0) return;
+    const prevIdx = (currentIndex - 1 + shots.length) % shots.length;
+    setActiveShot(shots[prevIdx]);
+  }, [currentIndex, shots]);
+
+  const showNext = useCallback(() => {
+    if (currentIndex < 0) return;
+    const nextIdx = (currentIndex + 1) % shots.length;
+    setActiveShot(shots[nextIdx]);
+  }, [currentIndex, shots]);
+
   useEffect(() => {
-    if (!lightbox) return;
+    if (!activeShot) return;
     const dialog = dialogRef.current;
     dialog?.querySelector<HTMLElement>("button")?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
       if (e.key === "Tab" && dialog) {
         const f = dialog.querySelectorAll<HTMLElement>(
           'button, [href], [tabindex]:not([tabindex="-1"])'
@@ -62,16 +84,19 @@ export default function Angan() {
         }
       }
     };
+
     document.addEventListener("keydown", onKey);
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = originalOverflow;
     };
-  }, [lightbox, close]);
+  }, [activeShot, close, showPrev, showNext]);
 
   return (
-    <section id="angan" className="bg-ivory py-16">
+    <section id="angan" className="bg-ivory py-20 sm:py-24">
       <div className="mx-auto max-w-site px-5 sm:px-8">
         <SectionHead
           marathi="अंगण"
@@ -80,8 +105,7 @@ export default function Angan() {
           intro="One property, several distinct corners: the open chowk, the carved arcade, the stone walls and the jharokha above them."
         />
 
-        {/* Mosaic — 8px radius cards with 1px hairline border, the Cowboy
-            showroom treatment */}
+        {/* Mosaic — 8px radius cards with 1px hairline border */}
         <ul
           className={`mt-10 ${
             shots.length === 1
@@ -95,18 +119,13 @@ export default function Angan() {
             <li key={shot.src}>
               <button
                 type="button"
-                onClick={(e) => {
-                  lastTrigger.current = e.currentTarget;
-                  setLightbox(shot);
-                }}
-                aria-label={`View larger: ${shot.alt.slice(0, 60)}…`}
-                className={`group relative block w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle group-hover:brightness-[1.03] ${
+                onClick={(e) => openShot(shot, e.currentTarget)}
+                aria-label={`View photograph: ${shot.alt.slice(0, 60)}…`}
+                className={`group relative block w-full overflow-hidden rounded-lg border border-pebble bg-cream transition-[filter] duration-300 ease-settle hover:brightness-[1.03] ${
                   shots.length === 1 ? "aspect-[16/10]" : "aspect-[4/3]"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {/* Slow editorial zoom — the photograph breathes on hover,
-                    like turning a page in a palace brochure. */}
                 <img
                   src={shot.src}
                   alt={shot.alt}
@@ -118,45 +137,116 @@ export default function Angan() {
             </li>
           ))}
         </ul>
-
-        {/* Honest note about range, rather than padding the grid with stock */}
-        <p className="mt-8 text-center text-[13px] leading-relaxed text-cocoa/70">
-          Photography at the wada by {site.photoCredit}.
-          {/* ⚠ CLIENT: ~448 Instagram posts exist. Send a selection per
-              category and the tabs above fill out on their own. */}
-        </p>
       </div>
 
-      {/* Lightbox */}
-      {lightbox ? (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-maroon-dark/95 p-4 backdrop-blur-sm"
-          onClick={close}
-        >
-          <div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Photograph"
-            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto rounded-lg border border-pebble bg-cream shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightbox.src} alt={lightbox.alt} className="flush max-h-[70dvh] w-full object-contain" />
-            <p className="px-5 py-4 text-[13px] leading-relaxed text-cocoa/85">
-              {lightbox.alt}
-            </p>
-            <button
-              type="button"
+      {/* Lightbox rendered into document.body to escape transformed parent stacking context */}
+      {mounted && activeShot
+        ? createPortal(
+            <div
+              className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#171310]/95 p-3 sm:p-6 md:p-8 backdrop-blur-md ${
+                isClosing ? "animate-lightbox-fade-out" : "animate-lightbox-fade-in"
+              }`}
               onClick={close}
-              aria-label="Close"
-              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-pill bg-maroon text-xl leading-none text-gold hover:bg-maroon-dark transition-colors"
             >
-              ×
-            </button>
-          </div>
-        </div>
-      ) : null}
+              {/* Close button top-right */}
+              <button
+                type="button"
+                onClick={close}
+                aria-label="Close photograph viewer"
+                className="absolute right-4 top-4 z-[110] flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-[#221C15]/80 text-cream backdrop-blur-md transition-all hover:scale-105 hover:border-gold hover:bg-maroon hover:text-gold"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+
+              {/* Prev button */}
+              {shots.length > 1 && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    showPrev();
+                  }}
+                  aria-label="Previous photograph"
+                  className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-[110] flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-[#221C15]/80 text-cream backdrop-blur-md transition-all hover:scale-105 hover:border-gold hover:bg-maroon hover:text-gold"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+              )}
+
+              {/* Next button */}
+              {shots.length > 1 && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    showNext();
+                  }}
+                  aria-label="Next photograph"
+                  className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-[110] flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-[#221C15]/80 text-cream backdrop-blur-md transition-all hover:scale-105 hover:border-gold hover:bg-maroon hover:text-gold"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              )}
+
+              {/* Image dialog card — NO captions */}
+              <div
+                ref={dialogRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Photograph preview"
+                className={`relative flex max-h-[88vh] max-w-[92vw] sm:max-w-4xl lg:max-w-5xl items-center justify-center overflow-hidden rounded-xl border border-gold/25 bg-obsidian shadow-2xl ${
+                  isClosing ? "animate-lightbox-scale-out" : "animate-lightbox-scale-in"
+                }`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={activeShot.src}
+                  alt={activeShot.alt}
+                  className="max-h-[85vh] max-w-[90vw] sm:max-w-[80vw] object-contain select-none"
+                />
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </section>
   );
 }
