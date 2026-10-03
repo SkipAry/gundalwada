@@ -61,7 +61,9 @@ export default function Statement({
       {/* Centred, like every other heading on the page. */}
       <div className="relative mx-auto flex min-h-[70svh] max-w-site flex-col items-center justify-end px-5 pb-12 pt-20 text-center sm:px-8 md:min-h-[86svh] md:pb-24 sm:pt-32">
            <h2 className="max-w-[19ch] font-display font-medium text-[clamp(2.4rem,5.5vw,3.4rem)] leading-[1.12] tracking-heading text-cream">
-           <Accent text={headline} highlight={highlight} />
+           {/* Gold, not the default orchid: this headline sits on a photograph,
+               where the dark accent colour all but vanished on phones. */}
+           <Accent text={headline} highlight={highlight} className="text-gold-light" />
          </h2>
 
          {body ? (

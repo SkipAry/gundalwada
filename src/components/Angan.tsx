@@ -102,7 +102,7 @@ export default function Angan() {
           marathi="अंगण"
           gloss="The courtyard"
           title="Where the shoots happen"
-          intro="One property, several distinct corners: the open chowk, the carved arcade, the stone walls and the jharokha above them."
+          intro="Two wadas, many distinct corners: the open chowk, the carved arcade, the stone walls and the jharokha above them."
         />
 
         {/* Mosaic — 8px radius cards with 1px hairline border */}

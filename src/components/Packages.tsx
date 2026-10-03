@@ -40,7 +40,7 @@ export default function Packages() {
             <button
               type="button"
               onClick={() => setActiveTab("all")}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
+              className={`min-h-[44px] shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "all"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
@@ -52,7 +52,7 @@ export default function Packages() {
             <button
               type="button"
               onClick={() => setActiveTab("wada1")}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
+              className={`min-h-[44px] shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "wada1"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
@@ -64,7 +64,7 @@ export default function Packages() {
             <button
               type="button"
               onClick={() => setActiveTab("wada2")}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
+              className={`min-h-[44px] shrink-0 whitespace-nowrap rounded-full px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-medium transition-all ${
                 activeTab === "wada2"
                   ? "bg-obsidian text-cream shadow"
                   : "text-cocoa/70 hover:text-cocoa"
