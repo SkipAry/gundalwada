@@ -10,9 +10,8 @@ import type { NextConfig } from "next";
  * worth revisiting once the sandbox is upgraded.
  */
 /**
- * GitHub Pages serves this at /gundalwada/, so the deploy workflow sets
- * NEXT_PUBLIC_BASE_PATH. Unset it and everything builds for a root deploy
- * instead — that is all a move to a custom domain takes.
+ * Served from the root of gundalwada.com, so NEXT_PUBLIC_BASE_PATH is left
+ * unset. Set it only if the site ever has to live under a sub-path.
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
