@@ -49,17 +49,17 @@ export const metadata: Metadata = {
     title,
     description,
     locale: "en_IN",
-    /* Only once the real domain is known: without metadataBase Next would
-       resolve these against localhost and ship a broken link preview.
-       ⚠ CLIENT INPUT: set `url` in src/data/site.ts. */
+    /* JPEG at exactly 1200x630: WhatsApp, the main way this link gets
+       shared, previews WebP unreliably. Needs metadataBase (site.url) or
+       Next resolves it against localhost. */
     ...(site.url
       ? {
           images: [
             {
-              url: asset("/img/mahadwar-poster.webp"),
+              url: asset("/img/og-image.jpg"),
               width: 1200,
               height: 630,
-              alt: "The cusped-arch verandah of Gundal Wada at low light.",
+              alt: "The evening courtyard at Gundal Wada, lanterns lit under the tiled eaves.",
             },
           ],
         }
@@ -69,6 +69,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
+    ...(site.url ? { images: [asset("/img/og-image.jpg")] } : {}),
+  },
+  icons: {
+    icon: { url: asset("/brand/logo.webp"), type: "image/webp" },
+    apple: asset("/brand/apple-touch-icon.png"),
   },
   robots: { index: true, follow: true },
 };
@@ -150,7 +155,6 @@ export default function RootLayout({
   return (
     <html lang="en-IN" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={asset("/brand/logo.webp")} type="image/webp" />
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Koregaon Bhima, Pune" />
         <script

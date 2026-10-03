@@ -86,7 +86,7 @@ export default function Packages() {
               {/* Venue Header Banner */}
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
                 <img
-                  src={asset("/img/wada1.png")}
+                  src={asset("/img/wada1.webp")}
                   alt="Wada 1 - Stone Heritage Estate at Vadhu Budruk"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
@@ -271,7 +271,7 @@ export default function Packages() {
               {/* Venue Header Banner */}
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
                 <img
-                  src={asset("/img/wada2.png")}
+                  src={asset("/img/wada2.webp")}
                   alt="Wada 2 - Heritage Studio at Bhosari"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
