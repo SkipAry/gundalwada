@@ -90,7 +90,6 @@ export const viewport = {
  *   priceRange      — a guessed price in structured data is the same lie
  *                     as a guessed price on the page
  *   aggregateRating — no verified reviews exist
- *   geo             — no confirmed coordinates
  */
 function schema() {
   const abs = (path: string) => `${site.url}${asset(path)}`;
@@ -101,6 +100,11 @@ function schema() {
     addressRegion: "Maharashtra",
     addressCountry: "IN",
     postalCode: v.pincode,
+  });
+  const geo = (v: (typeof venues)[number]) => ({
+    "@type": "GeoCoordinates",
+    latitude: v.geo.lat,
+    longitude: v.geo.lng,
   });
 
   const website = {
@@ -121,6 +125,7 @@ function schema() {
     url: `${site.url}/`,
     image: abs("/img/chowk-courtyard.webp"),
     address: address(primaryVenue, "Vadhu Budruk"),
+    geo: geo(primaryVenue),
     knowsAbout: ["Pre-wedding photoshoot", "Photoshoot location", "Haldi shoot", "Heritage wada"],
     /* Both Instagram accounts: same business, two venues. Listing both is
        what tells Google they are one entity rather than competitors. */
@@ -130,6 +135,7 @@ function schema() {
       name: branch.name,
       image: abs("/img/bhosari-poster.webp"),
       address: address(branch, "Bhosari"),
+      geo: geo(branch),
       sameAs: [branch.instagram],
     },
   };

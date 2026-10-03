@@ -108,6 +108,8 @@ export type Venue = {
   video?: string;
   poster?: string;
   mapsQuery: string;
+  /** Pin from the venue's Google Business Profile (Maps place page). */
+  geo: { lat: number; lng: number };
 };
 
 export const venues: Venue[] = [
@@ -122,6 +124,7 @@ export const venues: Venue[] = [
     video: asset("/video/mahadwar-loop.mp4"),
     poster: asset("/img/mahadwar-poster.webp"),
     mapsQuery: "Gundal+Wada+Vadhu+Budruk+Pune",
+    geo: { lat: 18.6692739, lng: 74.0671229 },
   },
   {
     id: "bhosari",
@@ -135,6 +138,7 @@ export const venues: Venue[] = [
     video: asset("/video/bhosari-loop.mp4"),
     poster: asset("/img/bhosari-poster.webp"),
     mapsQuery: "Gundal+Wada+2+Bhosari+Pimpri+Chinchwad",
+    geo: { lat: 18.6318364, lng: 73.8436897 },
   },
 ];
 
