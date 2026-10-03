@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { shootTypes, site, hasWhatsApp } from "@/data/site";
+import { shootTypes, site, hasWhatsApp, venues } from "@/data/site";
 import SectionHead from "./SectionHead";
 
 /**
@@ -25,6 +25,10 @@ export default function Bolava() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [shoot, setShoot] = useState(shootTypes[0]?.label ?? "");
+  /* Two venues, one number: without this every enquiry starts with
+     "which wada?" before anything useful can be answered. */
+  const wadaOptions = [...venues.map((v) => `${v.label} (${v.locality})`), "Not sure yet"];
+  const [wada, setWada] = useState(wadaOptions[0]);
   const [notes, setNotes] = useState("");
 
   const message = [
@@ -32,6 +36,7 @@ export default function Bolava() {
     "",
     `I would like to enquire about a shoot.`,
     name ? `Name: ${name}` : "",
+    wada ? `Wada: ${wada}` : "",
     date ? `Preferred date: ${date}` : "",
     shoot ? `Shoot type: ${shoot}` : "",
     notes ? `Notes: ${notes}` : "",
@@ -80,6 +85,23 @@ export default function Bolava() {
                 className={field}
                 autoComplete="name"
               />
+            </label>
+
+            <label className="block sm:col-span-2">
+              <span className="mb-1.5 block text-[13px] font-semibold text-cocoa">
+                Which wada
+              </span>
+              <select
+                value={wada}
+                onChange={(e) => setWada(e.target.value)}
+                className={`${field} appearance-none`}
+              >
+                {wadaOptions.map((w) => (
+                  <option key={w} value={w}>
+                    {w}
+                  </option>
+                ))}
+              </select>
             </label>
 
             <label className="block">

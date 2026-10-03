@@ -1,26 +1,33 @@
 "use client";
 
-import { hasPricing, pricing, whatsappLink, hasWhatsApp } from "@/data/site";
+import { whatsappLink, hasWhatsApp } from "@/data/site";
 import SectionHead from "./SectionHead";
 
 /**
- * SOPA — the verandah. Pricing.
+ * SOPA — how booking works.
  *
- * Brief §3 calls this the biggest gap in the business: no rate is published
- * anywhere, which is exactly why a photographer comparing four locations
- * rings around instead of booking. Brief §6 forbids inventing one.
- *
- * So this section does the one useful thing available without a number:
- * it makes asking for the rate a single tap, and says plainly that the
- * rate depends on date and duration — which is true of every venue like
- * this — rather than pretending the page is still being written.
- *
- * The moment `pricing.halfDay` / `fullDay` are filled in, the same section
- * renders a real rate card instead. No other change needed.
+ * Prices live in the rate card (Packages, #packages). This section only
+ * explains the steps, using terms already stated in the rate card and the
+ * house rules, so the two can never quote different numbers.
  */
+const steps = [
+  {
+    title: "Pick a wada and a package",
+    body: "Wada 1 in Bhosari or Wada 2 at Vadhu. Sessions and prices are listed in the rate card above.",
+  },
+  {
+    title: "Send your date on WhatsApp",
+    body: "Share the date, the wada and the kind of shoot. Availability comes straight back.",
+  },
+  {
+    title: "Pay the advance to lock the date",
+    body: "Dates go first come, first served, and are held once the 50% advance is paid.",
+  },
+];
+
 export default function Sopa() {
   const ask = whatsappLink(
-    "Namaskar Gundal Wada, could you share your half-day and full-day rates for a shoot, and what is included?"
+    "Namaskar Gundal Wada, I would like to check a date for a shoot."
   );
 
   return (
@@ -31,72 +38,41 @@ export default function Sopa() {
           marathi="नोंदणी"
           gloss="The Booking"
           title="Booking the wada"
-          intro="Shoots are booked by the half day or the full day. Festival dates go early, Sankranti and the Haldi season especially, so it is worth asking well ahead."
+          intro="Three steps from first message to a confirmed date. Festival dates go early, Sankranti and the Haldi season especially, so it is worth asking well ahead."
         />
 
-        <div className="mx-auto mt-8 sm:mt-14 max-w-3xl">
-          {hasPricing ? (
-            <div className="grid gap-5 sm:grid-cols-2">
-              <RateCard label="Half day" rate={pricing.halfDay} />
-              <RateCard label="Full day" rate={pricing.fullDay} />
-              {pricing.weekendNote ? (
-                <p className="sm:col-span-2 text-center text-[14px] text-cocoa/75">
-                  {pricing.weekendNote}
+        <div className="mx-auto mt-8 sm:mt-14 max-w-3xl rounded-lg border border-pebble bg-cream p-7 sm:p-10">
+          <ol className="grid gap-6 sm:grid-cols-3 sm:gap-8">
+            {steps.map((s, i) => (
+              <li key={s.title}>
+                <p className="font-display text-3xl font-semibold text-gold">
+                  {String(i + 1).padStart(2, "0")}
                 </p>
-              ) : null}
-              {pricing.included.length ? (
-                <ul className="sm:col-span-2 mt-2 grid gap-2 sm:grid-cols-2">
-                  {pricing.included.map((x) => (
-                    <li key={x} className="flex gap-3 text-[14px] text-cocoa/85">
-                      <span aria-hidden="true" className="mt-2 h-px w-5 shrink-0 bg-russet/50" />
-                      {x}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
-          ) : (
-            /* ⚠ CLIENT INPUT: half-day and full-day rates, what's included,
-               whether weekend/festival pricing differs. Fill `pricing` in
-               src/data/site.ts and this block is replaced automatically. */
-            <div className="rounded-lg border border-pebble bg-cream p-8 text-center sm:p-12">
-              <p className="font-display text-[clamp(1.4rem,3vw,1.9rem)] font-semibold leading-snug text-oxblood">
-                Rates depend on the date and how long you need the wada
-              </p>
-              <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-cocoa/80">
-                Send the date you have in mind and the kind of shoot, and
-                you will get the rate and what is included straight back.
-              </p>
+                <p className="mt-2 font-display text-xl font-semibold leading-snug text-oxblood">
+                  {s.title}
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-cocoa/80">{s.body}</p>
+              </li>
+            ))}
+          </ol>
 
-              {hasWhatsApp ? (
-                <a
-                  href={ask}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-iris mt-8"
-                >
-                  Ask for rates on WhatsApp
-                </a>
-              ) : null}
-
-              <p className="mt-6 text-[12.5px] text-cocoa/60">
-                Half day or full day · advance booking advised for Sankranti
-                and Haldi season
-              </p>
-            </div>
-          )}
+          <div className="mt-8 flex flex-col items-center gap-3 border-t border-pebble pt-7 text-center sm:flex-row sm:justify-center">
+            <a href="#packages" className="btn">
+              See the rate card
+            </a>
+            {hasWhatsApp ? (
+              <a
+                href={ask}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-iris"
+              >
+                Check a date on WhatsApp
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function RateCard({ label, rate }: { label: string; rate: string }) {
-  if (!rate) return null;
-  return (
-    <div className="rounded-lg border border-pebble bg-cream p-7 text-center">
-      <p className="eyebrow">{label}</p>
-      <p className="mt-3 font-display text-3xl font-semibold text-oxblood">{rate}</p>
-    </div>
   );
 }

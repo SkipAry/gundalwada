@@ -339,19 +339,6 @@ export const historyStory: string[] = [
   "While many old historic homes have faded away, Gundal Wada has been carefully protected and restored. Today it connects the past with the present as a cultural studio: vintage rooms and majestic royal looks that make it the perfect backdrop for traditional Indian photoshoots, festivals and family celebrations.",
 ];
 
-/* ── ⚠ Pricing (brief §3, Sopa) ─────────────────────────────
-   Brief §6 forbids inventing a price, and this is the single biggest gap
-   on the site — no rate is published anywhere today, which is exactly why
-   photographers ring around. Empty renders a marked placeholder. */
-export const pricing = {
-  halfDay: "",
-  fullDay: "",
-  weekendNote: "",
-  /** Only what the client confirms is actually provided. */
-  included: [] as string[],
-  advanceNote: "",
-};
-
 /* ── ⚠ Testimonials (brief §3, Awwal) ───────────────────────
    Brief §6: never fabricate. Empty until the client supplies real ones or
    grants permission to quote Instagram comments. */
@@ -400,7 +387,6 @@ export function whatsappLink(message?: string) {
 export const properties = venues;
 
 export const hasWhatsApp = Boolean(site.whatsapp);
-export const hasPricing = Boolean(pricing.halfDay || pricing.fullDay);
 export const hasTestimonials = testimonials.length > 0;
 
 /** Shoot types that actually have images behind them. */
