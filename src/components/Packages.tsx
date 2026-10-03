@@ -91,7 +91,7 @@ export default function Packages() {
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/75 to-obsidian/45 sm:via-obsidian/60 sm:to-transparent" />
                 <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
                   <div>
                     <span className="eyebrow text-gold">Location 01 · Bhosari</span>
@@ -305,10 +305,10 @@ export default function Packages() {
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/75 to-obsidian/45 sm:via-obsidian/60 sm:to-transparent" />
                 <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
                   <div>
-                    <span className="eyebrow text-gold">Location 02 · Vadhu, Koregaon Bhima</span>
+                    <span className="eyebrow text-gold">Location 02 · Vadhu</span>
                     <h3 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl leading-tight">
                       Wada <span className="font-sans font-normal">2</span>
                     </h3>
