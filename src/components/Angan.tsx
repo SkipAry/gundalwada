@@ -126,9 +126,13 @@ export default function Angan() {
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* Grid cells are ~275-400px wide, so they load the 640px
+                    thumbnail; the lightbox below keeps the full-size file. */}
                 <img
-                  src={shot.src}
+                  src={shot.src.replace(/\.webp$/, "-640.webp")}
                   alt={shot.alt}
+                  width={640}
+                  height={480}
                   loading="lazy"
                   decoding="async"
                   className="img-breathe flush h-[103%] w-full object-cover"
