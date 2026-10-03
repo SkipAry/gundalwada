@@ -25,7 +25,7 @@ export const site = {
 
   /** Brief §3. Refine with the client once they hear it read aloud. */
   positioning:
-    "A Peshwa-era wada near Pune, for your pre-wedding, Haldi and festival shoots",
+    "A Peshwa-era wada near Pune, for your pre-wedding, Haldi, festival and portrait photoshoots",
 
   /**
    * The site had TWO different addresses on one page — this block said
@@ -62,8 +62,8 @@ export const site = {
       with the Google Business Profile share link. */
   mapsLink:
     "https://www.google.com/maps/search/?api=1&query=Gundal+Wada+Koregaon+Bhima+Pune" as string,
-  /** ⚠ NEEDED — live domain, for canonical URLs and OG tags. */
-  url: "" as string,
+  /** Live domain: drives canonical URLs, OG tags, sitemap and schema. */
+  url: "https://gundalwada.com" as string,
 
   /** Credit for the shoot photography, per permission granted. */
   photoCredit: "Gaurav Kumbhar",

@@ -54,7 +54,15 @@ export default function Mahadwar() {
             className="animate-rise mx-auto mt-0 max-w-4xl font-marathi font-semibold text-[clamp(2.75rem,7vw,4.25rem)] text-cream max-sm:text-[clamp(2.5rem,13vw,3.25rem)]"
             style={{ animationDelay: "220ms" }}
           >
-            {site.nameDevanagari}
+            <span lang="mr">{site.nameDevanagari}</span>
+            {/* The visible title is Devanagari only; this gives search
+                engines and screen readers the Latin name people actually
+                type, plus what the place is for. Same facts as the
+                visible tagline below, so it is not hidden keyword text. */}
+            <span className="sr-only">
+              {" "}
+              {site.name}: pre-wedding and photoshoot location near Pune
+            </span>
           </h1>
 
           {/* Gold hairline that draws itself in after the name lands. */}
