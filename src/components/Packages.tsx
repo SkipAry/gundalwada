@@ -77,6 +77,7 @@ export default function Packages() {
         </div>
 
         {/* ── Cards Grid ── */}
+        <div className="mt-8 sm:mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
           {/* ══════════════════════════════════════════════════════════════
               WADA 1 · STUDIO (BHOSARI)
              ══════════════════════════════════════════════════════════════ */}
@@ -291,7 +292,6 @@ export default function Packages() {
             </div>
           )}
 
-        <div className="mt-8 sm:mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
           {/* ══════════════════════════════════════════════════════════════
               WADA 2 · ESTATE (VADHU)
              ══════════════════════════════════════════════════════════════ */}
