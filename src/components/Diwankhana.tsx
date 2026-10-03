@@ -1,4 +1,4 @@
-import { site, spaceNotes, fullAddress, primaryVenue } from "@/data/site";
+import { site, spaceNotes, fullAddress, venues } from "@/data/site";
 import SectionHead from "./SectionHead";
 
 /**
@@ -48,25 +48,33 @@ export default function Diwankhana() {
               Getting here
             </h3>
 
-            <address className="mt-4 text-[15px] not-italic leading-relaxed text-cocoa/85">
-              {primaryVenue.address} {primaryVenue.pincode}
-            </address>
+            {/* Both venues: a crew sent to one address for the other's
+                courtyard loses the shoot. */}
+            <ul className="mt-4 space-y-5">
+              {venues.map((v) => (
+                <li key={v.id}>
+                  <p className="text-[13px] font-semibold uppercase tracking-sub text-oxblood/80">
+                    {v.label} · {v.locality}
+                  </p>
+                  <address className="mt-1 text-[15px] not-italic leading-relaxed text-cocoa/85">
+                    {v.address} {v.pincode}
+                  </address>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${v.mapsQuery}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn mt-3"
+                  >
+                    Open {v.label} in Google Maps
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-            <p className="mt-4 text-[14px] leading-relaxed text-cocoa/75">
-              {site.distanceFromPune}. Most shoots drive out in the morning and
+            <p className="mt-5 text-[14px] leading-relaxed text-cocoa/75">
+              {site.distanceFromPune}. Most shoots arrive in the morning and
               are set up well before the light turns.
             </p>
-
-            {site.mapsLink ? (
-              <a
-                href={site.mapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn mt-6"
-              >
-                Open in Google Maps
-              </a>
-            ) : null}
 
             {/* Deliberately not an embedded map iframe: it is ~900KB of
                 third-party script and cookies on a page whose audience is

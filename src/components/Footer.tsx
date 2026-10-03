@@ -44,7 +44,7 @@ export default function Footer() {
                 key={v.id}
                 className="mt-4 text-[14px] not-italic leading-relaxed text-cream/80"
               >
-                <span className="block font-semibold text-cream">{v.name}</span>
+                <span className="block font-semibold text-cream">{v.label} · {v.name}</span>
                 {v.address} {v.pincode}
               </address>
             ))}

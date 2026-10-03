@@ -38,7 +38,10 @@ export default function Naksha() {
               ) : null}
 
               <div className="flex flex-1 flex-col p-7 sm:p-9">
-                <h3 className="font-display text-2xl font-semibold text-oxblood">
+                <p className="text-[12px] font-semibold uppercase tracking-sub text-oxblood/70">
+                  {v.label} · {v.locality}
+                </p>
+                <h3 className="mt-1 font-display text-2xl font-semibold text-oxblood">
                   {v.name}
                 </h3>
 

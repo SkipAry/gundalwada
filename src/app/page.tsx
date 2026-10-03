@@ -101,7 +101,7 @@ export default function Home() {
              not a verified date, and 28 km is a distance we have, not a
              journey time we have measured. A heritage site inventing its own
              century is the one lie its visitors are most likely to catch. */
-          body="Stone, teak and lime plaster, about 28 km out on the Nagar Road corridor. Send a date and the shoot type, and you will get the rate straight back."
+          body="Stone, teak and lime plaster. Wada 1 is in Bhosari; Wada 2 is about 28 km out at Vadhu, Koregaon Bhima. Send a date, the wada and the shoot type, and you will get the rate straight back."
         />
 
         <Reveal>

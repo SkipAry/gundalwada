@@ -22,7 +22,7 @@ import { asset } from "@/lib/asset";
 const title = `${site.name} | Pre-Wedding & Photoshoot Location near Pune`;
 
 const description =
-  "Gundal Wada is a Peshwa-era Maharashtrian wada near Pune for pre-wedding shoots, photoshoots, Haldi, Sankranti and portrait sessions. Two venues: Vadhu Budruk (Koregaon Bhima) and Bhosari. Check dates on WhatsApp.";
+  "Gundal Wada is a Peshwa-era Maharashtrian wada near Pune for pre-wedding shoots, photoshoots, Haldi, Sankranti and portrait sessions. Two venues: Wada 1 in Bhosari and Wada 2 at Vadhu, Koregaon Bhima. Check dates on WhatsApp.";
 
 export const metadata: Metadata = {
   ...(site.url ? { metadataBase: new URL(site.url) } : {}),
@@ -88,8 +88,9 @@ export const viewport = {
  * Schema.org — WebSite + LocalBusiness (brief §4).
  *
  * WebSite tells Google the site's name ("Gundal Wada") for the brand
- * result. The primary wada is the LocalBusiness; the Bhosari wada hangs
- * off it as a `department`, so Google reads one business, two venues.
+ * result. Wada 1 (Bhosari) is the LocalBusiness, matching its Google
+ * Business Profile; Wada 2 (Vadhu) hangs off it as a `department`, so
+ * Google reads one business, two venues.
  *
  * Deliberately omitted until the client confirms them:
  *   priceRange      — a guessed price in structured data is the same lie
@@ -97,11 +98,12 @@ export const viewport = {
  *   aggregateRating — no verified reviews exist
  */
 function schema() {
-  const abs = (path: string) => `${site.url}${asset(path)}`;
-  const address = (v: (typeof venues)[number], locality: string) => ({
+  /* Venue posters already carry the base path from asset(). */
+  const abs = (path = "") => `${site.url}${path}`;
+  const address = (v: (typeof venues)[number]) => ({
     "@type": "PostalAddress",
     streetAddress: v.address,
-    addressLocality: locality,
+    addressLocality: v.locality,
     addressRegion: "Maharashtra",
     addressCountry: "IN",
     postalCode: v.pincode,
@@ -128,8 +130,8 @@ function schema() {
     alternateName: site.nameDevanagari,
     description,
     url: `${site.url}/`,
-    image: abs("/img/chowk-courtyard.webp"),
-    address: address(primaryVenue, "Vadhu Budruk"),
+    image: abs(primaryVenue.poster),
+    address: address(primaryVenue),
     geo: geo(primaryVenue),
     knowsAbout: ["Pre-wedding photoshoot", "Photoshoot location", "Haldi shoot", "Heritage wada"],
     /* Both Instagram accounts: same business, two venues. Listing both is
@@ -138,8 +140,8 @@ function schema() {
     department: {
       "@type": "LocalBusiness",
       name: branch.name,
-      image: abs("/img/bhosari-poster.webp"),
-      address: address(branch, "Bhosari"),
+      image: abs(branch.poster),
+      address: address(branch),
       geo: geo(branch),
       sameAs: [branch.instagram],
     },
@@ -156,7 +158,7 @@ export default function RootLayout({
     <html lang="en-IN" suppressHydrationWarning>
       <head>
         <meta name="geo.region" content="IN-MH" />
-        <meta name="geo.placename" content="Koregaon Bhima, Pune" />
+        <meta name="geo.placename" content="Pune" />
         <script
           type="application/ld+json"
           // Build-time JSON from our own config. No user input reaches this.

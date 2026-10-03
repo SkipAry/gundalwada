@@ -59,7 +59,7 @@ export default function Packages() {
               }`}
             >
               <span className="sm:hidden">Wada 1</span>
-              <span className="hidden sm:inline">Wada 1 (Vadhu Budruk)</span>
+              <span className="hidden sm:inline">Wada 1 (Bhosari)</span>
             </button>
             <button
               type="button"
@@ -71,217 +71,31 @@ export default function Packages() {
               }`}
             >
               <span className="sm:hidden">Wada 2</span>
-              <span className="hidden sm:inline">Wada 2 (Bhosari)</span>
+              <span className="hidden sm:inline">Wada 2 (Vadhu)</span>
             </button>
           </div>
         </div>
 
         {/* ── Cards Grid ── */}
-        <div className="mt-8 sm:mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
           {/* ══════════════════════════════════════════════════════════════
-              WADA 1 · ESTATE
+              WADA 1 · STUDIO (BHOSARI)
              ══════════════════════════════════════════════════════════════ */}
           {(activeTab === "all" || activeTab === "wada1") && (
             <div className="flex flex-col overflow-hidden rounded-2xl border border-pebble bg-cream shadow-sm">
               {/* Venue Header Banner */}
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
                 <img
-                  src={asset("/img/wada1.webp")}
-                  alt="Wada 1 - Stone Heritage Estate at Vadhu Budruk"
+                  src={asset("/img/wada-bhosari.webp")}
+                  alt="Wada 1 - Heritage studio at Indrayani Nagar, Bhosari"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
                 <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
                   <div>
-                    <span className="eyebrow text-gold">Location 01 · Vadhu Budruk</span>
+                    <span className="eyebrow text-gold">Location 01 · Bhosari</span>
                     <h3 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl leading-tight">
                       Wada <span className="font-sans font-normal">1</span>
-                    </h3>
-                    <p className="mt-1 text-[13px] text-cream/80 leading-relaxed">
-                      Sunken stone chowk, carved teak arcade, and wide open grounds
-                    </p>
-                  </div>
-                  <span className="shrink-0 rounded-full border border-gold/50 bg-gold/20 px-3.5 py-1 text-[11.5px] font-semibold text-gold backdrop-blur-sm">
-                    Grand Heritage
-                  </span>
-                </div>
-              </div>
-
-              {/* Packages List */}
-              <div className="flex flex-1 flex-col p-6 sm:p-7 space-y-6">
-                {/* 1. Couples Photo Shoot */}
-                <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
-                      <div>
-                        <span className="inline-flex items-center rounded bg-gold/15 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
-                          Couples Favorite
-                        </span>
-                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
-                          Couples Photo Shoot
-                        </h4>
-                        <p className="mt-1 text-[13px] text-slate">
-                          3 Hours dedicated photo session
-                        </p>
-                      </div>
-                      <div className="sm:text-right shrink-0">
-                        <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-cocoa">
-                          ₹10,000<span className="text-sm font-normal text-slate">/-</span>
-                        </div>
-                        <p className="mt-0.5 text-[11px] font-medium text-slate">3 Hours Session</p>
-                      </div>
-                    </div>
-
-                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
-                      A perfect photo shoot experience for your special moments in a beautiful traditional ambiance. Includes full access to the courtyard, verandah, and architectural corners.
-                    </p>
-                  </div>
-
-                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[13px] text-cocoa/70">
-                      Ideal for: Pre-wedding, Maternity & Couple Portraits
-                    </span>
-                    <a
-                      href={getWaLink("Wada 1", "Couples Photo Shoot", "₹10,000/-")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-obsidian px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-gold hover:bg-cocoa transition-colors max-sm:w-full"
-                    >
-                      Book 3h Session →
-                    </a>
-                  </div>
-                </div>
-
-                {/* 2. Private / Group Booking (Featured) */}
-                <div className="relative flex flex-col justify-between rounded-xl border-2 border-gold/70 bg-bone/30 p-6 shadow-sm">
-                  <div className="absolute -top-3 right-6 rounded-full bg-gold px-3.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-obsidian shadow-sm">
-                    Most Popular For Groups
-                  </div>
-
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
-                      <div>
-                        <span className="inline-flex items-center rounded bg-gold/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
-                          Full Private Access
-                        </span>
-                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
-                          Private / Group Booking
-                        </h4>
-                        <p className="mt-1 text-[13px] text-slate sm:whitespace-nowrap">
-                          Exclusive estate access for family & group ceremonies
-                        </p>
-                      </div>
-                      <div className="sm:text-right shrink-0">
-                        <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-russet">
-                          ₹25,000<span className="text-sm font-normal text-slate">/-</span>
-                        </div>
-                        <p className="mt-0.5 text-[11px] font-medium text-slate">Base up to 25 guests</p>
-                      </div>
-                    </div>
-
-                    <ul className="mt-4 space-y-3 border-t border-pebble/80 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/85">
-                      <li className="flex items-start gap-2.5">
-                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span><strong className="font-semibold text-cocoa">For 0 – 25 People:</strong> ₹25,000/- (Fixed package for groups up to 25 people)</span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span><strong className="font-semibold text-cocoa">Beyond 25 People:</strong> ₹1,000/- per additional person</span>
-                      </li>
-                      <li className="flex items-start gap-2.5 text-slate text-[12.5px]">
-                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>Includes private changing spaces, dedicated seating & complete property privacy</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
-                    <span className="text-[13px] text-cocoa/70">
-                      Ideal for: Haldi, Kumkum, Ring Ceremonies & Family Gatherings
-                    </span>
-                    <a
-                      href={getWaLink("Wada 1", "Private / Group Booking", "₹25,000/-")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm max-sm:w-full"
-                    >
-                      Reserve Group Date →
-                    </a>
-                  </div>
-                </div>
-
-                {/* 3. Brand Shoot */}
-                <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
-                      <div>
-                        <span className="inline-flex items-center rounded bg-pebble/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-slate">
-                          Commercial Production
-                        </span>
-                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
-                          Brand Shoot
-                        </h4>
-                        <p className="mt-1 text-[13px] text-slate">
-                          Fashion, catalogue, advertisement & commercial filming
-                        </p>
-                      </div>
-                      <div className="sm:text-right shrink-0">
-                        <div className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-cocoa">
-                          Custom Quote
-                        </div>
-                        <p className="mt-0.5 text-[11px] font-medium text-slate">Based on scope</p>
-                      </div>
-                    </div>
-
-                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
-                      For Brand / Product / Commercial shoots: Rates will be determined based on the nature of the shoot, crew size, equipment footprint, power requirements, and required amenities.
-                    </p>
-                  </div>
-
-                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
-                    <span className="text-[13px] text-cocoa/70">
-                      Tailored arrangements for cameras, lights & crew
-                    </span>
-                    <a
-                      href={getWaLink("Wada 1", "Brand Shoot", "Custom Quote")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all max-sm:w-full"
-                    >
-                      Inquire Commercial Tariff →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* ══════════════════════════════════════════════════════════════
-              WADA 2 · STUDIO
-             ══════════════════════════════════════════════════════════════ */}
-          {(activeTab === "all" || activeTab === "wada2") && (
-            <div className="flex flex-col overflow-hidden rounded-2xl border border-pebble bg-cream shadow-sm">
-              {/* Venue Header Banner */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
-                <img
-                  src={asset("/img/wada2.webp")}
-                  alt="Wada 2 - Heritage Studio at Bhosari"
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
-                <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
-                  <div>
-                    <span className="eyebrow text-gold">Location 02 · Bhosari</span>
-                    <h3 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl leading-tight">
-                      Wada <span className="font-sans font-normal">2</span>
                     </h3>
                     <p className="mt-1 text-[13px] text-cream/80 leading-relaxed">
                       Carved teak jharokha, traditional diwankhana, and chulghar setting
@@ -328,7 +142,7 @@ export default function Packages() {
                       Includes: Full property access (3 Hours)
                     </span>
                     <a
-                      href={getWaLink("Wada 2", "Gold Package", "₹6,000/-")}
+                      href={getWaLink("Wada 1 (Bhosari)", "Gold Package", "₹6,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 rounded-full bg-obsidian px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-gold hover:bg-cocoa transition-colors max-sm:w-full"
@@ -392,7 +206,7 @@ export default function Packages() {
                       Ideal for: Elaborate pre-weddings & Haldi looks
                     </span>
                     <a
-                      href={getWaLink("Wada 2", "Platinum Package", "₹12,000/-")}
+                      href={getWaLink("Wada 1 (Bhosari)", "Platinum Package", "₹12,000/-")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm max-sm:w-full"
@@ -464,12 +278,198 @@ export default function Packages() {
                       Add-ons can be selected when confirming your shoot date
                     </span>
                     <a
-                      href={getWaLink("Wada 2", "Shoot with Add-ons (Group/Chulghar)", "Inquiry")}
+                      href={getWaLink("Wada 1 (Bhosari)", "Shoot with Add-ons (Group/Chulghar)", "Inquiry")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all max-sm:w-full"
                     >
                       Inquire Add-ons →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+        <div className="mt-8 sm:mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8 items-stretch">
+          {/* ══════════════════════════════════════════════════════════════
+              WADA 2 · ESTATE (VADHU)
+             ══════════════════════════════════════════════════════════════ */}
+          {(activeTab === "all" || activeTab === "wada2") && (
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-pebble bg-cream shadow-sm">
+              {/* Venue Header Banner */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-pebble/40">
+                <img
+                  src={asset("/img/wada-vadhu.webp")}
+                  alt="Wada 2 - Stone heritage estate at Vadhu, Koregaon Bhima"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/60 to-transparent" />
+                <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between gap-4 text-cream">
+                  <div>
+                    <span className="eyebrow text-gold">Location 02 · Vadhu, Koregaon Bhima</span>
+                    <h3 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl leading-tight">
+                      Wada <span className="font-sans font-normal">2</span>
+                    </h3>
+                    <p className="mt-1 text-[13px] text-cream/80 leading-relaxed">
+                      Sunken stone chowk, carved teak arcade, and wide open grounds
+                    </p>
+                  </div>
+                  <span className="shrink-0 rounded-full border border-gold/50 bg-gold/20 px-3.5 py-1 text-[11.5px] font-semibold text-gold backdrop-blur-sm">
+                    Grand Heritage
+                  </span>
+                </div>
+              </div>
+
+              {/* Packages List */}
+              <div className="flex flex-1 flex-col p-6 sm:p-7 space-y-6">
+                {/* 1. Couples Photo Shoot */}
+                <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                      <div>
+                        <span className="inline-flex items-center rounded bg-gold/15 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
+                          Couples Favorite
+                        </span>
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
+                          Couples Photo Shoot
+                        </h4>
+                        <p className="mt-1 text-[13px] text-slate">
+                          3 Hours dedicated photo session
+                        </p>
+                      </div>
+                      <div className="sm:text-right shrink-0">
+                        <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-cocoa">
+                          ₹10,000<span className="text-sm font-normal text-slate">/-</span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] font-medium text-slate">3 Hours Session</p>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
+                      A perfect photo shoot experience for your special moments in a beautiful traditional ambiance. Includes full access to the courtyard, verandah, and architectural corners.
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
+                      Ideal for: Pre-wedding, Maternity & Couple Portraits
+                    </span>
+                    <a
+                      href={getWaLink("Wada 2 (Vadhu)", "Couples Photo Shoot", "₹10,000/-")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-obsidian px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-gold hover:bg-cocoa transition-colors max-sm:w-full"
+                    >
+                      Book 3h Session →
+                    </a>
+                  </div>
+                </div>
+
+                {/* 2. Private / Group Booking (Featured) */}
+                <div className="relative flex flex-col justify-between rounded-xl border-2 border-gold/70 bg-bone/30 p-6 shadow-sm">
+                  <div className="absolute -top-3 right-6 rounded-full bg-gold px-3.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-obsidian shadow-sm">
+                    Most Popular For Groups
+                  </div>
+
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                      <div>
+                        <span className="inline-flex items-center rounded bg-gold/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-russet">
+                          Full Private Access
+                        </span>
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
+                          Private / Group Booking
+                        </h4>
+                        <p className="mt-1 text-[13px] text-slate sm:whitespace-nowrap">
+                          Exclusive estate access for family & group ceremonies
+                        </p>
+                      </div>
+                      <div className="sm:text-right shrink-0">
+                        <div className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-russet">
+                          ₹25,000<span className="text-sm font-normal text-slate">/-</span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] font-medium text-slate">Base up to 25 guests</p>
+                      </div>
+                    </div>
+
+                    <ul className="mt-4 space-y-3 border-t border-pebble/80 pt-3.5 text-[13.5px] leading-relaxed text-cocoa/85">
+                      <li className="flex items-start gap-2.5">
+                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong className="font-semibold text-cocoa">For 0 – 25 People:</strong> ₹25,000/- (Fixed package for groups up to 25 people)</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong className="font-semibold text-cocoa">Beyond 25 People:</strong> ₹1,000/- per additional person</span>
+                      </li>
+                      <li className="flex items-start gap-2.5 text-slate text-[12.5px]">
+                        <svg className="h-4 w-4 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>Includes private changing spaces, dedicated seating & complete property privacy</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/60 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
+                      Ideal for: Haldi, Kumkum, Ring Ceremonies & Family Gatherings
+                    </span>
+                    <a
+                      href={getWaLink("Wada 2 (Vadhu)", "Private / Group Booking", "₹25,000/-")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-semibold text-obsidian hover:bg-gold-dark hover:text-cream transition-colors shadow-sm max-sm:w-full"
+                    >
+                      Reserve Group Date →
+                    </a>
+                  </div>
+                </div>
+
+                {/* 3. Brand Shoot */}
+                <div className="flex flex-col justify-between rounded-xl border border-pebble bg-ivory p-6 transition-all hover:border-gold/50">
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                      <div>
+                        <span className="inline-flex items-center rounded bg-pebble/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-slate">
+                          Commercial Production
+                        </span>
+                        <h4 className="mt-2 font-display text-xl sm:text-2xl font-semibold sm:font-bold text-cocoa leading-tight">
+                          Brand Shoot
+                        </h4>
+                        <p className="mt-1 text-[13px] text-slate">
+                          Fashion, catalogue, advertisement & commercial filming
+                        </p>
+                      </div>
+                      <div className="sm:text-right shrink-0">
+                        <div className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-cocoa">
+                          Custom Quote
+                        </div>
+                        <p className="mt-0.5 text-[11px] font-medium text-slate">Based on scope</p>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 border-t border-pebble/60 pt-3.5 text-[13.5px] leading-normal text-cocoa/90">
+                      For Brand / Product / Commercial shoots: Rates will be determined based on the nature of the shoot, crew size, equipment footprint, power requirements, and required amenities.
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 border-t border-pebble/50 pt-3.5">
+                    <span className="text-[13px] text-cocoa/70">
+                      Tailored arrangements for cameras, lights & crew
+                    </span>
+                    <a
+                      href={getWaLink("Wada 2 (Vadhu)", "Brand Shoot", "Custom Quote")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-pebble bg-cream px-4 py-2.5 sm:py-1.5 text-[13px] sm:text-[12px] font-medium text-cocoa hover:border-gold hover:text-gold-dark transition-all max-sm:w-full"
+                    >
+                      Inquire Commercial Tariff →
                     </a>
                   </div>
                 </div>

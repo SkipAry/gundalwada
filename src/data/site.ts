@@ -27,21 +27,10 @@ export const site = {
   positioning:
     "A Peshwa-era wada near Pune, for your pre-wedding, Haldi, festival and portrait photoshoots",
 
-  /**
-   * The site had TWO different addresses on one page — this block said
-   * Gavhane Patil Nagar, Koregaon Bhima while the venues list said Vadhu
-   * Budruk. Same place, two answers, which confuses a visitor and actively
-   * hurts local SEO, where the whole point is that the site and the Google
-   * Business Profile agree.
-   *
-   * There is now one source: `venues[0]`. This block is derived from it
-   * below, so the footer, the schema and the map link cannot drift apart
-   * again. Vadhu Budruk wins because it is what the client stated
-   * explicitly and it carries a plus-code.
-   */
-
-  /** ~28 km from Pune city on the Nagar Road corridor (brief §1). */
-  distanceFromPune: "About 28 km from Pune, on the Nagar Road corridor",
+  /** Both venues in one line: Wada 1 is in the city, Wada 2 is the drive
+      out. Shown in the announcement bar, hero and "Getting here". */
+  distanceFromPune:
+    "Wada 1 in Bhosari, Pimpri-Chinchwad, and Wada 2 about 28 km from Pune at Vadhu, Koregaon Bhima",
 
   /* ── ⚠ CLIENT INPUT REQUIRED ─────────────────────────────
      Every one of these renders a marked gap until filled. */
@@ -50,18 +39,9 @@ export const site = {
   whatsapp: "919922502351" as string,
   phoneDisplay: "+91 99225 02351" as string,
 
-  /**
-   * ⚠ TWO ACCOUNTS EXIST, and they are not duplicates — see `properties`
-   * below. @gundal_wada is used here because the brief describes that
-   * property. Confirm before launch.
-   */
+  /** The main account (Wada 1). Wada 2 has its own, see `venues`. */
   instagram: "https://www.instagram.com/gundal_wada/" as string,
   instagramHandle: "@gundal_wada" as string,
-  /** ⚠ PROVISIONAL — a name search, not the owner's own place link. It
-      lands correctly but does not carry the verified business pin. Replace
-      with the Google Business Profile share link. */
-  mapsLink:
-    "https://www.google.com/maps/search/?api=1&query=Gundal+Wada+Koregaon+Bhima+Pune" as string,
   /** Live domain: drives canonical URLs, OG tags, sitemap and schema. */
   url: "https://gundalwada.com" as string,
 
@@ -70,38 +50,27 @@ export const site = {
 } as const;
 
 /* ─────────────────────────────────────────────────────────────
-   ⚠ THERE ARE TWO PROPERTIES, AND THIS NEEDS A DECISION.
+   TWO VENUES, ONE BUSINESS. Numbering is the client's own, as written on
+   the @gundal_wada Instagram bio and on Google Maps:
 
-   The two reference links resolve to two SEPARATE Google Business
-   listings with different knowledge-graph ids:
+     Wada 1  "Gundal Wada"    Bhosari        /g/11rp_twh_6  @gundal_wada
+     Wada 2  "Gundal Wada 2"  Vadhu Budruk   /g/11l2v1gdp0  @gundal.wada2
 
-     Gundal Wada     /g/11rp_twh_6    instagram.com/gundal_wada
-     Gundal Wada 2   /g/11l2v1gdp0    instagram.com/gundal.wada2
-
-   Three things line up with that: the logo says "Heritage Properties",
-   plural; both listings sit at Gavhane Patil Nagar; and the courtyard
-   photograph in our media folder is filed under the Wada 2 listing
-   (`gundal-wada-2-gavhane-patil-nagar-…`).
-
-   CONFIRMED BY THE CLIENT: same business, two locations. So this is one
-   site and one brand, with two venues — not two competing identities.
-
-   Two things still need the client, and both are visible on the page:
-     · the second location's address (only Gavhane Patil Nagar is known)
-     · which photographs belong to which wada, so a photographer booking
-       for the chowk arrives at the house that has it
-
-   Until the second is answered the gallery cannot label its images by
-   venue, so it does not claim to — better an unlabelled photograph than
-   a confidently wrong one.
+   venues[0] is Wada 1 and is the primary venue (schema, sr-only address).
+   Every per-place fact (address, pin, photos, footage) lives on the venue,
+   so swapping a number never moves a photograph to the wrong house.
    ───────────────────────────────────────────────────────────── */
 export type Venue = {
   id: string;
+  /** "Wada 1" / "Wada 2" — what the client and their Instagram call it. */
+  label: string;
   name: string;
   /** What kind of place this is, in one line — the thing a photographer
       needs before they read the address. */
   character: string;
   address: string;
+  /** Town for the schema's addressLocality. */
+  locality: string;
   pincode: string;
   instagram: string;
   /** Client's own footage of this venue. */
@@ -114,31 +83,35 @@ export type Venue = {
 
 export const venues: Venue[] = [
   {
-    id: "vadhu",
-    name: "Gundal Wada",
-    character:
-      "The heritage wada. Open stone chowk, carved teak arcade, cusped arches and sky above.",
-    address: "M398+MV, Vadhu Budruk, Shirur Taluka, Pune District, Maharashtra",
-    pincode: "412216",
-    instagram: "https://www.instagram.com/gundal_wada/",
-    video: asset("/video/mahadwar-loop.mp4"),
-    poster: asset("/img/mahadwar-poster.webp"),
-    mapsQuery: "Gundal+Wada+Vadhu+Budruk+Pune",
-    geo: { lat: 18.6692739, lng: 74.0671229 },
-  },
-  {
     id: "bhosari",
-    name: "Gundal Wada 2",
+    label: "Wada 1",
+    name: "Gundal Wada",
     character:
       "The Pimpri-Chinchwad location, closer in for couples and crews coming from the city.",
     address:
       "35, Anandrao Lande Rd, Maharashtra Colony, Sector No. 1, Bhosari, Pimpri-Chinchwad, Maharashtra",
+    locality: "Bhosari",
     pincode: "411039",
-    instagram: "https://www.instagram.com/gundal.wada2/",
+    instagram: "https://www.instagram.com/gundal_wada/",
     video: asset("/video/bhosari-loop.mp4"),
     poster: asset("/img/bhosari-poster.webp"),
-    mapsQuery: "Gundal+Wada+2+Bhosari+Pimpri+Chinchwad",
+    mapsQuery: "Gundal+Wada+Bhosari+Pimpri+Chinchwad",
     geo: { lat: 18.6318364, lng: 73.8436897 },
+  },
+  {
+    id: "vadhu",
+    label: "Wada 2",
+    name: "Gundal Wada 2",
+    character:
+      "The heritage wada. Open stone chowk, carved teak arcade, cusped arches and sky above.",
+    address: "M398+MV, Vadhu Budruk, Shirur Taluka, Pune District, Maharashtra",
+    locality: "Vadhu Budruk",
+    pincode: "412216",
+    instagram: "https://www.instagram.com/gundal.wada2/",
+    video: asset("/video/mahadwar-loop.mp4"),
+    poster: asset("/img/mahadwar-poster.webp"),
+    mapsQuery: "Gundal+Wada+2+Vadhu+Budruk+Pune",
+    geo: { lat: 18.6692739, lng: 74.0671229 },
   },
 ];
 
