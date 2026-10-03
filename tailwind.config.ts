@@ -20,9 +20,6 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
-      screens: {
-        short: { raw: "(max-height: 820px)" },
-      },
       colors: {
         /* ── Surfaces ───────────────────────────────────────────────
            All light surfaces pure white #FFFFFF (user override 26 Aug:
