@@ -47,8 +47,8 @@ export const site = {
      Every one of these renders a marked gap until filled. */
 
   /** Supplied by the client. Every booking on the site funnels here. */
-  whatsapp: "918007906994" as string,
-  phoneDisplay: "+91 80079 06994" as string,
+  whatsapp: "919922502351" as string,
+  phoneDisplay: "+91 99225 02351" as string,
 
   /**
    * ⚠ TWO ACCOUNTS EXIST, and they are not duplicates — see `properties`

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { asset } from "@/lib/asset";
+import { site, whatsappLink } from "@/data/site";
 import SectionHead from "./SectionHead";
 
 type VenueKey = "all" | "wada1" | "wada2";
@@ -9,19 +10,18 @@ type VenueKey = "all" | "wada1" | "wada2";
 export default function Packages() {
   const [activeTab, setActiveTab] = useState<VenueKey>("all");
 
-  const phone = "+919922502351";
-  const phoneDisplay = "+91 9922502351";
+  /* One number for the whole site, from src/data/site.ts. */
+  const phone = `+${site.whatsapp}`;
+  const phoneDisplay = site.phoneDisplay;
 
-  const getWaLink = (venue: string, pkg: string, rate: string) => {
-    const text = encodeURIComponent(
+  const getWaLink = (venue: string, pkg: string, rate: string) =>
+    whatsappLink(
       `Namaskar Gundal Wada, I am interested in booking the "${pkg}" (${rate}) at ${venue}. Could you please share available dates?`
     );
-    return `https://wa.me/919922502351?text=${text}`;
-  };
 
-  const generalWa = `https://wa.me/919922502351?text=${encodeURIComponent(
+  const generalWa = whatsappLink(
     "Namaskar Gundal Wada, I would like to inquire about shoot packages and availability."
-  )}`;
+  );
 
   return (
     <section id="packages" className="bg-[#FAF7F2] py-12 pb-24 sm:py-16 sm:pb-20 border-t border-pebble/70">

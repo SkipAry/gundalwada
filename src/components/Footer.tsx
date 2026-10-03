@@ -50,7 +50,7 @@ export default function Footer() {
             ))}
             {site.phoneDisplay ? (
               <a
-                href={`tel:${site.whatsapp}`}
+                href={`tel:+${site.whatsapp}`}
                 className="mt-2 flex min-h-[44px] items-center text-[14px] font-semibold text-cream transition-colors duration-200 hover:text-cream/70"
               >
                 {site.phoneDisplay}
