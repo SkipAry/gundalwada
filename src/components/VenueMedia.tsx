@@ -3,9 +3,12 @@
 import { useEffect, useRef } from "react";
 
 /**
- * VENUE MEDIA — continuous ambient loop for both properties.
+ * VENUE MEDIA — muted ambient loop for each property.
  *
- * Autoplays muted, loops continuously, with playsInline for mobile compatibility.
+ * The section sits far down the page, so the footage must not compete with
+ * the first screen: preload="none" means nothing downloads until the card
+ * is about to scroll into view, then it plays; it pauses again off-screen.
+ * The poster shows in the meantime, so the card is never empty.
  */
 export default function VenueMedia({
   name,
@@ -19,11 +22,19 @@ export default function VenueMedia({
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.defaultMuted = true;
-      ref.current.muted = true;
-      ref.current.play().catch(() => {});
-    }
+    const v = ref.current;
+    if (!v) return;
+    v.defaultMuted = true;
+    v.muted = true;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { rootMargin: "200px 0px" }
+    );
+    io.observe(v);
+    return () => io.disconnect();
   }, [video]);
 
   return (
@@ -36,8 +47,7 @@ export default function VenueMedia({
           muted
           loop
           playsInline
-          autoPlay
-          preload="auto"
+          preload="none"
           aria-label={`Footage of ${name}`}
         >
           <source src={video} type="video/mp4" />
