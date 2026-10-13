@@ -316,6 +316,13 @@
 }
 
 @layer utilities {
+  /* Cormorant's default old-style figures sink a "2" until it reads as a
+     superscript ("Gundal Wada ²", step "02"). Lining figures sit on the
+     baseline at cap height, like the letters around them. */
+  .font-display {
+    font-variant-numeric: lining-nums;
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }
