@@ -42,7 +42,13 @@ export default function Naksha() {
                   {v.label} · {v.locality}
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-semibold text-oxblood">
-                  {v.name}
+                  {/* Cormorant's figures are old-style and a trailing "2" reads as
+                      a superscript, so the number is set in the sans, the same
+                      fix the rate card uses. */}
+                  {v.name.replace(/\s\d+$/, "")}
+                  {/\d+$/.test(v.name) ? (
+                    <span className="font-sans font-normal"> {v.name.match(/\d+$/)?.[0]}</span>
+                  ) : null}
                 </h3>
 
                 <p className="mt-3 text-[15px] leading-relaxed text-cocoa/85">

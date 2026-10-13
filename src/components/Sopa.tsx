@@ -45,7 +45,7 @@ export default function Sopa() {
           <ol className="grid gap-6 sm:grid-cols-3 sm:gap-8">
             {steps.map((s, i) => (
               <li key={s.title}>
-                <p className="font-display text-3xl font-semibold text-gold">
+                <p className="font-sans text-2xl font-semibold text-gold">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <p className="mt-2 font-display text-xl font-semibold leading-snug text-oxblood">
